@@ -1,44 +1,44 @@
 package cashregister.dao;
 
-import cashregister.hibernate.HibernateUtil;
-import cashregister.model.Person;
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.Transaction;
-
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.List;
 
 public class BaseDao {
+    SessionFactory sessionFactory;
+
+    public BaseDao(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
+    }
+
+    @Transactional
     public <T> T getById(final Class<T> type, final int id){
-        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-        Transaction tx = session.beginTransaction();
+        Session session = sessionFactory.getCurrentSession();
         T result = session.get(type, id);
-        tx.commit();
         return result;
     }
 
+    @Transactional
     public <T> List<T> getAll(final Class<T> type) {
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        final Session session = sessionFactory.getCurrentSession();
+        Session session = sessionFactory.getCurrentSession();
         final Criteria crit = session.createCriteria(type);
         return crit.list();
     }
 
-    public <T> T save(final T o){
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        return (T) sessionFactory.getCurrentSession().save(o);
+    public <T> T save(final T object){
+        Session session = sessionFactory.getCurrentSession();
+        return (T) sessionFactory.getCurrentSession().save(object);
     }
 
-    public <T> void saveOrUpdate(final T o){
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        sessionFactory.getCurrentSession().saveOrUpdate(o);
+    public <T> void saveOrUpdate(final T object){
+        Session session = sessionFactory.getCurrentSession();
+        session.saveOrUpdate(object);
     }
 
     public void delete(final Object object){
-        SessionFactory sessionFactory = HibernateUtil.getSessionFactory();
-        sessionFactory.getCurrentSession().delete(object);
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(object);
     }
 }

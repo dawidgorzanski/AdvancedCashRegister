@@ -12,6 +12,9 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
 public class Main extends Application {
     public Main() {
         BarcodeReader.initializeBarcode("COM4");
@@ -28,18 +31,19 @@ public class Main extends Application {
                                            @Override
                                            public void handle(WindowEvent event) {
                                                BarcodeReader.uinitializeBarcode();
-                                               HibernateUtil.closeSessionFactory();
+                                               //HibernateUtil.closeSessionFactory();
                                            }
                                        });
 
         primaryStage.show();
     }
 
-
     public static void main(String[] args) {
-        BaseDao dao = new BaseDao();
+        //How to manually get object from Spring context
+        /*ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Module.xml");
+        BaseDao dao = (BaseDao)context.getBean("baseDao");
         Person person = dao.getById(Person.class, 1);
-        System.out.println(person.getName());
+        System.out.println(person.getName());*/
         launch(args);
     }
 }
