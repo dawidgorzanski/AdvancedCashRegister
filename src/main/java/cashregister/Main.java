@@ -1,9 +1,9 @@
 package cashregister;
 
 import cashregister.barcode.BarcodeReader;
-import cashregister.dao.BaseDao;
-import cashregister.hibernate.HibernateUtil;
+import cashregister.dao.interfaces.IPersonDao;
 import cashregister.model.Person;
+import cashregister.modules.ModulesManager;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -22,7 +22,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("/MainWindow.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml"));
         primaryStage.setTitle("Kasa fiskalna");
         primaryStage.setMaximized(true);
         primaryStage.setScene(new Scene(root, 300, 275));
@@ -39,10 +39,9 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        //How to manually get object from Spring context
-        /*ApplicationContext context = new ClassPathXmlApplicationContext("Spring-Module.xml");
-        BaseDao dao = (BaseDao)context.getBean("baseDao");
-        Person person = dao.getById(Person.class, 1);
+        ModulesManager.initialize();
+        /*IPersonDao dao = ModulesManager.getObjectByType(IPersonDao.class);
+        Person person = dao.getById(1);
         System.out.println(person.getName());*/
         launch(args);
     }

@@ -14,7 +14,6 @@
     <bean id="sessionFactory"
           class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
         <property name="dataSource" ref="localDataSource" />
-        <property name="configLocation" value="hibernate.cfg.xml" />
         <property name="hibernateProperties">
             <props>
                 <prop key="hibernate.dialect">org.hibernate.dialect.PostgreSQL82Dialect</prop>
@@ -23,6 +22,11 @@
                 <prop key="hibernate.hbm2ddl.auto">update</prop>
                 <prop key="hibernate.use_sql_comments">false</prop>
             </props>
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>mappings/Person.hbm.xml</value>
+            </list>
         </property>
     </bean>
 
@@ -45,6 +49,4 @@
           class="org.springframework.orm.hibernate5.HibernateTransactionManager">
         <property name="sessionFactory" ref="sessionFactory"/>
     </bean>
-
-    <bean id="baseDao" class="cashregister.dao.BaseDao" autowire="constructor"></bean>
 </beans>

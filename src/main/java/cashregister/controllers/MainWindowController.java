@@ -2,14 +2,18 @@ package cashregister.controllers;
 
 import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
+import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
 import javafx.scene.control.TextArea;
 import javafx.fxml.FXML;
 
 public class MainWindowController implements IBarcodeReaderDataListener {
 
+    IProductsListModule productsListModule;
     public MainWindowController() {
         BarcodeReader.addListener(this);
+        this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
     }
 
     @FXML
@@ -17,7 +21,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        textAreaTest.appendText("BLEBLEBLE\n");
+        String text = productsListModule.testMethod();
+        textAreaTest.appendText(text);
     }
 
     @Override
