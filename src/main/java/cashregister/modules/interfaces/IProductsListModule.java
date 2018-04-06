@@ -1,5 +1,11 @@
 package cashregister.modules.interfaces;
 
+import cashregister.model.Product;
+import javafx.collections.ObservableList;
+
 public interface IProductsListModule {
-    String testMethod();
+    void addProduct(int barcode);
+    void changeQuantity(Product product, int quantity);
+    void addDiscount(Product product, float discount);
+    public ObservableList getShoppingList();
 }

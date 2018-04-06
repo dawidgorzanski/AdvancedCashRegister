@@ -17,7 +17,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class Main extends Application {
     public Main() {
-        BarcodeReader.initializeBarcode("COM4");
+        BarcodeReader.initializeBarcode("HUAWEIP9lite2017-Lineri");
     }
 
     @Override
@@ -26,6 +26,7 @@ public class Main extends Application {
         primaryStage.setTitle("Kasa fiskalna");
         primaryStage.setMaximized(true);
         primaryStage.setScene(new Scene(root, 300, 275));
+       // primaryStage.setScene(new Scene(root));
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                                            @Override

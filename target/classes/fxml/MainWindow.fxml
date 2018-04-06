@@ -1,57 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
-<VBox prefHeight="480.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.MainWindowController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.MainWindowController">
    <children>
-      <GridPane alignment="CENTER" focusTraversable="true" gridLinesVisible="true" VBox.vgrow="ALWAYS">
-        <columnConstraints>
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="551.0" minWidth="10.0" percentWidth="80.0" prefWidth="551.0" />
-          <ColumnConstraints hgrow="ALWAYS" maxWidth="368.0" minWidth="10.0" percentWidth="20.0" prefWidth="199.0" />
-        </columnConstraints>
-        <rowConstraints>
-          <RowConstraints maxHeight="148.0" minHeight="0.0" percentHeight="80.0" prefHeight="126.0" vgrow="ALWAYS" />
-          <RowConstraints maxHeight="88.0" minHeight="0.0" percentHeight="20.0" prefHeight="22.0" vgrow="ALWAYS" />
-        </rowConstraints>
+      <GridPane VBox.vgrow="ALWAYS">
+         <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+         </columnConstraints>
+         <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="ALWAYS" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+         </rowConstraints>
          <children>
-            <ListView fx:id="listViewProducts" GridPane.hgrow="ALWAYS" GridPane.vgrow="ALWAYS">
-               <GridPane.margin>
-                  <Insets />
-               </GridPane.margin>
-            </ListView>
-            <GridPane alignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.vgrow="ALWAYS">
-              <columnConstraints>
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" percentWidth="50.0" prefWidth="100.0" />
-              </columnConstraints>
-              <rowConstraints>
-                <RowConstraints maxHeight="43.0" minHeight="10.0" percentHeight="35.0" prefHeight="36.0" vgrow="SOMETIMES" />
-                <RowConstraints maxHeight="60.0" minHeight="10.0" percentHeight="75.0" prefHeight="60.0" vgrow="SOMETIMES" />
-              </rowConstraints>
+            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="750.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
                <children>
-                  <Label text="Miejsce na ostrzeżenie o produkcie dla pełnoletnich" GridPane.columnSpan="2" GridPane.halignment="CENTER" GridPane.valignment="CENTER" />
-                  <Label text="KWOTA:" GridPane.halignment="RIGHT" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets right="5.0" />
-                     </GridPane.margin>
-                  </Label>
-                  <Label fx:id="labelTotalPrice" text="Wartość" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                     <GridPane.margin>
-                        <Insets left="5.0" />
-                     </GridPane.margin>
-                  </Label>
+                  <Label layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="181.0" text="KASJER: Imię i nazwisko" />
+                  <Button contentDisplay="RIGHT" layoutX="656.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="80.0" text="Wyloguj" />
+               </children></Pane>
+            <SplitPane dividerPositions="0.5013368983957219" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="750.0" GridPane.rowIndex="1">
+              <items>
+                <AnchorPane fx:id="pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="362.0">
+                     <children>
+                        <SplitPane dividerPositions="0.21195652173913043" layoutX="-1.0" layoutY="-3.0" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="416.0" prefWidth="370.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                          <items>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="455.0" prefWidth="72.0">
+                                 <children>
+                                    <Label layoutX="5.0" layoutY="22.0" prefHeight="62.0" prefWidth="80.0" text="Dane klienta" />
+                                 </children>
+                              </AnchorPane>
+                            <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+                                 <children>
+                                    <TableView maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="393.0" prefWidth="284.0" AnchorPane.bottomAnchor="62.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                        <placeholder>
+                                            <Label text="" />
+                                        </placeholder>
+                                        <columns>
+                                        <TableColumn prefWidth="137.0" text="C1" />
+                                        <TableColumn prefWidth="146.0" text="C2" />
+                                      </columns>
+                                    </TableView>
+                                    <Label contentDisplay="CENTER" layoutY="393.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="62.0" prefWidth="284.0" text="SUMA: 0.00 PLN" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0">
+                                       <font>
+                                          <Font size="24.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </AnchorPane>
+                          </items>
+                        </SplitPane>
+                     </children>
+                  </AnchorPane>
+                <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="420.0" prefWidth="370.0">
+                     <children>
+                        <TextField fx:id="textFieldDisplay" editable="false" layoutX="21.0" layoutY="14.0" prefHeight="54.0" prefWidth="330.0" />
+                        <Button layoutX="21.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="7" />
+                        <Button layoutX="98.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="8" />
+                        <Button layoutX="175.0" layoutY="84.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="9" />
+                        <Button layoutX="21.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="4" />
+                        <Button layoutX="98.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="5" />
+                        <Button layoutX="175.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="6" />
+                        <Button layoutX="21.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="1" />
+                        <Button layoutX="98.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="2" />
+                        <Button layoutX="175.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="3" />
+                        <Button layoutX="21.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="0" />
+                        <Button layoutX="98.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="." />
+                        <Button layoutX="175.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="00" />
+                        <Button layoutX="247.0" layoutY="84.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="&lt;-" />
+                        <Button layoutX="247.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleClearButtonAction" prefHeight="44.0" prefWidth="103.0" text="C" />
+                        <Button layoutX="247.0" layoutY="317.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="ILOŚĆ" />
+                        <Button layoutX="21.0" layoutY="317.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="KOD" />
+                        <Button layoutX="135.0" layoutY="317.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="RABAT" />
+                        <Button layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleEnterButtonAction" prefHeight="99.0" prefWidth="103.0" text="ENTER" />
+                     </children>
+                  </AnchorPane>
+              </items>
+            </SplitPane>
+            <Pane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="80.0" prefWidth="750.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+               <children>
+                  <Button layoutX="128.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="62.0" prefWidth="113.0" text="Usuń pozycję" />
+                  <Button layoutX="257.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="62.0" prefWidth="113.0" text="Anuluj paragon" />
+                  <Button layoutX="381.0" layoutY="9.0" mnemonicParsing="false" prefHeight="62.0" prefWidth="139.0" text="Zakończ transakcję" />
                </children>
-            </GridPane>
-            <Button fx:id="buttonTest" mnemonicParsing="false" onAction="#handleButtonAction" text="Button" GridPane.columnIndex="1" />
-            <TextArea fx:id="textAreaTest" prefHeight="200.0" prefWidth="200.0" />
+            </Pane>
          </children>
       </GridPane>
    </children>

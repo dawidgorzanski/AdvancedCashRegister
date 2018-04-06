@@ -13,12 +13,12 @@
 
     <import resource="Database.xml"/>
 
-    <!-- Dao -->
+    <!-- DAOs -->
     <bean id="personDao" class="cashregister.dao.PersonDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
     <!-- Other beans -->
-    <!--<bean id="productsListModule" class="cashregister.modules.ProductsListModule" />-->
-    <bean id="test" class="cashregister.modules.Test" />
+    <bean id="productsListModule" class="cashregister.modules.ProductsListModule" />
+
 </beans>
