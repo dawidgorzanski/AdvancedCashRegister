@@ -10,9 +10,14 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
+import javafx.stage.Stage;
 import javafx.util.Callback;
+
+import java.io.IOException;
 
 public class MainWindowController implements IBarcodeReaderDataListener {
 
@@ -26,7 +31,9 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TextField textFieldDisplay;
     @FXML
-    private TableView tableViewProducts = new TableView();
+    private ListView listViewProducts = new ListView();
+    @FXML
+    private ListView listViewPrices = new ListView();
 
     @FXML
     private void handleEnterButtonAction(ActionEvent event) {
@@ -36,7 +43,20 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         try {
             number = Integer.parseInt(value);
             productsListModule.addProduct(number);
-            this.setTableViewProducts();
+
+            ObservableList<Product> products = productsListModule.getShoppingList();
+            ObservableList<String> names = FXCollections.observableArrayList();
+            ObservableList<String> prices = FXCollections.observableArrayList();
+
+            for (Product item : products) {
+                names.add(item.getName());
+                String text = Integer.toString(item.getQuantity()) + "  X  CENA";
+                prices.add(text);
+            }
+            listViewProducts.setItems(names);
+            listViewPrices.setItems(prices);
+            listViewProducts.refresh();
+            listViewPrices.refresh();
 
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -60,36 +80,14 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         textFieldDisplay.clear();
     }
 
-    public void setTableViewProducts() {
-        for (int i = 0; i < 2; i++) {
-            TableColumn col = new TableColumn(" ");
-            col.setCellValueFactory(new Callback<TableColumn.CellDataFeatures<ObservableList, String>, ObservableValue<String>>() {
-                @Override
-                public ObservableValue<String> call(TableColumn.CellDataFeatures<ObservableList, String> param) {
-                    return null;
-                }
-
-                public ObservableValue<String> call(TreeTableColumn.CellDataFeatures<ObservableList, String> param) {
-                    return new SimpleStringProperty(param.getValue().toString());
-                }
-            });
-
-            tableViewProducts.getColumns().addAll(col);
-        }
-
-        ObservableList<ObservableList> data = FXCollections.observableArrayList();
-        ObservableList<Product> products = productsListModule.getShoppingList();
-        for(Product item : products) {
-
-            ObservableList<String> row = FXCollections.observableArrayList();
-                row.add(item.getName());
-                String text = Integer.toString(item.getQuantity()) + "  X  CENA";
-                row.add(text);
-            System.out.println("Row [1] added "+row );
-            data.add(row);
-        }
-        tableViewProducts.setItems(data);
-        tableViewProducts.refresh();
+    @FXML
+    private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/PaymentWindow.fxml")));
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setWidth(750);
+        stage.setHeight(650);
+        stage.show();
     }
 
     @Override
