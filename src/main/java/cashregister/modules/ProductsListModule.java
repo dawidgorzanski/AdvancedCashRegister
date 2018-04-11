@@ -31,7 +31,13 @@ public class ProductsListModule implements IProductsListModule {
             alert.showAndWait();
         }
     }
+
+    public void deleteProduct(Product product) {
+        shoppingList.remove(product);
+    }
+
     public void changeQuantity(Product product, int quantity) { }
+
     public void addDiscount(Product product, float discount) { }
 
     public ObservableList getShoppingList() { return shoppingList; }

@@ -5,23 +5,29 @@ import cashregister.barcode.IBarcodeReaderDataListener;
 import cashregister.model.Product;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IProductsListModule;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
-import javafx.util.Callback;
 
 import java.io.IOException;
 
 public class MainWindowController implements IBarcodeReaderDataListener {
 
-    IProductsListModule productsListModule;
+    @FXML
+    private TextField textFieldDisplay;
+    @FXML
+    private TableView<Product> tableViewProducts;
+    @FXML
+    private TableColumn<Product, String> tableColumnName;
+    @FXML
+    private TableColumn<Product, Double> tableColumnPrice;
+    @FXML
+    private TableColumn<Product, Double> tableColumnQuantity;
+
+    private IProductsListModule productsListModule;
 
     public MainWindowController() {
         BarcodeReader.addListener(this);
@@ -29,11 +35,22 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     }
 
     @FXML
-    private TextField textFieldDisplay;
-    @FXML
-    private ListView listViewProducts = new ListView();
-    @FXML
-    private ListView listViewPrices = new ListView();
+    private void initialize() {
+        tableColumnName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
+        tableColumnQuantity.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
+        tableColumnPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
+
+        /*tableColumnQuantity.setOnEditCommit(new EventHandler<CellEditEvent<Product, Double>>() {
+            @Override
+            public void handle(CellEditEvent<Product, Double> t) {
+                ((Product) t.getTableView().getItems().get(
+                        t.getTablePosition().getRow())).setQuantity(t.getNewValue());
+            }
+        });*/
+
+        tableViewProducts.setItems(productsListModule.getShoppingList());
+    }
+
 
     @FXML
     private void handleEnterButtonAction(ActionEvent event) {
@@ -44,29 +61,20 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             number = Integer.parseInt(value);
             productsListModule.addProduct(number);
 
-            ObservableList<Product> products = productsListModule.getShoppingList();
-            ObservableList<String> names = FXCollections.observableArrayList();
-            ObservableList<String> prices = FXCollections.observableArrayList();
-
-            for (Product item : products) {
-                names.add(item.getName());
-                String text = Integer.toString(item.getQuantity()) + "  X  CENA";
-                prices.add(text);
-            }
-            listViewProducts.setItems(names);
-            listViewPrices.setItems(prices);
-            listViewProducts.refresh();
-            listViewPrices.refresh();
-
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
             alert.setTitle("Błąd");
             alert.setHeaderText("Błąd");
             alert.setContentText("Wpisz poprawny kod");
-
             alert.showAndWait();
         }
         textFieldDisplay.clear();
+    }
+
+    @FXML
+    private void handleDeleteButtonAction(ActionEvent event) {
+        Product productToDelete =  tableViewProducts.getSelectionModel().selectedItemProperty().get();
+        productsListModule.deleteProduct(productToDelete);
     }
 
     @FXML

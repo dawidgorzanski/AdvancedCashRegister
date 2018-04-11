@@ -9,6 +9,9 @@ import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -25,8 +28,23 @@ public class Main extends Application {
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml"));
         primaryStage.setTitle("Kasa fiskalna");
         primaryStage.setMaximized(true);
-        primaryStage.setScene(new Scene(root, 300, 275));
-       // primaryStage.setScene(new Scene(root));
+
+        Scene scene = new Scene(root, 300, 275);
+        /*scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent t) {
+                if(t.getCode()== KeyCode.DELETE)
+                {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setTitle("Błąd");
+                    alert.setHeaderText("Błąd");
+                    alert.setContentText("KLiknieto mnie");
+                    alert.showAndWait();
+                }
+            }
+        });*/
+
+        primaryStage.setScene(scene);
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {
                                            @Override
