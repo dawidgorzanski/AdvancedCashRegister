@@ -14,11 +14,15 @@
     <import resource="Database.xml"/>
 
     <!-- DAOs -->
-    <bean id="personDao" class="cashregister.dao.PersonDao">
+    <bean id="userDao" class="cashregister.dao.UserDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="productDefinitionDao" class="cashregister.dao.ProductDefinitionDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <!--<bean id="fakeProductDefinitionDao" class="cashregister.dao.FakeProductDefinitionDao"/>-->
 
     <!-- Other beans -->
-    <bean id="productsListModule" class="cashregister.modules.ProductsListModule" />
+    <bean id="productsListModule" class="cashregister.modules.ProductsListModule" autowire="constructor" />
 
 </beans>

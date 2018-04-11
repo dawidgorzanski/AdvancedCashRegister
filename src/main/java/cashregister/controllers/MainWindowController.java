@@ -2,7 +2,7 @@ package cashregister.controllers;
 
 import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
-import cashregister.model.Product;
+import cashregister.model.ProductForSale;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
@@ -19,13 +19,13 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TextField textFieldDisplay;
     @FXML
-    private TableView<Product> tableViewProducts;
+    private TableView<ProductForSale> tableViewProducts;
     @FXML
-    private TableColumn<Product, String> tableColumnName;
+    private TableColumn<ProductForSale, String> tableColumnName;
     @FXML
-    private TableColumn<Product, Double> tableColumnPrice;
+    private TableColumn<ProductForSale, Double> tableColumnPrice;
     @FXML
-    private TableColumn<Product, Double> tableColumnQuantity;
+    private TableColumn<ProductForSale, Double> tableColumnQuantity;
 
     private IProductsListModule productsListModule;
 
@@ -55,11 +55,9 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private void handleEnterButtonAction(ActionEvent event) {
         String value = textFieldDisplay.getText();
-        int number;
 
         try {
-            number = Integer.parseInt(value);
-            productsListModule.addProduct(number);
+            productsListModule.addProduct(value);
 
         } catch (NumberFormatException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
@@ -73,7 +71,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
     private void handleDeleteButtonAction(ActionEvent event) {
-        Product productToDelete =  tableViewProducts.getSelectionModel().selectedItemProperty().get();
+        ProductForSale productToDelete =  tableViewProducts.getSelectionModel().selectedItemProperty().get();
         productsListModule.deleteProduct(productToDelete);
     }
 

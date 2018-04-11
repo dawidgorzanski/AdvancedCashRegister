@@ -25,7 +25,9 @@
         </property>
         <property name="mappingResources">
             <list>
-                <value>mappings/Person.hbm.xml</value>
+                <value>mappings/User.hbm.xml</value>
+                <value>mappings/ProductForSale.hbm.xml</value>
+                <value>mappings/ProductDefinition.hbm.xml</value>
             </list>
         </property>
     </bean>

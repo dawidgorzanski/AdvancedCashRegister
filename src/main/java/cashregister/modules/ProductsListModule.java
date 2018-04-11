@@ -1,6 +1,8 @@
 package cashregister.modules;
 
-import cashregister.model.Product;
+import cashregister.dao.interfaces.IProductDefinitionDao;
+import cashregister.model.ProductDefinition;
+import cashregister.model.ProductForSale;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,18 +10,24 @@ import javafx.scene.control.Alert;
 
 public class ProductsListModule implements IProductsListModule {
 
-    public ProductsListModule()
+    private IProductDefinitionDao productDefinitionDao;
+    public ProductsListModule(IProductDefinitionDao productDefinitionDao)
     {
+        this.productDefinitionDao = productDefinitionDao;
         shoppingList = FXCollections.observableArrayList();
-        testData = new TestProductList();
     }
 
-    public void addProduct(int barcode)
+    public void addProduct(String barcode)
     {
-        String name = testData.getProduct(barcode);
-        if(!name.equals(null))
+        ProductDefinition productDefinition = productDefinitionDao.getByBarcode(barcode);
+        if(productDefinition != null)
         {
-            Product newItem = new Product(name);
+            ProductForSale newItem = new ProductForSale();
+            newItem.setName(productDefinition.getName());
+            newItem.setCountable(productDefinition.getCountable());
+            newItem.setPrice(productDefinition.getPrice());
+            newItem.setQuantity(1);
+            newItem.setProductDefinition(productDefinition);
             shoppingList.add(newItem);
         }
         else
@@ -32,18 +40,15 @@ public class ProductsListModule implements IProductsListModule {
         }
     }
 
-    public void deleteProduct(Product product) {
+    public void deleteProduct(ProductForSale product) {
         shoppingList.remove(product);
     }
 
-    public void changeQuantity(Product product, int quantity) { }
+    public void changeQuantity(ProductForSale product, int quantity) { }
 
-    public void addDiscount(Product product, float discount) { }
+    public void addDiscount(ProductForSale product, float discount) { }
 
     public ObservableList getShoppingList() { return shoppingList; }
 
     private ObservableList shoppingList;
-
-    //Dane testowe
-    TestProductList testData;
 }

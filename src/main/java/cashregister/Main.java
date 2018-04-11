@@ -1,8 +1,8 @@
 package cashregister;
 
+import cashregister.model.User;
 import cashregister.barcode.BarcodeReader;
-import cashregister.dao.interfaces.IPersonDao;
-import cashregister.model.Person;
+import cashregister.dao.interfaces.IUserDao;
 import cashregister.modules.ModulesManager;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -59,9 +59,9 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         ModulesManager.initialize();
-        /*IPersonDao dao = ModulesManager.getObjectByType(IPersonDao.class);
-        Person person = dao.getById(1);
-        System.out.println(person.getName());*/
+        //IUserDao dao = ModulesManager.getObjectByType(IUserDao.class);
+        //User user = dao.getById(1);
+        //System.out.println(user.getName());
         launch(args);
     }
 }

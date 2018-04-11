@@ -5,11 +5,11 @@
 
 <hibernate-mapping>
 
-    <class name="cashregister.model.Person" table="Person">
+    <class name="cashregister.model.User" table="users">
         <id name="id" column="Id">
             <generator class="native"/>
         </id>
-        <property name="name" column="Name"/>
+        <property name="name" column="name"/>
     </class>
 
 </hibernate-mapping>

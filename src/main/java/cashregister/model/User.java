@@ -1,10 +1,10 @@
 package cashregister.model;
 
-public class Person {
+public class User {
     private int id;
     private String name;
 
-    public Person() {
+    public User() {
         super();
     }
 
