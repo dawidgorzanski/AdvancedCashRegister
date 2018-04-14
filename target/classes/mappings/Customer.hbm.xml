@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="cashregister.model.Customer" table="customer">
+        <id name="id" column="Id" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="name" column="name" />
+        <property name="barcode" column="barcode" />
+        <property name="mail" column="mail" />
+        <property name="address" column="address" />
+        <property name="phone" column="phone" />
+    </class>
+
+</hibernate-mapping>
