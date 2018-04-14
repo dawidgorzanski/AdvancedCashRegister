@@ -30,6 +30,7 @@
                <children>
                   <Label layoutX="14.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="181.0" text="KASJER: Imię i nazwisko" />
                   <Button contentDisplay="RIGHT" layoutX="656.0" layoutY="14.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="44.0" prefWidth="80.0" text="Wyloguj" />
+                  <Button layoutX="528.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleAddClientButtonAction" prefHeight="44.0" prefWidth="93.0" text="Nowy klient" />
                </children></Pane>
             <SplitPane dividerPositions="0.5013368983957219" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="750.0" GridPane.rowIndex="1">
               <items>

@@ -96,9 +96,20 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.show();
     }
 
+    @FXML
+    private void handleAddClientButtonAction(ActionEvent actionEvent) throws IOException{
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/NewClientWindow.fxml")));
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setWidth(750);
+        stage.setHeight(650);
+        stage.show();
+    }
+
     @Override
     public void barcodeValueArrived(String value) {
 
     }
+
 
 }
