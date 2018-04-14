@@ -3,6 +3,7 @@ package cashregister.model;
 public class User {
     private int id;
     private String name;
+    private boolean isAdmin;
 
     public User() {
         super();
@@ -23,4 +24,8 @@ public class User {
     public void setName(String name) {
         this.name = name;
     }
+
+    public boolean getIsAdmin() { return isAdmin; }
+
+    public void setIsAdmin(boolean admin) { isAdmin = admin; }
 }

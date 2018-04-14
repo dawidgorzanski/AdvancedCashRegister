@@ -10,6 +10,7 @@
             <generator class="native"/>
         </id>
         <property name="name" column="name"/>
+        <property name="isAdmin" column="admin"/>
     </class>
 
 </hibernate-mapping>
