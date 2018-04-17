@@ -49,7 +49,8 @@
                                       <columns>
                                         <TableColumn fx:id="tableColumnName" editable="false" prefWidth="210.0" text="Nazwa" />
                                         <TableColumn fx:id="tableColumnQuantity" prefWidth="63.0" text="Ilość" />
-                                        <TableColumn fx:id="tableColumnPrice" editable="false" prefWidth="89.0" text="Cena" />
+                                        <TableColumn fx:id="tableColumnPrice" editable="false" prefWidth="89.0" text="Cena za szt." />
+                                        <TableColumn fx:id="tableColumnTotalPrice" editable="false" prefWidth="89.0" text="Cena razem" />
                                       </columns>
                                        <columnResizePolicy>
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
@@ -78,7 +79,7 @@
                         <Button layoutX="175.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="00" />
                         <Button layoutX="247.0" layoutY="84.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="&lt;-" />
                         <Button layoutX="247.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleClearButtonAction" prefHeight="44.0" prefWidth="103.0" text="C" />
-                        <Button layoutX="247.0" layoutY="317.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="ILOŚĆ" />
+                        <Button layoutX="247.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleQuantityButtonAction" prefHeight="44.0" prefWidth="103.0" text="ILOŚĆ" />
                         <Button layoutX="21.0" layoutY="317.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="KOD" />
                         <Button layoutX="135.0" layoutY="317.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="103.0" text="RABAT" />
                         <Button layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleEnterButtonAction" prefHeight="99.0" prefWidth="103.0" text="ENTER" />

@@ -6,6 +6,7 @@ import cashregister.model.ProductForSale;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
+import javafx.extensions.DialogResult;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -27,6 +28,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private TableColumn<ProductForSale, Double> tableColumnPrice;
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnQuantity;
+    @FXML
+    private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
 
     private IProductsListModule productsListModule;
 
@@ -40,15 +43,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         tableColumnName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         tableColumnQuantity.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
         tableColumnPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
-
-        /*tableColumnQuantity.setOnEditCommit(new EventHandler<CellEditEvent<Product, Double>>() {
-            @Override
-            public void handle(CellEditEvent<Product, Double> t) {
-                ((Product) t.getTableView().getItems().get(
-                        t.getTablePosition().getRow())).setQuantity(t.getNewValue());
-            }
-        });*/
-
+        tableColumnTotalPrice.setCellValueFactory(cellData -> cellData.getValue().totalPriceProperty().asObject());
         tableViewProducts.setItems(productsListModule.getShoppingList());
     }
 
@@ -107,6 +102,33 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+    }
+
+    @FXML
+    private void handleQuantityButtonAction(ActionEvent actionEvent) throws IOException {
+        ProductForSale productToEdit = tableViewProducts.getSelectionModel().selectedItemProperty().get();
+        if (productToEdit == null) {
+            return;
+        }
+
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/EditQuantityWindow.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        EditQuantityWindowController controller = (EditQuantityWindowController)fxmlLoader.getController();
+        controller.setQuantity(productToEdit.getQuantity());
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setWidth(400);
+        stage.setHeight(200);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.showAndWait();
+        if (controller.getDialogResult().equals(DialogResult.OK)) {
+            if (productToEdit.getCountable()) {
+                productToEdit.setQuantity((int)controller.getQuantity());
+            }
+            else {
+                productToEdit.setQuantity(controller.getQuantity());
+            }
+        }
     }
 
     @Override

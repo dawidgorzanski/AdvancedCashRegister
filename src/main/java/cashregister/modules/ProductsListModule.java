@@ -22,13 +22,14 @@ public class ProductsListModule implements IProductsListModule {
         ProductDefinition productDefinition = productDefinitionDao.getByBarcode(barcode);
         if(productDefinition != null)
         {
-            ProductForSale newItem = new ProductForSale();
-            newItem.setName(productDefinition.getName());
-            newItem.setCountable(productDefinition.getCountable());
-            newItem.setPrice(productDefinition.getPrice());
-            newItem.setQuantity(1);
-            newItem.setProductDefinition(productDefinition);
-            shoppingList.add(newItem);
+            if (shoppingListContainsProduct(productDefinition)) {
+                ProductForSale productForSale = findProductByProductDefinition(productDefinition);
+                productForSale.setQuantity(productForSale.getQuantity() + 1);
+            }
+            else {
+                ProductForSale newItem = new ProductForSale(productDefinition);
+                shoppingList.add(newItem);
+            }
         }
         else
         {
@@ -40,6 +41,26 @@ public class ProductsListModule implements IProductsListModule {
         }
     }
 
+    private boolean shoppingListContainsProduct(ProductDefinition productDefinition) {
+        for(ProductForSale productForSale : shoppingList) {
+            if (productForSale.getProductDefinition().getId() == productDefinition.getId()) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private ProductForSale findProductByProductDefinition(ProductDefinition productDefinition) {
+        for(ProductForSale productForSale : shoppingList) {
+            if (productForSale.getProductDefinition().getId() == productDefinition.getId()) {
+                return productForSale;
+            }
+        }
+
+        return null;
+    }
+
     public void deleteProduct(ProductForSale product) {
         shoppingList.remove(product);
     }
@@ -48,7 +69,7 @@ public class ProductsListModule implements IProductsListModule {
 
     public void addDiscount(ProductForSale product, float discount) { }
 
-    public ObservableList getShoppingList() { return shoppingList; }
+    public ObservableList<ProductForSale> getShoppingList() { return shoppingList; }
 
-    private ObservableList shoppingList;
+    private ObservableList<ProductForSale> shoppingList;
 }

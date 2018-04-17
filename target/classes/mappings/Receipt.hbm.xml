@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="cashregister.model.Receipt" table="receipt">
+        <id name="id" column="Id" type="integer">
+            <generator class="native"/>
+        </id>
+        <property name="date" column="date" />
+        <one-to-one name="customer" class="cashregister.model.Customer" cascade="none"></one-to-one>
+        <list name = "productForSales" cascade="none">
+            <key column = "receiptid"/>
+            <list-index column = "id"/>
+            <one-to-many class="cashregister.model.ProductForSale"/>
+        </list>
+    </class>
+
+</hibernate-mapping>

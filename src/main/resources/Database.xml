@@ -29,6 +29,7 @@
                 <value>mappings/ProductForSale.hbm.xml</value>
                 <value>mappings/ProductDefinition.hbm.xml</value>
                 <value>mappings/Customer.hbm.xml</value>
+                <value>mappings/Receipt.hbm.xml</value>
             </list>
         </property>
     </bean>
