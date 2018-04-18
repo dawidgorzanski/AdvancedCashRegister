@@ -3,6 +3,7 @@ package cashregister.controllers;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -27,6 +28,11 @@ public class PaymentWindowController implements Initializable {
         plnLabel1.setVisible(true);
         plnLabel2.setVisible(true);
         confirmButton.setVisible(true);
+    }
+
+    @FXML
+    private void handleCancelButtonAction(ActionEvent event) {
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
     @Override

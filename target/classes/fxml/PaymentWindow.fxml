@@ -46,7 +46,7 @@
                   <Button layoutX="198.0" layoutY="135.0" mnemonicParsing="false" onAction="#handleCashButtonAction" prefHeight="92.0" prefWidth="164.0" text="GOTÓWKA" />
                   <Button layoutX="392.0" layoutY="135.0" mnemonicParsing="false" prefHeight="92.0" prefWidth="156.0" text="KARTA PŁATNICZA" />
                   <Button fx:id="confirmButton" layoutX="412.0" layoutY="459.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="63.0" prefWidth="156.0" text="Zatwierdź" />
-                  <Button fx:id="printButton1" layoutX="202.0" layoutY="459.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="63.0" prefWidth="156.0" text="Anuluj" />
+                  <Button fx:id="printButton1" layoutX="202.0" layoutY="459.0" onAction="#handleCancelButtonAction" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="63.0" prefWidth="156.0" text="Anuluj" />
                </children>
             </AnchorPane>
          </children>
