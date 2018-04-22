@@ -35,9 +35,9 @@
                                     <Font name="System Bold" size="24.0" />
                                 </font>
                             </Text>
-                            <TextField layoutX="307.0" layoutY="110.0" prefHeight="44.0" prefWidth="248.0" />
-                            <TextField layoutX="307.0" layoutY="176.0" prefHeight="44.0" prefWidth="399.0" />
-                            <TextField layoutX="307.0" layoutY="241.0" prefHeight="44.0" prefWidth="248.0" />
+                            <TextField fx:id="nameField" layoutX="307.0" layoutY="110.0" prefHeight="44.0" prefWidth="248.0" />
+                            <TextField fx:id="addressField" layoutX="307.0" layoutY="176.0" prefHeight="44.0" prefWidth="399.0" />
+                            <TextField fx:id="mailField" layoutX="307.0" layoutY="241.0" prefHeight="44.0" prefWidth="248.0" />
                             <Label layoutX="60.0" layoutY="110.0" prefHeight="44.0" prefWidth="156.0" text="Imię i nazwisko">
                                 <font>
                                     <Font size="18.0" />
@@ -63,15 +63,15 @@
                               <Font size="18.0" />
                            </font>
                         </Label>
-                        <TextField layoutX="307.0" layoutY="310.0" prefHeight="44.0" prefWidth="248.0" />
-                        <TextField layoutX="307.0" layoutY="376.0" prefHeight="44.0" prefWidth="248.0" />
+                        <TextField fx:id="phoneField" layoutX="307.0" layoutY="310.0" prefHeight="44.0" prefWidth="248.0" />
+                        <TextField fx:id="barcodeField" layoutX="307.0" layoutY="376.0" prefHeight="44.0" prefWidth="248.0" />
 
                     </AnchorPane>
             </SplitPane>
             <Pane maxHeight="1.7976931348623157E308" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="73.0" prefWidth="750.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 
                     <Button layoutX="128.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="62.0" prefWidth="113.0" text="Wstecz" />
-                    <Button layoutX="257.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="62.0" prefWidth="164.0" text="Dodaj klienta" />
+                    <Button layoutX="257.0" layoutY="9.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="62.0" prefWidth="164.0" text="Dodaj klienta" />
 
             </Pane>
     </GridPane>
