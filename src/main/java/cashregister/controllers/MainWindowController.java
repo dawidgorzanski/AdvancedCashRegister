@@ -2,6 +2,7 @@ package cashregister.controllers;
 
 import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
+import cashregister.model.Customer;
 import cashregister.model.ProductForSale;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IProductsListModule;
@@ -11,6 +12,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
+import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -49,19 +51,22 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
 
     @FXML
-    private void handleEnterButtonAction(ActionEvent event) {
+    private void handleEnterButtonAction(ActionEvent event) throws IOException{
         String value = textFieldDisplay.getText();
 
-        try {
-            productsListModule.addProduct(value);
+         try {
+             if (value.length()!=6 )
+                 productsListModule.addProduct(value);
+             else
+                 displayCustomer(value);
+            } catch (NumberFormatException e) {
+             Alert alert = new Alert(Alert.AlertType.ERROR);
+             alert.setTitle("Błąd");
+             alert.setHeaderText("Błąd");
+             alert.setContentText("Wpisz poprawny kod");
+             alert.showAndWait();
+         }
 
-        } catch (NumberFormatException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Błąd");
-            alert.setHeaderText("Błąd");
-            alert.setContentText("Wpisz poprawny kod");
-            alert.showAndWait();
-        }
         textFieldDisplay.clear();
     }
 
@@ -133,6 +138,23 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @Override
     public void barcodeValueArrived(String value) {
+
+    }
+
+    private void displayCustomer(String barcode) throws IOException{
+
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DisplayCustomerWindow.fxml"));
+        Stage stage = new Stage();
+        stage.setScene(new Scene((Pane) loader.load()));
+
+        Customer customer = new Customer(1, "Name", "111111", "mail@m.l", "address", "123456789");
+        // to do: odczyt danych z Customer na podstawie barcode
+
+        DisplayCustomerWindowController controller = loader.<DisplayCustomerWindowController>getController();
+        controller.initData(customer);
+        stage.setWidth(750);
+        stage.setHeight(650);
+        stage.show();
 
     }
 
