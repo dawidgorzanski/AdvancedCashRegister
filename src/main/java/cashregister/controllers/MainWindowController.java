@@ -9,6 +9,7 @@ import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
 import javafx.extensions.DialogResult;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
@@ -89,7 +90,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/PaymentWindow.fxml")));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
+        Parent root = (Parent)fxmlLoader.load();
+        PaymentWindowController paymentController = fxmlLoader.<PaymentWindowController>getController();
+        paymentController.setProducts(productsListModule.getShoppingList());
+        Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
         stage.setWidth(750);

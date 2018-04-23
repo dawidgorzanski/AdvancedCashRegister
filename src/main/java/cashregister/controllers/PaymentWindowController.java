@@ -1,5 +1,6 @@
 package cashregister.controllers;
 
+import cashregister.model.ProductForSale;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -8,9 +9,20 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class PaymentWindowController implements Initializable {
+
+    public List<ProductForSale> getProducts() {
+        return products;
+    }
+
+    public void setProducts(List<ProductForSale> products) {
+        this.products = products;
+    }
+
+    private List<ProductForSale> products;
 
     @FXML
     private Label cashLabel, changeLabel, plnLabel1, plnLabel2;

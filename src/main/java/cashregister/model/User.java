@@ -4,6 +4,7 @@ public class User {
     private int id;
     private String name;
     private boolean isAdmin;
+    private String password;
 
     public User() {
         super();
@@ -28,4 +29,8 @@ public class User {
     public boolean getIsAdmin() { return isAdmin; }
 
     public void setIsAdmin(boolean admin) { isAdmin = admin; }
+
+    public void setPassword(String password) {this.password = password;}
+
+    public String getPassword() { return password;}
 }

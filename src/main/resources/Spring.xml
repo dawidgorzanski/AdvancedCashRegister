@@ -20,6 +20,9 @@
     <bean id="productDefinitionDao" class="cashregister.dao.ProductDefinitionDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
+    <bean id="receiptDao" class="cashregister.dao.ReceiptDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
     <!--<bean id="fakeProductDefinitionDao" class="cashregister.dao.FakeProductDefinitionDao"/>-->
 
     <!-- Other beans -->
