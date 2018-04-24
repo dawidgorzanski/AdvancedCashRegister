@@ -99,10 +99,11 @@ public class PaymentWindowController implements Initializable {
 
 
         ObservableList<ProductForSale> tmp = productsListModule.getShoppingList();
-        for(ProductForSale ps : tmp)
-        {
-            productsListModule.deleteProduct(ps);
-        }
+        tmp.clear();
+//        for(ProductForSale ps : tmp)
+//        {
+//            productsListModule.deleteProduct(ps);
+//        }
 
 
 
