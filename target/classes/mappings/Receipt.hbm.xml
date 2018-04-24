@@ -15,6 +15,7 @@
             <key column = "receiptid"/>
             <one-to-many class="cashregister.model.ProductForSale"/>
         </bag>
+        <many-to-one name="customer" class="cashregister.model.Customer" column="customerid" />
     </class>
 
 </hibernate-mapping>

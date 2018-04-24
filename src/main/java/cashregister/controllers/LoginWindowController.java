@@ -61,7 +61,7 @@ import java.util.ResourceBundle;
             if (user==null)
             {
                 alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Kasjer o nazwie " + userName + " nie zarejestrowany");
+                alert.setContentText("Uzytkownik o nazwie " + userName + " nie zarejestrowany");
                 alert.show();
             }
             else

@@ -93,7 +93,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
         Parent root = (Parent)fxmlLoader.load();
         PaymentWindowController paymentController = fxmlLoader.<PaymentWindowController>getController();
-        paymentController.setProducts(productsListModule.getShoppingList());
+        paymentController.setProductsListModule(productsListModule);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);

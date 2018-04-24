@@ -14,6 +14,8 @@ public class Customer {
 
     public void setReceipts(List<Receipt> receipts) {
         this.receipts = receipts;
+        for(Receipt r : receipts)
+            r.setCustomer(this);
     }
 
     public List<Receipt> getReceipts() {return receipts;}
