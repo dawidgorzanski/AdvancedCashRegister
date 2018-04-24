@@ -14,6 +14,12 @@
         <property name="mail" column="mail" />
         <property name="address" column="address" />
         <property name="phone" column="phone" />
+
+        <list name="receipts" cascade="all-delete-orphan">
+            <key column="customerid" />
+            <list-index column="id"/>
+            <one-to-many class="cashregister.model.Receipt"/>
+        </list>
     </class>
 
 </hibernate-mapping>

@@ -18,6 +18,7 @@ import javafx.stage.WindowEvent;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public class Main extends Application {
@@ -26,6 +27,7 @@ public class Main extends Application {
     }
 
     @Override
+    @Transactional
     public void start(Stage primaryStage) throws Exception{
 
         IUserDao dao = ModulesManager.getObjectByType(IUserDao.class);

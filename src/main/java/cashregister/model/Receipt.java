@@ -10,6 +10,8 @@ public class Receipt {
     //Customer jest null gdy nie dodamy go podczas skanowania artykułów
     private Customer customer;
     private List<ProductForSale> productForSales;
+    private static int nextId = 0;
+    public static int nextId() {return ++nextId;}
 
     public int getId() {
         return id;

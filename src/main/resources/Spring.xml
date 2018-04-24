@@ -23,7 +23,10 @@
     <bean id="receiptDao" class="cashregister.dao.ReceiptDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <!--<bean id="fakeProductDefinitionDao" class="cashregister.dao.FakeProductDefinitionDao"/>-->
+
+    <bean id="customerDao" class="cashregister.dao.CustomerDao">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
 
     <!-- Other beans -->
     <bean id="productsListModule" class="cashregister.modules.ProductsListModule" autowire="constructor" />

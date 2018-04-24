@@ -10,6 +10,9 @@ public class ProductForSale {
     private DoubleProperty totalPrice;
     private BooleanProperty countable;
     private ProductDefinition productDefinition;
+//    private static int nextId = 0;
+//    public static int nextId(){return ++nextId;}
+
 
     public ProductForSale() {
         id = new SimpleIntegerProperty(0);

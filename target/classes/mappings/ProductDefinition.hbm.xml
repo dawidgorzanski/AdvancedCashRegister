@@ -14,7 +14,7 @@
         <property name="price" column="price" />
         <property name="barcode" column="barcode" />
         <property name="countable" column="countable" />
-        <list name = "productForSales" cascade="none">
+        <list name = "productForSales" cascade="all-delete-orphan">
             <key column = "productdefinitionid"/>
             <list-index column = "id"/>
             <one-to-many class="cashregister.model.ProductForSale"/>

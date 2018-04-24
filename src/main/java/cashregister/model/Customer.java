@@ -1,5 +1,8 @@
 package cashregister.model;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Customer {
     private int id;
     private String name;
@@ -7,8 +10,18 @@ public class Customer {
     private String mail;
     private String address;
     private String phone;
+    private List<Receipt> receipts;
 
-    public Customer() {this.id = 0;}
+    public void setReceipts(List<Receipt> receipts) {
+        this.receipts = receipts;
+    }
+
+    public List<Receipt> getReceipts() {return receipts;}
+
+    public Customer() {
+        this.id = 0;
+        receipts = new ArrayList<Receipt>();
+    }
 
     public Customer(int id, String name, String barcode, String mail, String address, String phone){
         this.id = id;
@@ -17,6 +30,7 @@ public class Customer {
         this.mail = mail;
         this.address = address;
         this.phone = phone;
+        receipts = new ArrayList<Receipt>();
     }
 
     public int getId() {
