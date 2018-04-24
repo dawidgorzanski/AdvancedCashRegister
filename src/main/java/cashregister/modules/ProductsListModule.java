@@ -1,6 +1,7 @@
 package cashregister.modules;
 
 import cashregister.dao.interfaces.IProductDefinitionDao;
+import cashregister.model.Customer;
 import cashregister.model.ProductDefinition;
 import cashregister.model.ProductForSale;
 import cashregister.modules.interfaces.IProductsListModule;
@@ -11,6 +12,8 @@ import javafx.scene.control.Alert;
 public class ProductsListModule implements IProductsListModule {
 
     private IProductDefinitionDao productDefinitionDao;
+    private Customer currentCustomerForTransaction;
+
     public ProductsListModule(IProductDefinitionDao productDefinitionDao)
     {
         this.productDefinitionDao = productDefinitionDao;
@@ -65,6 +68,10 @@ public class ProductsListModule implements IProductsListModule {
         shoppingList.remove(product);
     }
 
+    public void deleteAllProducts() {
+        this.shoppingList.clear();
+    }
+
     public void changeQuantity(ProductForSale product, int quantity) { }
 
     public void addDiscount(ProductForSale product, float discount) { }
@@ -72,4 +79,28 @@ public class ProductsListModule implements IProductsListModule {
     public ObservableList<ProductForSale> getShoppingList() { return shoppingList; }
 
     private ObservableList<ProductForSale> shoppingList;
+
+    public void setCustomerForTransaction(Customer customer) {
+        this.currentCustomerForTransaction = customer;
+    }
+
+    public void deleteCustomerFromTransaction() {
+        this.currentCustomerForTransaction = null;
+    }
+
+    public Customer getCurrentCustomer() {
+        return this.currentCustomerForTransaction;
+    }
+
+    public double getTotalPrice() {
+        if (this.shoppingList == null || this.shoppingList.size() == 0)
+            return 0;
+
+        double result = 0;
+        for(ProductForSale productForSale : this.shoppingList) {
+            result += productForSale.getTotalPrice();
+        }
+
+        return result;
+    }
 }

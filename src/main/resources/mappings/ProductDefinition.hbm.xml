@@ -7,7 +7,7 @@
 
     <class name="cashregister.model.ProductDefinition" table="productdefinition">
         <id name="id" column="Id" type="integer">
-            <generator class="native"/>
+            <generator class="increment"/>
         </id>
         <property name="name" column="name" />
         <property name="quantity" column="quantity" />

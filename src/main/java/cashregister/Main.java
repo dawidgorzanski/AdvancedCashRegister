@@ -42,7 +42,6 @@ public class Main extends Application {
             dao.save(admin);
         }
 
-
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginWindow.fxml"));
         primaryStage.setTitle("Kasa fiskalna");
@@ -68,7 +67,6 @@ public class Main extends Application {
                                            @Override
                                            public void handle(WindowEvent event) {
                                                BarcodeReader.uinitializeBarcode();
-                                               //HibernateUtil.closeSessionFactory();
                                            }
                                        });
 
@@ -77,9 +75,6 @@ public class Main extends Application {
 
     public static void main(String[] args) {
         ModulesManager.initialize();
-        //IUserDao dao = ModulesManager.getObjectByType(IUserDao.class);
-        //User user = dao.getById(1);
-        //System.out.println(user.getName());
         launch(args);
     }
 

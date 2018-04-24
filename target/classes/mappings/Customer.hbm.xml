@@ -7,7 +7,7 @@
 
     <class name="cashregister.model.Customer" table="customer">
         <id name="id" column="Id" type="integer">
-            <generator class="native"/>
+            <generator class="increment"/>
         </id>
         <property name="name" column="name" />
         <property name="barcode" column="barcode" />

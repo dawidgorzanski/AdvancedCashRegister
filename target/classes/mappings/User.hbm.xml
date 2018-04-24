@@ -7,7 +7,7 @@
 
     <class name="cashregister.model.User" table="users">
         <id name="id" column="Id">
-            <generator class="native"/>
+            <generator class="increment"/>
         </id>
         <property name="name" column="name"/>
         <property name="isAdmin" column="admin"/>

@@ -24,7 +24,7 @@
          <children>
           <AnchorPane fx:id="pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="589.0">
                <children>
-                  <Text layoutX="280.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SUMA: 0.00 PLN">
+                  <Text fx:id="textTotalPrice" layoutX="280.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0">
                      <font>
                         <Font name="System Bold" size="24.0" />
                      </font>

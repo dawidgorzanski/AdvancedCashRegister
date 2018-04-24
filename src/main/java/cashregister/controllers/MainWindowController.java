@@ -4,7 +4,10 @@ import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
 import cashregister.model.Customer;
 import cashregister.model.ProductForSale;
+import cashregister.model.enums.ObjectType;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IBarcodeChecker;
+import cashregister.modules.interfaces.ICustomerModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
 import javafx.extensions.DialogResult;
@@ -24,6 +27,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TextField textFieldDisplay;
     @FXML
+    private Label labelTotalPrice;
+    @FXML
     private TableView<ProductForSale> tableViewProducts;
     @FXML
     private TableColumn<ProductForSale, String> tableColumnName;
@@ -35,10 +40,14 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
 
     private IProductsListModule productsListModule;
+    private IBarcodeChecker barcodeChecker;
+    private ICustomerModule customerModule;
 
     public MainWindowController() {
         BarcodeReader.addListener(this);
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
+        this.barcodeChecker = ModulesManager.getObjectByType(IBarcodeChecker.class);
+        this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
     }
 
     @FXML
@@ -50,23 +59,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         tableViewProducts.setItems(productsListModule.getShoppingList());
     }
 
-
     @FXML
-    private void handleEnterButtonAction(ActionEvent event) throws IOException{
+    private void handleEnterButtonAction(ActionEvent event) throws IOException {
         String value = textFieldDisplay.getText();
-
-         try {
-             if (value.length()!=6 )
-                 productsListModule.addProduct(value);
-             else
-                 displayCustomer(value);
-            } catch (NumberFormatException e) {
-             Alert alert = new Alert(Alert.AlertType.ERROR);
-             alert.setTitle("Błąd");
-             alert.setHeaderText("Błąd");
-             alert.setContentText("Wpisz poprawny kod");
-             alert.showAndWait();
-         }
+        handleBarcode(value);
 
         textFieldDisplay.clear();
     }
@@ -75,6 +71,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private void handleDeleteButtonAction(ActionEvent event) {
         ProductForSale productToDelete =  tableViewProducts.getSelectionModel().selectedItemProperty().get();
         productsListModule.deleteProduct(productToDelete);
+        updateTotalPrice();
     }
 
     @FXML
@@ -92,8 +89,6 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
         Parent root = (Parent)fxmlLoader.load();
-        PaymentWindowController paymentController = fxmlLoader.<PaymentWindowController>getController();
-        paymentController.setProductsListModule(productsListModule);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -138,30 +133,64 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             else {
                 productToEdit.setQuantity(controller.getQuantity());
             }
+            updateTotalPrice();
         }
     }
 
     @Override
     public void barcodeValueArrived(String value) {
-
+        handleBarcode(value);
     }
 
-    private void displayCustomer(String barcode) throws IOException{
+    private void handleBarcode(String value) {
+        ObjectType objectType = barcodeChecker.getObjectTypeByBarcode(value);
+        switch (objectType)
+        {
+            case Product:
+            {
+                productsListModule.addProduct(value);
+                updateTotalPrice();
+                break;
+            }
+            case User:
+            {
+                Customer customer = customerModule.getCustomerByBarcode(value);
+                if (customer != null) {
+                    productsListModule.setCustomerForTransaction(customer);
+                    showCustomerAddedDialog(customer.getName());
+                }
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DisplayCustomerWindow.fxml"));
-        Stage stage = new Stage();
-        stage.setScene(new Scene((Pane) loader.load()));
-
-        Customer customer = new Customer(1, "Name", "111111", "mail@m.l", "address", "123456789");
-        // to do: odczyt danych z Customer na podstawie barcode
-
-        DisplayCustomerWindowController controller = loader.<DisplayCustomerWindowController>getController();
-        controller.initData(customer);
-        stage.setWidth(750);
-        stage.setHeight(650);
-        stage.show();
-
+                break;
+            }
+        }
     }
 
+    private void showCustomerAddedDialog(String username) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Użytkownik został dodany");
+        alert.setHeaderText("Użytkownik został dodany");
+        alert.setContentText(String.format("Użytkownik %s został dodany.", username));
+        alert.showAndWait();
+    }
 
+    private void updateTotalPrice() {
+        this.labelTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
+    }
+
+    private void displayCustomer(Customer customer) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DisplayCustomerWindow.fxml"));
+            Stage stage = new Stage();
+            stage.setScene(new Scene((Pane) loader.load()));
+
+            DisplayCustomerWindowController controller = loader.<DisplayCustomerWindowController>getController();
+            controller.initData(customer);
+            stage.setWidth(750);
+            stage.setHeight(650);
+            stage.show();
+        }
+        catch (IOException ex) {
+
+        }
+    }
 }

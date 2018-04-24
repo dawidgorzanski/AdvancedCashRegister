@@ -23,12 +23,14 @@
     <bean id="receiptDao" class="cashregister.dao.ReceiptDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-
     <bean id="customerDao" class="cashregister.dao.CustomerDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
 
-    <!-- Other beans -->
+    <!-- Modules -->
+    <bean id="authenticationModule" class="cashregister.modules.AuthenticationModule" autowire="constructor" />
+    <bean id="barcodeChecker" class="cashregister.modules.BarcodeChecker" autowire="constructor" />
+    <bean id="customerModule" class="cashregister.modules.CustomerModule" autowire="constructor" />
+    <bean id="paymentModule" class="cashregister.modules.PaymentModule" autowire="constructor" />
     <bean id="productsListModule" class="cashregister.modules.ProductsListModule" autowire="constructor" />
-
 </beans>

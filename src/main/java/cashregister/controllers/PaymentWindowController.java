@@ -1,47 +1,36 @@
 package cashregister.controllers;
 
-import cashregister.dao.interfaces.ICustomerDao;
-import cashregister.dao.interfaces.IReceiptDao;
-import cashregister.model.Customer;
-import cashregister.model.ProductForSale;
-import cashregister.model.Receipt;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IPaymentModule;
 import cashregister.modules.interfaces.IProductsListModule;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
-
-import javax.transaction.Transactional;
 import java.io.IOException;
 import java.net.URL;
-import java.util.Date;
-import java.util.List;
 import java.util.ResourceBundle;
 
 public class PaymentWindowController implements Initializable {
-
-    public IProductsListModule getProductsListModule() {
-        return productsListModule;
-    }
-
-    public void setProductsListModule(IProductsListModule productsListModule) {
-        this.productsListModule = productsListModule;
-    }
-
     private IProductsListModule productsListModule;
+    private IPaymentModule paymentModule;
+
+    public PaymentWindowController() {
+        this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
+        this.paymentModule = ModulesManager.getObjectByType(IPaymentModule.class);
+    }
 
     @FXML
     private Label cashLabel, changeLabel, plnLabel1, plnLabel2;
     @FXML
     private TextField cashField, changeField;
+    @FXML
+    private Text textTotalPrice;
     @FXML
     private Button confirmButton;
 
@@ -71,43 +60,17 @@ public class PaymentWindowController implements Initializable {
         plnLabel2.setVisible(false);
         confirmButton.setVisible(false);
 
+        textTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
     }
 
     @FXML
-    @Transactional
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
-
-        IReceiptDao receiptDao = ModulesManager.getObjectByType(IReceiptDao.class);
-        ICustomerDao customerDao = ModulesManager.getObjectByType(ICustomerDao.class);
-
-
-        Customer testCustomer = new Customer();
-        testCustomer.setName("testowy");
-        customerDao.saveOrUpdate(testCustomer);
-
-
-        Receipt newReceipt = new Receipt();
-        newReceipt.setProductForSales(productsListModule.getShoppingList());
-        newReceipt.setCustomer(testCustomer);
-        newReceipt.setDate(new Date());
-        receiptDao.save(newReceipt);
-
+        paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
+        this.productsListModule.deleteAllProducts();
+        this.productsListModule.deleteCustomerFromTransaction();
 
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();
-
-
-        ObservableList<ProductForSale> tmp = productsListModule.getShoppingList();
-        tmp.clear();
-//        for(ProductForSale ps : tmp)
-//        {
-//            productsListModule.deleteProduct(ps);
-//        }
-
-
-
-
-
     }
 }

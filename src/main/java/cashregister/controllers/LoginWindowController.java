@@ -3,6 +3,7 @@ package cashregister.controllers;
 import cashregister.dao.interfaces.IUserDao;
 import cashregister.model.User;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IAuthenticationModule;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -25,9 +26,15 @@ import java.util.ResourceBundle;
         @FXML
         PasswordField userPasswordField;
 
+        IAuthenticationModule authenticationModule;
+
         @Override
         public void initialize(URL location, ResourceBundle resources) {
 
+        }
+
+        public LoginWindowController() {
+            this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
         }
 
         @FXML
@@ -40,53 +47,22 @@ import java.util.ResourceBundle;
             primaryStage.show();
         }
 
-
         @FXML
         private void handleCheckLoginButtonAction(ActionEvent event) throws IOException {
-            Alert alert;
+            String username = userIdTextField.getText();
+            String password = userPasswordField.getText();
 
-
-            IUserDao dao = ModulesManager.getObjectByType(IUserDao.class);
-
-            String userName = userIdTextField.getText();
-            User user = null;
-            for(User u : dao.getAll())
-                if(u.getName().equals(userName)) {
-                    user = u;
-                    break;
-                }
-
-
-
-            if (user==null)
-            {
-                alert = new Alert(Alert.AlertType.ERROR);
-                alert.setContentText("Uzytkownik o nazwie " + userName + " nie zarejestrowany");
-                alert.show();
+            if (authenticationModule.login(username, password)){
+                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml")));
+                Stage primaryStage = cashregister.Main.getPrimaryStage();
+                primaryStage.setScene(scene);
+                primaryStage.setMaximized(true);
+                primaryStage.show();
             }
-            else
-            {
-                String goodPassword = user.getPassword();
-                String possiblyPassword = userPasswordField.getText();
-                if(goodPassword.equals(possiblyPassword))
-                {
-                    alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setContentText("Logowanie udane");
-                    alert.showAndWait();
-
-                    Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml")));
-                    Stage primaryStage = cashregister.Main.getPrimaryStage();
-                    primaryStage.setScene(scene);
-                    primaryStage.setMaximized(true);
-                    primaryStage.show();
-                }
-                else
-                {
-                    alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setContentText("Hasła się nie zgadzają!");
-                    alert.show();
-                }
-
+            else {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setContentText("Błędny login bądź hasło!");
+                alert.show();
             }
         }
     }

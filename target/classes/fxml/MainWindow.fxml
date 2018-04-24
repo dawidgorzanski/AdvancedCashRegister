@@ -50,7 +50,7 @@
                                           <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                                        </columnResizePolicy>
                                     </TableView>
-                                    <Label alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="41.0" layoutY="462.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="313.0" text="SUMA: 0.00 PLN" textAlignment="CENTER" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="14.0">
+                                    <Label fx:id="labelTotalPrice" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="41.0" layoutY="462.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="54.0" prefWidth="313.0" text="SUMA: 0.00 PLN" textAlignment="CENTER" AnchorPane.bottomAnchor="17.0" AnchorPane.leftAnchor="41.0" AnchorPane.rightAnchor="14.0">
                                        <font>
                                           <Font size="24.0" />
                                        </font>
