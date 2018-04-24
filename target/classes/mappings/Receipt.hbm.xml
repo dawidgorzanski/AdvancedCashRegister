@@ -11,12 +11,10 @@
         </id>
         <property name="date" column="date" />
 
-
-        <list name = "productForSales" cascade="all-delete-orphan">
+        <bag name = "productForSales" cascade="all-delete-orphan">
             <key column = "receiptid"/>
-            <list-index column = "id"/>
             <one-to-many class="cashregister.model.ProductForSale"/>
-        </list>
+        </bag>
     </class>
 
 </hibernate-mapping>

@@ -13,6 +13,7 @@
         <property name="quantity" column="quantity" type="double"/>
         <property name="price" column="price" type="double"/>
         <property name="countable" column="countable" type="boolean"/>
+        <many-to-one name="receipt" class="cashregister.model.Receipt" column="receiptid" />
     </class>
 
 </hibernate-mapping>

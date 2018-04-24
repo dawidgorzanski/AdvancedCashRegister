@@ -43,6 +43,9 @@ public class Receipt {
 
     public void setProductForSales(List<ProductForSale> productForSales) {
         this.productForSales = productForSales;
+        for(ProductForSale productForSale : productForSales) {
+            productForSale.setReceipt(this);
+        }
     }
 
     public double getTotalPrice() {
