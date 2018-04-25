@@ -9,8 +9,11 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -26,6 +29,9 @@ import java.util.ResourceBundle;
         @FXML
         PasswordField userPasswordField;
 
+        @FXML
+        private Button enter;
+
         IAuthenticationModule authenticationModule;
 
         @Override
@@ -39,12 +45,22 @@ import java.util.ResourceBundle;
 
         @FXML
         private void handleCancelButtonAction(ActionEvent actionEvent) throws IOException{
-            Stage primaryStage = cashregister.Main.getPrimaryStage();
+         /*   Stage primaryStage = cashregister.Main.getPrimaryStage();
             Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/PrimaryWindow.fxml")));
             primaryStage.setScene(scene);
             primaryStage.setWidth(300);
             primaryStage.setHeight(300);
             primaryStage.show();
+            */
+        }
+
+        @FXML
+        private void handleKeyAction(KeyEvent key) throws IOException {
+            KeyCode keyCode = key.getCode();
+            if (keyCode.equals(KeyCode.ENTER)) {
+                enter.fire();
+                return;
+            }
         }
 
         @FXML

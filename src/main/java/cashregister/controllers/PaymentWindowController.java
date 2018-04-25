@@ -10,6 +10,8 @@ import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import java.io.IOException;
@@ -61,6 +63,16 @@ public class PaymentWindowController implements Initializable {
         confirmButton.setVisible(false);
 
         textTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
+    }
+
+    @FXML
+    private void handleKeyAction(KeyEvent key) throws IOException {
+        KeyCode keyCode = key.getCode();
+        if (keyCode.equals(KeyCode.ENTER)) {
+            if(confirmButton.isVisible())
+            confirmButton.fire();
+            return;
+        }
     }
 
     @FXML

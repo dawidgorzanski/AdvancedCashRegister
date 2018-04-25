@@ -10,13 +10,18 @@ import cashregister.modules.interfaces.IBarcodeChecker;
 import cashregister.modules.interfaces.ICustomerModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.extensions.DialogResult;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -38,6 +43,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private TableColumn<ProductForSale, Double> tableColumnQuantity;
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
+    @FXML
+    private Button enter, finish;
 
     private IProductsListModule productsListModule;
     private IBarcodeChecker barcodeChecker;
@@ -51,12 +58,21 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     }
 
     @FXML
-    private void initialize() {
+    private void initialize() throws IOException {
         tableColumnName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         tableColumnQuantity.setCellValueFactory(cellData -> cellData.getValue().quantityProperty().asObject());
         tableColumnPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         tableColumnTotalPrice.setCellValueFactory(cellData -> cellData.getValue().totalPriceProperty().asObject());
         tableViewProducts.setItems(productsListModule.getShoppingList());
+    }
+
+    @FXML
+    private void handleKeyAction(KeyEvent key) throws IOException {
+        KeyCode keyCode = key.getCode();
+        if (keyCode.equals(KeyCode.ENTER)) {
+            enter.fire();
+            return;
+        }
     }
 
     @FXML
