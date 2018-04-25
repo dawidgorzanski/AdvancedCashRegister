@@ -44,7 +44,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
     @FXML
-    private Button enter, finish;
+    private Button enter, delete, finish, quantity, search, new_client;
 
     private IProductsListModule productsListModule;
     private IBarcodeChecker barcodeChecker;
@@ -71,6 +71,35 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         KeyCode keyCode = key.getCode();
         if (keyCode.equals(KeyCode.ENTER)) {
             enter.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.DELETE)) {
+            delete.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.X)) {
+            quantity.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.Z)) {
+            finish.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.W)) {
+            search.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.N)) {
+            new_client.fire();
+            return;
+        }
+        if (keyCode.isDigitKey() || keyCode.equals(KeyCode.PERIOD)) {
+            String text = keyCode.getChar();
+            textFieldDisplay.appendText(text);
+            return;
+        }
+        if (keyCode.equals(KeyCode.C)) {
+            textFieldDisplay.clear();
             return;
         }
     }

@@ -9,8 +9,13 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import org.apache.commons.lang3.StringUtils;
+
+import java.io.IOException;
 
 
 public class NewClientWindowController {
@@ -22,6 +27,21 @@ public class NewClientWindowController {
 
     @FXML
     private TextField nameField, barcodeField, mailField, addressField, phoneField;
+    @FXML
+    private Button enter, cancel;
+
+    @FXML
+    private void handleKeyAction(KeyEvent key) throws IOException {
+        KeyCode keyCode = key.getCode();
+        if (keyCode.equals(KeyCode.ENTER)) {
+            enter.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.ESCAPE)) {
+            cancel.fire();
+            return;
+        }
+    }
 
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {

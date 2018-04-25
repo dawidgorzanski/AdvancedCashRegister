@@ -73,6 +73,11 @@ public class PaymentWindowController implements Initializable {
             confirmButton.fire();
             return;
         }
+        if (keyCode.equals(KeyCode.ESCAPE)) {
+            Stage stage = (Stage) confirmButton.getScene().getWindow();
+            stage.close();
+            return;
+        }
     }
 
     @FXML
