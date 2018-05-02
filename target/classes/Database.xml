@@ -30,6 +30,7 @@
                 <value>mappings/ProductDefinition.hbm.xml</value>
                 <value>mappings/Customer.hbm.xml</value>
                 <value>mappings/Receipt.hbm.xml</value>
+                <value>mappings/Mail.hbm.xml</value>
             </list>
         </property>
     </bean>

@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+
+    <class name="cashregister.model.Mail" table="mails">
+        <id name="id" column="receiptId">
+            <generator class="foreign">
+                <param name="property">receipt</param>
+            </generator>
+
+        </id>
+        <one-to-one name="receipt" class="cashregister.model.Receipt" constrained="true"/>
+    </class>
+
+</hibernate-mapping>

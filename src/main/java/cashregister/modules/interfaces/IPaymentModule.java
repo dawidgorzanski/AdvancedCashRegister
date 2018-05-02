@@ -1,5 +1,6 @@
 package cashregister.modules.interfaces;
 
+import cashregister.model.Mail;
 import cashregister.model.ProductForSale;
 import cashregister.model.Customer;
 

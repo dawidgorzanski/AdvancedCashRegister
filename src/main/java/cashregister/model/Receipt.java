@@ -1,17 +1,20 @@
 package cashregister.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class Receipt {
+public class Receipt implements Serializable {
     private int id;
     private Date date;
     //Customer jest null gdy nie dodamy go podczas skanowania artykułów
     private Customer customer;
     private List<ProductForSale> productForSales;
-    private static int nextId = 0;
-    public static int nextId() {return ++nextId;}
+    private Mail mail;
+
+    public void setMail(Mail mail) {this.mail = mail;}
+    public Mail getMail() {return mail;}
 
     public int getId() {
         return id;

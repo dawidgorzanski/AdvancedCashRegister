@@ -1,5 +1,6 @@
 package cashregister.controllers;
 
+import cashregister.Main;
 import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
 import cashregister.model.Customer;
@@ -126,14 +127,25 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     }
 
     @FXML
+    private void handleLogoutButtonAction(ActionEvent actionEvent) throws IOException
+    {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/LoginWindow.fxml")));
+        Stage primaryStage = Main.getPrimaryStage();
+        primaryStage.setScene(scene);
+        primaryStage.show();
+    }
+
+
+    @FXML
     private void handleClearButtonAction(ActionEvent event) {
         textFieldDisplay.clear();
     }
 
     @FXML
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
+
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
-        Parent root = (Parent)fxmlLoader.load();
+        Parent root = (Parent) fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -141,6 +153,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
+
     }
 
     @FXML
@@ -221,6 +234,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private void updateTotalPrice() {
         this.labelTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
     }
+
+
 
     private void displayCustomer(Customer customer) {
         try {

@@ -1,5 +1,6 @@
 package cashregister.controllers;
 
+import cashregister.model.Mail;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IPaymentModule;
 import cashregister.modules.interfaces.IProductsListModule;
@@ -83,11 +84,15 @@ public class PaymentWindowController implements Initializable {
     @FXML
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
+
         paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
         this.productsListModule.deleteAllProducts();
         this.productsListModule.deleteCustomerFromTransaction();
 
+
+
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();
     }
+
 }

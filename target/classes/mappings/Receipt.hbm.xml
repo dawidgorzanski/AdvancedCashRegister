@@ -16,6 +16,7 @@
             <one-to-many class="cashregister.model.ProductForSale"/>
         </bag>
         <many-to-one name="customer" class="cashregister.model.Customer" column="customerid" />
+        <one-to-one name="mail" class="cashregister.model.Mail" cascade="all" />
     </class>
 
 </hibernate-mapping>

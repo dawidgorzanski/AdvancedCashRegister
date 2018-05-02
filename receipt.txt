@@ -1,0 +1,5 @@
+Paragon Fiskalny
+
+czekolada	1.0*2.5	2.5
+
+Razem zł	2.5
