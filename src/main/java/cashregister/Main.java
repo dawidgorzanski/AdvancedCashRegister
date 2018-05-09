@@ -47,20 +47,6 @@ public class Main extends Application {
         primaryStage.setTitle("Kasa fiskalna");
         Scene scene = new Scene (root,300,300);
 
-        /*scene.addEventHandler(KeyEvent.KEY_PRESSED, new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent t) {
-                if(t.getCode()== KeyCode.DELETE)
-                {
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setTitle("Błąd");
-                    alert.setHeaderText("Błąd");
-                    alert.setContentText("KLiknieto mnie");
-                    alert.showAndWait();
-                }
-            }
-        });*/
-
         primaryStage.setScene(scene);
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

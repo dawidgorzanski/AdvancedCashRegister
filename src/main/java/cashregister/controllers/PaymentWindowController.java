@@ -1,7 +1,11 @@
 package cashregister.controllers;
 
 import cashregister.model.Mail;
+import cashregister.model.Receipt;
+import cashregister.modules.EmailRunnable;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IMailSenderModule;
+import cashregister.modules.interfaces.IPaperReceiptCreator;
 import cashregister.modules.interfaces.IPaymentModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
@@ -22,10 +26,14 @@ import java.util.ResourceBundle;
 public class PaymentWindowController implements Initializable {
     private IProductsListModule productsListModule;
     private IPaymentModule paymentModule;
+    private IPaperReceiptCreator paperReceiptCreator;
+    private IMailSenderModule mailSenderModule;
 
     public PaymentWindowController() {
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
         this.paymentModule = ModulesManager.getObjectByType(IPaymentModule.class);
+        this.paperReceiptCreator = ModulesManager.getObjectByType(IPaperReceiptCreator.class);
+        this.mailSenderModule = ModulesManager.getObjectByType(IMailSenderModule.class);
     }
 
     @FXML
@@ -84,12 +92,15 @@ public class PaymentWindowController implements Initializable {
     @FXML
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
+        Receipt receipt = paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
+        String paperReceipt = paperReceiptCreator.createPaperReceipt(receipt);
+        Mail mail = mailSenderModule.createMail(receipt, paperReceipt);
 
-        paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
+        EmailRunnable emailRunnable = new EmailRunnable(mailSenderModule, mail);
+        new Thread(emailRunnable).start();
+
         this.productsListModule.deleteAllProducts();
         this.productsListModule.deleteCustomerFromTransaction();
-
-
 
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         stage.close();

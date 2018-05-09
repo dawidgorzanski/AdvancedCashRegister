@@ -235,8 +235,6 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         this.labelTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
     }
 
-
-
     private void displayCustomer(Customer customer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DisplayCustomerWindow.fxml"));
