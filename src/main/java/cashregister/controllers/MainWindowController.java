@@ -135,9 +135,6 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/LoginWindow.fxml")));
         Stage primaryStage = Main.getPrimaryStage();
         primaryStage.setScene(scene);
-        primaryStage.setWidth(300);
-        primaryStage.setHeight(300);
-        primaryStage.centerOnScreen();
         primaryStage.show();
     }
 

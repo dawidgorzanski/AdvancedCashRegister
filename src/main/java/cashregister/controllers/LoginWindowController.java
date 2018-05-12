@@ -4,7 +4,6 @@ import cashregister.dao.interfaces.IUserDao;
 import cashregister.model.User;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IAuthenticationModule;
-import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -45,9 +44,14 @@ import java.util.ResourceBundle;
         }
 
         @FXML
-        private void handleQuitButtonAction(ActionEvent actionEvent) throws IOException{
-            Platform.exit();
-            System.exit(0);
+        private void handleCancelButtonAction(ActionEvent actionEvent) throws IOException{
+         /*   Stage primaryStage = cashregister.Main.getPrimaryStage();
+            Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/PrimaryWindow.fxml")));
+            primaryStage.setScene(scene);
+            primaryStage.setWidth(300);
+            primaryStage.setHeight(300);
+            primaryStage.show();
+            */
         }
 
         @FXML
