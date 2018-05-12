@@ -16,7 +16,7 @@
                 <TextField fx:id="userIdTextField" layoutX="14.0" layoutY="38.0" />
                 <Label layoutX="14.0" layoutY="83.0" text="Hasło:" />
                 <PasswordField fx:id="userPasswordField" layoutX="14.0" layoutY="113.0" />
-                <Button layoutX="21.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleCancelButtonAction" text="Anuluj" />
+                <Button layoutX="21.0" layoutY="154.0" mnemonicParsing="false" onAction="#handleQuitButtonAction" text="Wyjdź" />
             </children>
         </Pane>
     </children>
