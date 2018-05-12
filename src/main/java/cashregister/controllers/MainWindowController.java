@@ -27,6 +27,7 @@ import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.util.Optional;
 
 public class MainWindowController implements IBarcodeReaderDataListener {
 
@@ -216,11 +217,27 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 if (customer != null) {
                     productsListModule.setCustomerForTransaction(customer);
                     showCustomerAddedDialog(customer.getName());
+                    decideToShowCustomerData(customer);
                 }
 
                 break;
             }
         }
+    }
+
+    private void decideToShowCustomerData(Customer customer){
+        String username = customer.getName();
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Czy wyświetlić dane użytkownika?");
+        alert.setHeaderText("Wybierz akcję");
+        alert.setContentText(String.format("Czy chcesz wyświetlić dane użytkownika %s?", username));
+        ButtonType buttonTypeTak = new ButtonType("Tak");
+        ButtonType buttonTypeCancel = new ButtonType("Nie", ButtonBar.ButtonData.CANCEL_CLOSE);
+        alert.getButtonTypes().setAll(buttonTypeTak, buttonTypeCancel);
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.get() == buttonTypeTak)
+            displayCustomer(customer);
+
     }
 
     private void showCustomerAddedDialog(String username) {

@@ -24,7 +24,7 @@
         </rowConstraints>
 
         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="0.0" prefWidth="750.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS" />
-        <SplitPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="497.0" prefWidth="750.0" GridPane.rowIndex="1">
+        <SplitPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="750.0" GridPane.rowIndex="1">
 
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="748.0">
 
@@ -63,7 +63,7 @@
                 <Label fx:id="mail_label" layoutX="307.0" layoutY="241.0" prefHeight="44.0" prefWidth="318.0" text="Mail Label" />
                 <Label fx:id="phone_label" layoutX="307.0" layoutY="310.0" prefHeight="44.0" prefWidth="318.0" text="Phone Label" />
                 <Label fx:id="barcode_label" layoutX="307.0" layoutY="376.0" prefHeight="44.0" prefWidth="318.0" text="Barcode Label" />
-                <Button layoutX="285.0" layoutY="448.0" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="61.0" prefWidth="118.0" text="Ok" />
+                <Button layoutX="286.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="61.0" prefWidth="118.0" text="Ok" />
 
             </AnchorPane>
         </SplitPane>
