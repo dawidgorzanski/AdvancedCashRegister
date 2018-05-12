@@ -4,6 +4,7 @@ import cashregister.Main;
 import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
 import cashregister.model.Customer;
+import cashregister.model.ProductDefinition;
 import cashregister.model.ProductForSale;
 import cashregister.model.enums.ObjectType;
 import cashregister.modules.ModulesManager;
@@ -207,6 +208,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         {
             case Product:
             {
+                ProductDefinition product= productsListModule.getByBarcode(value);
+                boolean ageLimit = product.getAgeLimit();
+                if (ageLimit)
+                    showAgeLimitWarning();
                 productsListModule.addProduct(value);
                 updateTotalPrice();
                 break;
@@ -223,6 +228,14 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 break;
             }
         }
+    }
+
+    private void showAgeLimitWarning(){
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Ograniczenie wiekowe");
+        alert.setHeaderText("Uwaga! Produkt ma ograniczenie wiekowe.");
+        alert.setContentText("Sprawdź czy klient ma ukończone 18 lat.\nW przeciwnym wypadku usuń produkt z listy.");
+        alert.showAndWait();
     }
 
     private void decideToShowCustomerData(Customer customer){

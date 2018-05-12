@@ -20,6 +20,10 @@ public class ProductsListModule implements IProductsListModule {
         shoppingList = FXCollections.observableArrayList();
     }
 
+    public ProductDefinition getByBarcode(String barcode) {
+        return productDefinitionDao.getByBarcode(barcode);
+    }
+
     public void addProduct(String barcode)
     {
         ProductDefinition productDefinition = productDefinitionDao.getByBarcode(barcode);

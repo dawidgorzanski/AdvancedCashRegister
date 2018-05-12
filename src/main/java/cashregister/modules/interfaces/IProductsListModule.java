@@ -3,6 +3,7 @@ package cashregister.modules.interfaces;
 import cashregister.model.Customer;
 import cashregister.model.ProductForSale;
 import javafx.collections.ObservableList;
+import cashregister.model.ProductDefinition;
 
 public interface IProductsListModule {
     void addProduct(String barcode);
@@ -15,4 +16,6 @@ public interface IProductsListModule {
     void deleteCustomerFromTransaction();
     Customer getCurrentCustomer();
     double getTotalPrice();
+    ProductDefinition getByBarcode(String barcode);
+
 }

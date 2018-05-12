@@ -10,19 +10,21 @@ public class ProductDefinition {
     private double price;
     private boolean countable;
     private String barcode;
+    private boolean ageLimit;
     private List<ProductForSale> productForSales;
 
     public ProductDefinition() {
         this.id = 0;
     }
 
-    public ProductDefinition(int id, String name, double quantity, double price, String barcode, boolean countable) {
+    public ProductDefinition(int id, String name, double quantity, double price, String barcode, boolean countable, boolean ageLimit) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
         this.price = price;
         this.countable = countable;
         this.barcode = barcode;
+        this.ageLimit = ageLimit;
         this.productForSales = new ArrayList<ProductForSale>();
     }
 
@@ -73,6 +75,10 @@ public class ProductDefinition {
     public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
+
+    public boolean getAgeLimit() { return ageLimit;}
+
+    public void setAgeLimit(boolean ageLimit) { this.ageLimit = ageLimit;}
 
     public List<ProductForSale> getProductForSales() {
         return productForSales;

@@ -14,6 +14,7 @@
         <property name="price" column="price" />
         <property name="barcode" column="barcode" />
         <property name="countable" column="countable" />
+        <property name="ageLimit" column="ageLimit" />
         <list name = "productForSales" cascade="all-delete-orphan">
             <key column = "productdefinitionid"/>
             <list-index column = "id"/>
