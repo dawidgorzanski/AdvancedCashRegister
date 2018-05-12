@@ -26,6 +26,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.decimal4j.util.DoubleRounder;
 
 import java.io.IOException;
 import java.util.Optional;
@@ -191,7 +192,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 productToEdit.setQuantity((int)controller.getQuantity());
             }
             else {
-                productToEdit.setQuantity(controller.getQuantity());
+                productToEdit.setQuantity(DoubleRounder.round(controller.getQuantity(),3));
             }
             updateTotalPrice();
         }
@@ -262,7 +263,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     }
 
     private void updateTotalPrice() {
-        this.labelTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
+        this.labelTotalPrice.setText("SUMA: " + String.valueOf(DoubleRounder.round(productsListModule.getTotalPrice(),2)) + " PLN");
     }
 
     private void displayCustomer(Customer customer) {
