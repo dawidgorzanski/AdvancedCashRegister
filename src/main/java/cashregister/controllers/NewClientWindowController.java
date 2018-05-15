@@ -13,6 +13,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
 import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
@@ -21,6 +22,7 @@ import java.io.IOException;
 public class NewClientWindowController {
 
     private ICustomerModule customerModule;
+    private Customer customer;
     public NewClientWindowController() {
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
     }
@@ -29,6 +31,17 @@ public class NewClientWindowController {
     private TextField nameField, barcodeField, mailField, addressField, phoneField;
     @FXML
     private Button enter, cancel;
+    @FXML
+    private Text title;
+
+    public void setCustomer(Customer customer) { this.customer = customer; }
+    public void setNameField(String name) { nameField.setText(name); }
+    public void setBarcodeField(String barcode) { barcodeField.setText(barcode); }
+    public void setAddressField(String address) { addressField.setText(address); }
+    public void setPhoneField(String phone) { phoneField.setText(phone); }
+    public void setMailField(String mail) { mailField.setText(mail); }
+    public void changeText() { enter.setText("Zmień"); title.setText("Edytuj klienta"); }
+    public void deleteCustomer(Customer customer) { customerModule.deleteCustomer(customer); }
 
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
@@ -73,7 +86,8 @@ public class NewClientWindowController {
             return;
         }
 
-        Customer customer = new Customer();
+        if(customer == null)
+            customer = new Customer();
         customer.setName(nameField.getText());
         customer.setAddress(addressField.getText());
         customer.setBarcode(barcodeField.getText());

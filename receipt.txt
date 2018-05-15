@@ -1,8 +1,5 @@
 Paragon Fiskalny
-Masło extra	1.0*5.5	5.5
 Żubrówka biała	1.0*19.9	19.9
-Chleb	4.0*3.2	12.8
-Jabłka	1.0*3.8	3.8
 
 
-Razem: 42.0zł
+Razem: 19.9zł

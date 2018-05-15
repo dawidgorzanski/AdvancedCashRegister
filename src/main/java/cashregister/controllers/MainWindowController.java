@@ -3,13 +3,17 @@ package cashregister.controllers;
 import cashregister.Main;
 import cashregister.barcode.BarcodeReader;
 import cashregister.barcode.IBarcodeReaderDataListener;
+import cashregister.dao.ProductDefinitionDao;
+import cashregister.dao.interfaces.IProductDefinitionDao;
 import cashregister.model.Customer;
 import cashregister.model.ProductDefinition;
 import cashregister.model.ProductForSale;
 import cashregister.model.enums.ObjectType;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.ProductDefinitionModule;
 import cashregister.modules.interfaces.IBarcodeChecker;
 import cashregister.modules.interfaces.ICustomerModule;
+import cashregister.modules.interfaces.IProductDefinitionModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -48,7 +52,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
     @FXML
-    private Button enter, delete, finish, quantity, search, new_client;
+    private Button enter, delete, finish, quantity, search, new_client, admin;
 
     private IProductsListModule productsListModule;
     private IBarcodeChecker barcodeChecker;
@@ -77,7 +81,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             enter.fire();
             return;
         }
-        if (keyCode.equals(KeyCode.DELETE)) {
+        if (keyCode.equals(KeyCode.DELETE) || keyCode.equals(KeyCode.D)) {
             delete.fire();
             return;
         }
@@ -106,11 +110,17 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             textFieldDisplay.clear();
             return;
         }
+        if (keyCode.equals(KeyCode.A)) {
+            if(admin.isVisible())
+            admin.fire();
+            return;
+        }
     }
 
     @FXML
     private void handleEnterButtonAction(ActionEvent event) throws IOException {
         String value = textFieldDisplay.getText();
+        if(!value.equals(""))
         handleBarcode(value);
 
         textFieldDisplay.clear();
@@ -174,6 +184,18 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     }
 
     @FXML
+    private void handleAdminButtonAction(ActionEvent actionEvent) throws IOException
+    {
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/AdminWindow.fxml")));
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setWidth(750);
+        stage.setHeight(650);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
+    }
+
+    @FXML
     private void handleQuantityButtonAction(ActionEvent actionEvent) throws IOException {
         ProductForSale productToEdit = tableViewProducts.getSelectionModel().selectedItemProperty().get();
         if (productToEdit == null) {
@@ -199,6 +221,17 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             }
             updateTotalPrice();
         }
+    }
+
+    @FXML
+    private void handleSearchButtonAction(ActionEvent actionEvent) throws IOException{
+        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/SearchWindow.fxml")));
+        Stage stage = new Stage();
+        stage.setScene(scene);
+        stage.setWidth(750);
+        stage.setHeight(650);
+        stage.initModality(Modality.APPLICATION_MODAL);
+        stage.show();
     }
 
     @Override

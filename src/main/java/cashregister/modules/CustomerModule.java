@@ -3,8 +3,9 @@ package cashregister.modules;
 import cashregister.dao.interfaces.ICustomerDao;
 import cashregister.model.Customer;
 import cashregister.modules.interfaces.ICustomerModule;
-
-import javax.swing.*;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import java.util.List;
 
 public class CustomerModule implements ICustomerModule {
     private ICustomerDao customerDao;
@@ -13,12 +14,21 @@ public class CustomerModule implements ICustomerModule {
         this.customerDao = customerDao;
     }
 
+    public ObservableList<Customer> getAllCustomers()
+    {
+        List<Customer> customers = customerDao.getAll();
+        ObservableList<Customer> customersList = FXCollections.observableArrayList(customers);
+        return customersList;
+    }
+
     public boolean addCustomer(Customer customer) {
-        customerDao.save(customer);
+        customerDao.saveOrUpdate(customer);
 
         //TODO sprawdzanie czy kod kreskowy nie jest uzyty
         return true;
     }
+
+    public void deleteCustomer(Customer customer) { customerDao.delete(customer);}
 
 
     public Customer getCustomerByBarcode(String barcode) {

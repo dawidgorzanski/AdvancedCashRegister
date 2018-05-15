@@ -30,7 +30,7 @@
 
                     <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyAction" prefHeight="634.0" prefWidth="748.0">
 
-                            <Text layoutX="109.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dodawanie nowego klienta">
+                            <Text fx:id="title" layoutX="109.0" layoutY="91.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nowy klient">
                                 <font>
                                     <Font name="System Bold" size="24.0" />
                                 </font>

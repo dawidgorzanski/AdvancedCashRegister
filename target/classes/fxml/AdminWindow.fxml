@@ -1,5 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.AdminWindowController" />
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.AdminWindowController">
+   <children>
+      <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+          <Tab text="Produkty">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="745.0">
+                     <children>
+                        <TableView fx:id="tableViewProducts" layoutX="-2.0" layoutY="-1.0" prefHeight="399.0" prefWidth="756.0">
+                          <columns>
+                            <TableColumn fx:id="productName" prefWidth="150.0" text="Nazwa" />
+                            <TableColumn fx:id="productQuantity" prefWidth="75.0" text="Ilość" />
+                              <TableColumn fx:id="productPrice" prefWidth="100.0" text="Cena za szt." />
+                              <TableColumn fx:id="productBarcode" prefWidth="100.0" text="Kod" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+            <Tab text="Klienci">
+               <content>
+                  <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableViewCustomers" prefHeight="397.0" prefWidth="750.0">
+                           <columns>
+                              <TableColumn fx:id="customerName" prefWidth="150.0" text="Imię i nazwisko" />
+                              <TableColumn fx:id="customerBarcode" prefWidth="150.0" text="Kod" />
+                               <TableColumn fx:id="customerMail" prefWidth="100.0" text="E-mail" />
+                               <TableColumn fx:id="customerAddress" prefWidth="150.0" text="Adres" />
+                               <TableColumn fx:id="customerPhone" prefWidth="120.0" text="Numer telefonu" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+               </content>
+            </Tab>
+          <Tab text="Użytkownicy">
+            <content>
+              <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                     <children>
+                        <TableView fx:id="tableViewUsers" prefHeight="397.0" prefWidth="750.0">
+                          <columns>
+                            <TableColumn fx:id="userName" prefWidth="150.0" text="Nazwa użytkownika" />
+                            <TableColumn fx:id="isAdmin" prefWidth="150.0" text="Czy administrator" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </AnchorPane>
+            </content>
+          </Tab>
+        </tabs>
+      </TabPane>
+      <Pane prefHeight="200.0" prefWidth="200.0">
+         <children>
+            <Button fx:id="add" layoutX="102.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleAddButtonAction" prefHeight="44.0" prefWidth="143.0" text="Dodaj" />
+            <Button fx:id="exit" layoutX="290.0" layoutY="101.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="143.0" onAction="#handleExitButtonAction" text="Wyjdź" />
+            <Button fx:id="edit" layoutX="290.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleEditButtonAction" prefHeight="44.0" prefWidth="143.0" text="Edytuj" />
+            <Button fx:id="delete" layoutX="476.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="44.0" prefWidth="143.0" text="Usuń" />
+         </children>
+      </Pane>
+   </children>
+</VBox>

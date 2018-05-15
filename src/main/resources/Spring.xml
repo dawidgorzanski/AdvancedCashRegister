@@ -33,6 +33,8 @@
     <bean id="customerModule" class="cashregister.modules.CustomerModule" autowire="constructor" />
     <bean id="paymentModule" class="cashregister.modules.PaymentModule" autowire="constructor" />
     <bean id="productsListModule" class="cashregister.modules.ProductsListModule" autowire="constructor" />
+    <bean id="productDefinitionModule" class="cashregister.modules.ProductDefinitionModule" autowire="constructor" />
+    <bean id="userModule" class="cashregister.modules.UserModule" autowire="constructor" />
     <bean id="mailSender" class="cashregister.modules.MailSenderModule" autowire="constructor" />
     <bean id="paperReceipt" class="cashregister.modules.PaperReceiptCreator" autowire="constructor" />
 

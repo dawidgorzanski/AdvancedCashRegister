@@ -23,7 +23,7 @@ import java.util.List;
 
 public class Main extends Application {
     public Main() {
-        BarcodeReader.initializeBarcode("HUAWEIP9lite2017-Lineri");
+        BarcodeReader.initializeBarcode("COM4");
     }
 
     @Override
