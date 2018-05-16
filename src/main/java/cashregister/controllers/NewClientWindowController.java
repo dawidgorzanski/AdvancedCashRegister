@@ -7,7 +7,9 @@ import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.ICustomerModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -57,7 +59,7 @@ public class NewClientWindowController {
     }
 
     @FXML
-    private void handleCancelButtonAction(ActionEvent event) {
+    private void handleCancelButtonAction(ActionEvent event) throws IOException {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
@@ -80,7 +82,7 @@ public class NewClientWindowController {
     }
 
     @FXML
-    private void handleOkButtonAction(ActionEvent event) {
+    private void handleOkButtonAction(ActionEvent event) throws IOException {
         if (!validateInput()) {
             showAlert();
             return;
@@ -95,6 +97,10 @@ public class NewClientWindowController {
         customer.setPhone(phoneField.getText());
 
         customerModule.addCustomer(customer);
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        AdminWindowController controller = (AdminWindowController) fxmlLoader.getController();
+        controller.refreshScene(event);
 
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }

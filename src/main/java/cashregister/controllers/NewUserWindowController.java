@@ -72,13 +72,10 @@ public class NewUserWindowController {
     }
 
     private void exitAction(ActionEvent event) throws IOException {
-        Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/AdminWindow.fxml")));
-        Stage stage = new Stage();
-        stage.setScene(scene);
-        stage.setWidth(750);
-        stage.setHeight(650);
-        stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        AdminWindowController controller = (AdminWindowController)fxmlLoader.getController();
+        controller.refreshScene(event);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 

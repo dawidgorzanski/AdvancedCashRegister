@@ -83,6 +83,7 @@ public class AdminWindowController {
         String path = this.getPath();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(path)));
         this.loadStage(scene, actionEvent);
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     @FXML
@@ -127,7 +128,7 @@ public class AdminWindowController {
         }
 
         this.loadStage(scene, actionEvent);
-
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     private void loadStage(Scene scene, ActionEvent actionEvent)
@@ -138,7 +139,6 @@ public class AdminWindowController {
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-        ((Node) (actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     private String getPath() {
@@ -153,7 +153,7 @@ public class AdminWindowController {
         return path;
     }
 
-    private void refreshScene(ActionEvent event) throws IOException {
+    public void refreshScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
         Scene refreshScene = new Scene(loader.load());
         loadStage(refreshScene,event);
@@ -164,6 +164,7 @@ public class AdminWindowController {
         String path = this.getPath();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
         Scene scene = new Scene(fxmlLoader.load());
+        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
         if(tabPane.getSelectionModel().getSelectedIndex() == 0)
         {
             ProductDefinition productToDelete = tableViewProducts.getSelectionModel().selectedItemProperty().get();

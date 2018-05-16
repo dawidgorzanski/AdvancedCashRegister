@@ -38,6 +38,12 @@ public class ProductDefinitionModule implements IProductDefinitionModule {
         productDefinitionDao.delete(product);
     }
 
+    public ObservableList<ProductDefinition> getByName(String name)
+    {
+        ObservableList<ProductDefinition> prooductsList = productDefinitionDao.getByName(name);
+        return prooductsList;
+    }
+
     public void changeQuantity(ProductDefinition product, int quantity) { }
 
 }

@@ -8,5 +8,6 @@ import javafx.collections.ObservableList;
 public interface IProductDefinitionModule {
     void addProduct(ProductDefinition product);
     void deleteProduct(ProductDefinition product);
+    ObservableList<ProductDefinition> getByName(String name);
     ObservableList getAllProducts();
 }
