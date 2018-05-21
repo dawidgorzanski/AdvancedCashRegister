@@ -52,7 +52,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
     @FXML
-    private Button enter, delete, finish, quantity, search, new_client, admin;
+    private Button enter, delete, finish, quantity, search, new_client, admin, backspace;
 
     private IProductsListModule productsListModule;
     private IBarcodeChecker barcodeChecker;
@@ -115,6 +115,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             admin.fire();
             return;
         }
+        if (keyCode.equals(KeyCode.BACK_SPACE)) {
+            backspace.fire();
+            return;
+        }
     }
 
     @FXML
@@ -131,6 +135,12 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         ProductForSale productToDelete =  tableViewProducts.getSelectionModel().selectedItemProperty().get();
         productsListModule.deleteProduct(productToDelete);
         updateTotalPrice();
+    }
+
+    @FXML
+    private void handleBackspaceButtonAction(ActionEvent event) {
+        String text = textFieldDisplay.getText();
+        textFieldDisplay.setText(text.substring(0, text.length() - 1));
     }
 
     @FXML

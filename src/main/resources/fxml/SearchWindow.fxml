@@ -3,6 +3,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
@@ -10,15 +12,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" onKeyPressed="#handleKeyAction" fx:controller="cashregister.controllers.SearchWindowController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#handleKeyAction" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.SearchWindowController">
    <children>
       <SplitPane dividerPositions="0.3712374581939799" orientation="VERTICAL" prefHeight="616.0" prefWidth="750.0">
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button fx:id="exit" layoutX="169.0" layoutY="148.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="147.0" onAction="#handleExitButtonAction" text="Wstecz" />
-                  <Button fx:id="enter" layoutX="363.0" layoutY="148.0" mnemonicParsing="false" prefHeight="41.0" prefWidth="147.0" onAction="#handleSearchButtonAction" text="Wyszukaj" />
+                  <Button fx:id="exit" layoutX="169.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="41.0" prefWidth="147.0" text="Wstecz" />
+                  <Button fx:id="enter" layoutX="363.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="41.0" prefWidth="147.0" text="Wyszukaj" />
                   <TextField fx:id="searchField" layoutX="363.0" layoutY="60.0" prefHeight="49.0" prefWidth="260.0" />
                   <Label layoutX="233.0" layoutY="69.0" prefHeight="31.0" prefWidth="83.0" text="Nazwa">
                      <font>
@@ -29,14 +30,43 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <TableView fx:id="tableViewProducts" prefHeight="372.0" prefWidth="748.0">
-                    <columns>
-                        <TableColumn fx:id="productName" prefWidth="150.0" text="Nazwa" />
-                        <TableColumn fx:id="productQuantity" prefWidth="75.0" text="Ilość" />
-                        <TableColumn fx:id="productPrice" prefWidth="100.0" text="Cena za szt." />
-                        <TableColumn fx:id="productBarcode" prefWidth="100.0" text="Kod" />
-                    </columns>
-                  </TableView>
+                  <TabPane fx:id="tabPane" prefHeight="372.0" prefWidth="748.0" tabClosingPolicy="UNAVAILABLE">
+                    <tabs>
+                      <Tab text="Produkty">
+                           <content>
+                              <AnchorPane prefHeight="364.0" prefWidth="733.0">
+                                 <children>
+                                    <TableView fx:id="tableViewProducts" prefHeight="372.0" prefWidth="748.0">
+                                      <columns>
+                                          <TableColumn fx:id="productName" prefWidth="150.0" text="Nazwa" />
+                                          <TableColumn fx:id="productQuantity" prefWidth="75.0" text="Ilość" />
+                                          <TableColumn fx:id="productPrice" prefWidth="100.0" text="Cena za szt." />
+                                          <TableColumn fx:id="productBarcode" prefWidth="100.0" text="Kod" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                           </content>
+                      </Tab>
+                      <Tab text="Klienci">
+                        <content>
+                          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                                 <children>
+                                    <TableView fx:id="tableViewCustomers" layoutX="-2.0" prefHeight="339.0" prefWidth="750.0">
+                                      <columns>
+                                          <TableColumn fx:id="customerName" prefWidth="150.0" text="Imię i nazwisko" />
+                                          <TableColumn fx:id="customerBarcode" prefWidth="150.0" text="Kod" />
+                                          <TableColumn fx:id="customerMail" prefWidth="100.0" text="E-mail" />
+                                          <TableColumn fx:id="customerAddress" prefWidth="150.0" text="Adres" />
+                                          <TableColumn fx:id="customerPhone" prefWidth="120.0" text="Numer telefonu" />
+                                      </columns>
+                                    </TableView>
+                                 </children>
+                              </AnchorPane>
+                        </content>
+                      </Tab>
+                    </tabs>
+                  </TabPane>
                </children>
             </AnchorPane>
         </items>

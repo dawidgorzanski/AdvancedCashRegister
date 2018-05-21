@@ -77,7 +77,7 @@
                         <Button layoutX="21.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="0" />
                         <Button layoutX="98.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="." />
                         <Button layoutX="175.0" layoutY="259.0" mnemonicParsing="false" onAction="#handleNumberButtonAction" prefHeight="44.0" prefWidth="59.0" text="00" />
-                        <Button layoutX="247.0" layoutY="84.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="&lt;-" />
+                        <Button fx:id="backspace" layoutX="247.0" layoutY="84.0" onAction="#handleBackspaceButtonAction" mnemonicParsing="false" prefHeight="44.0" prefWidth="113.0" text="&lt;-" />
                         <Button layoutX="247.0" layoutY="142.0" mnemonicParsing="false" onAction="#handleClearButtonAction" prefHeight="44.0" prefWidth="113.0" text="C" />
                         <Button fx:id="quantity" layoutX="134.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleQuantityButtonAction" prefHeight="54.0" prefWidth="103.0" text="ILOŚĆ" />
                         <Button fx:id="search" layoutX="21.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="54.0" prefWidth="103.0" text="WYSZUKAJ" />

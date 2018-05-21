@@ -34,4 +34,10 @@ public class CustomerModule implements ICustomerModule {
     public Customer getCustomerByBarcode(String barcode) {
         return customerDao.getCustomerByBarcode(barcode);
     }
+
+    public ObservableList<Customer> getByName(String name)
+    {
+        ObservableList<Customer> prooductsList = customerDao.getByName(name);
+        return prooductsList;
+    }
 }
