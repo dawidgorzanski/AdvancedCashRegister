@@ -74,6 +74,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         tableViewProducts.setItems(productsListModule.getShoppingList());
     }
 
+    public void showAdminButton(boolean a) { admin.setVisible(a); }
+
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
