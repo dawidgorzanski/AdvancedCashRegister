@@ -8,4 +8,6 @@ public interface IUserModule {
     boolean addUser(User user);
     void deleteUser(User user);
     ObservableList<User> getAllUsers();
+    User getUserByUserName(String username);
+
 }

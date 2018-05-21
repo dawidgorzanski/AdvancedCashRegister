@@ -44,6 +44,8 @@ public class ProductDefinitionModule implements IProductDefinitionModule {
         return prooductsList;
     }
 
+    public ProductDefinition getByBarcode(String barcode){ return productDefinitionDao.getByBarcode(barcode); }
+
     public void changeQuantity(ProductDefinition product, int quantity) { }
 
 }

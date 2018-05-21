@@ -92,10 +92,13 @@ public class AdminWindowController {
         String path = this.getPath();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
         Scene scene = new Scene(fxmlLoader.load());
+        boolean edit = true;
         if(tabPane.getSelectionModel().getSelectedIndex() == 0)
         {
             ProductDefinition productToEdit = tableViewProducts.getSelectionModel().selectedItemProperty().get();
             NewProductWindowController controller = (NewProductWindowController)fxmlLoader.getController();
+            controller.setEdit(edit);
+            controller.setOldBarcode(productToEdit.getBarcode());
             controller.setNameField(productToEdit.getName());
             controller.setBarcodeField(productToEdit.getBarcode());
             controller.setPriceField(productToEdit.getPrice());
@@ -109,6 +112,8 @@ public class AdminWindowController {
         {
             Customer customerToEdit = tableViewCustomers.getSelectionModel().selectedItemProperty().get();
             NewClientWindowController controller = (NewClientWindowController)fxmlLoader.getController();
+            controller.setEdit(edit);
+            controller.setOldBarcode(customerToEdit.getBarcode());
             controller.setNameField(customerToEdit.getName());
             controller.setBarcodeField(customerToEdit.getBarcode());
             controller.setAddressField(customerToEdit.getAddress());
@@ -121,6 +126,8 @@ public class AdminWindowController {
         {
             User userToEdit = tableViewUsers.getSelectionModel().selectedItemProperty().get();
             NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
+            controller.setEdit(edit);
+            controller.setOldName(userToEdit.getName());
             controller.setNameField(userToEdit.getName());
             controller.setIsAdmin(userToEdit.getIsAdmin());
             controller.setUser(userToEdit);

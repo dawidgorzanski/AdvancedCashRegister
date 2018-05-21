@@ -2,6 +2,7 @@ package cashregister.dao;
 
 import cashregister.dao.interfaces.IUserDao;
 import cashregister.model.User;
+import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
@@ -18,6 +19,17 @@ public class UserDao extends BaseDao<User> implements IUserDao {
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
         criteria.add(Restrictions.eq("name", username));
         criteria.add(Restrictions.eq("password", password));
+        List<User> results = criteria.list();
+        if (results.size() > 0)
+            return results.get(0);
+
+        return null;
+    }
+
+    @Transactional
+    public User getUserByUserName(String username){
+        final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
+        criteria.add(Restrictions.eq("name", username));
         List<User> results = criteria.list();
         if (results.size() > 0)
             return results.get(0);

@@ -35,7 +35,11 @@ public class NewClientWindowController {
     private Button enter, cancel;
     @FXML
     private Text title;
+    private boolean edit;
+    private String oldBarcode;
 
+    public void setOldBarcode(String oldBarcode) { this.oldBarcode = oldBarcode; }
+    public void setEdit(boolean edit) { this.edit = edit; }
     public void setCustomer(Customer customer) { this.customer = customer; }
     public void setNameField(String name) { nameField.setText(name); }
     public void setBarcodeField(String barcode) { barcodeField.setText(barcode); }
@@ -60,6 +64,14 @@ public class NewClientWindowController {
 
     @FXML
     private void handleCancelButtonAction(ActionEvent event) throws IOException {
+        exitAction(event);
+    }
+
+    private void exitAction(ActionEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
+        Scene scene = new Scene(fxmlLoader.load());
+        AdminWindowController controller = (AdminWindowController)fxmlLoader.getController();
+        controller.refreshScene(event);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
@@ -68,6 +80,14 @@ public class NewClientWindowController {
         alert.setTitle("Niepoprawna wartość");
         alert.setHeaderText("Niepoprawna wartość");
         alert.setContentText("Proszę podać nazwę oraz 15-cyfrowy kod kreskowy.");
+        alert.showAndWait();
+    }
+
+    private void showBarcodeAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Niepoprawna wartość");
+        alert.setHeaderText("Niepoprawna wartość");
+        alert.setContentText("Ten kod kreskowy znajduje się już w bazie danych.");
         alert.showAndWait();
     }
 
@@ -81,8 +101,26 @@ public class NewClientWindowController {
         return false;
     }
 
+    private boolean validateBarcode() {
+        String barcode = barcodeField.getText();
+        Customer c = customerModule.getCustomerByBarcode(barcode);
+
+        if (!edit && c == null)
+            return true;
+        if (edit && !barcode.equals(oldBarcode) && c == null)
+            return true;
+        if (edit && barcode.equals(oldBarcode))
+            return true;
+
+        return false;
+    }
+
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
+        if (!validateBarcode()){
+            showBarcodeAlert();
+            return;
+        }
         if (!validateInput()) {
             showAlert();
             return;
