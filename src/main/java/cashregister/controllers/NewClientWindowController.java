@@ -83,6 +83,14 @@ public class NewClientWindowController {
         alert.showAndWait();
     }
 
+    private void showNumberAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Niepoprawna wartość");
+        alert.setHeaderText("Niepoprawna wartość");
+        alert.setContentText("Numer telefonu musi składać się z 9 cyfr.");
+        alert.showAndWait();
+    }
+
     private void showBarcodeAlert() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
@@ -96,6 +104,17 @@ public class NewClientWindowController {
         String name = nameField.getText();
 
         if (StringUtils.isNumeric(barcode) && barcode.length() == 15 && name.length() > 0)
+            return true;
+
+        return false;
+    }
+
+    private boolean validateNumber() {
+        String phone = phoneField.getText();
+
+        if (StringUtils.isNumeric(phone) && phone.length() == 9)
+            return true;
+        if (phone.length() == 0)
             return true;
 
         return false;
@@ -123,6 +142,10 @@ public class NewClientWindowController {
         }
         if (!validateInput()) {
             showAlert();
+            return;
+        }
+        if (!validateNumber()) {
+            showNumberAlert();
             return;
         }
 
