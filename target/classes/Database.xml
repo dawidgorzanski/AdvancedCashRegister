@@ -31,6 +31,7 @@
                 <value>mappings/Customer.hbm.xml</value>
                 <value>mappings/Receipt.hbm.xml</value>
                 <value>mappings/Mail.hbm.xml</value>
+                <value>mappings/PaymentCard.hbm.xml</value>
             </list>
         </property>
     </bean>
@@ -40,7 +41,7 @@
         <property name="driverClassName" value="org.postgresql.Driver" />
         <property name="url" value="jdbc:postgresql://localhost:5432/advancedcashregister" />
         <property name="username" value="postgres" />
-        <property name="password" value="" />
+        <property name="password" value="haslo" />
 
         <property name="connectionProperties">
             <props>

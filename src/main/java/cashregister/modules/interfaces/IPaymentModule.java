@@ -9,4 +9,5 @@ import java.util.List;
 
 public interface IPaymentModule {
     Receipt createSummary(Customer customer, List<ProductForSale> products);
+    String cardPaymentHandler(int sum, double price);
 }
