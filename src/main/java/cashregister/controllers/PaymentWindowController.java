@@ -1,11 +1,9 @@
 package cashregister.controllers;
 
+import cashregister.dao.PaymentCardDao;
 import cashregister.model.Mail;
-import cashregister.model.Receipt;
-import cashregister.modules.EmailRunnable;
+import cashregister.model.PaymentCard;
 import cashregister.modules.ModulesManager;
-import cashregister.modules.interfaces.IMailSenderModule;
-import cashregister.modules.interfaces.IPaperReceiptCreator;
 import cashregister.modules.interfaces.IPaymentModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
@@ -19,21 +17,25 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import org.springframework.beans.factory.annotation.Autowired;
+
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
+import java.util.concurrent.TimeUnit;
 
 public class PaymentWindowController implements Initializable {
+
     private IProductsListModule productsListModule;
     private IPaymentModule paymentModule;
-    private IPaperReceiptCreator paperReceiptCreator;
-    private IMailSenderModule mailSenderModule;
+    private double price;
+    boolean cardHandling;
 
     public PaymentWindowController() {
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
         this.paymentModule = ModulesManager.getObjectByType(IPaymentModule.class);
-        this.paperReceiptCreator = ModulesManager.getObjectByType(IPaperReceiptCreator.class);
-        this.mailSenderModule = ModulesManager.getObjectByType(IMailSenderModule.class);
     }
 
     @FXML
@@ -49,11 +51,26 @@ public class PaymentWindowController implements Initializable {
     private void handleCashButtonAction(ActionEvent event) {
         cashField.setVisible(true);
         changeField.setVisible(true);
+        cashLabel.setText("Gotówka ");
         cashLabel.setVisible(true);
         changeLabel.setVisible(true);
         plnLabel1.setVisible(true);
         plnLabel2.setVisible(true);
         confirmButton.setVisible(true);
+        cardHandling = false;
+    }
+
+    @FXML
+    private void handleCardPayment(ActionEvent event){
+        cashField.setVisible(true);
+        cashLabel.setVisible(true);
+        changeField.setVisible(false);
+        cashLabel.setText("PIN: ");
+        changeLabel.setVisible(false);
+        plnLabel1.setVisible(false);
+        plnLabel2.setVisible(false);
+        confirmButton.setVisible(true);
+        cardHandling = true;
     }
 
     @FXML
@@ -71,7 +88,8 @@ public class PaymentWindowController implements Initializable {
         plnLabel2.setVisible(false);
         confirmButton.setVisible(false);
 
-        textTotalPrice.setText("SUMA: " + String.valueOf(productsListModule.getTotalPrice()) + " PLN");
+        this.price = productsListModule.getTotalPrice();
+        textTotalPrice.setText("SUMA: " + this.price + " PLN");
     }
 
     @FXML
@@ -79,7 +97,7 @@ public class PaymentWindowController implements Initializable {
         KeyCode keyCode = key.getCode();
         if (keyCode.equals(KeyCode.ENTER)) {
             if(confirmButton.isVisible())
-            confirmButton.fire();
+                confirmButton.fire();
             return;
         }
         if (keyCode.equals(KeyCode.ESCAPE)) {
@@ -92,18 +110,17 @@ public class PaymentWindowController implements Initializable {
     @FXML
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
-        Receipt receipt = paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
-        String paperReceipt = paperReceiptCreator.createPaperReceipt(receipt);
-        Mail mail = mailSenderModule.createMail(receipt, paperReceipt);
-
-        EmailRunnable emailRunnable = new EmailRunnable(mailSenderModule, mail);
-        new Thread(emailRunnable).start();
-
+        paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
         this.productsListModule.deleteAllProducts();
         this.productsListModule.deleteCustomerFromTransaction();
-
         Stage stage = (Stage) confirmButton.getScene().getWindow();
-        stage.close();
+        if(!cardHandling) {
+            double change = Double.parseDouble(cashField.getText()) - this.price;
+            changeField.setText(String.valueOf(change));
+        }
+        else{
+            changeField.setText(paymentModule.cardPaymentHandler(Integer.parseInt(cashField.getText()), price));
+            changeField.setVisible(true);
+        }
     }
-
 }
