@@ -15,7 +15,7 @@ public class DisplayCustomerWindowController {
     private void initialize(){
     }
 
-    void initData(Customer customer) {
+    public void initData(Customer customer) {
         name_label.setText(customer.getName());
         barcode_label.setText(customer.getBarcode());
         mail_label.setText(customer.getMail());

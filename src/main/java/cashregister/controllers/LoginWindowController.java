@@ -77,6 +77,7 @@ import java.util.ResourceBundle;
                 Stage primaryStage = cashregister.Main.getPrimaryStage();
                 MainWindowController controller = (MainWindowController) fxmlLoader.getController();
                 controller.showAdminButton(u.getIsAdmin());
+                controller.initCashierData(username);
                 primaryStage.setScene(scene);
                 primaryStage.setMaximized(true);
                 primaryStage.show();
