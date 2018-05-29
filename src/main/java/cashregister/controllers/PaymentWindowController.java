@@ -51,6 +51,8 @@ public class PaymentWindowController implements Initializable {
     private void handleCashButtonAction(ActionEvent event) {
         cashField.setVisible(true);
         changeField.setVisible(true);
+        cashField.clear();
+        changeField.clear();
         cashLabel.setText("Gotówka ");
         cashLabel.setVisible(true);
         changeLabel.setVisible(true);
@@ -64,6 +66,8 @@ public class PaymentWindowController implements Initializable {
     private void handleCardPayment(ActionEvent event){
         cashField.setVisible(true);
         cashLabel.setVisible(true);
+        cashField.clear();
+        changeField.clear();
         changeField.setVisible(false);
         cashLabel.setText("PIN: ");
         changeLabel.setVisible(false);
