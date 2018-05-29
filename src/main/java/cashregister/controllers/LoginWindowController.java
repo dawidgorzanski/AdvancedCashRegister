@@ -4,6 +4,7 @@ import cashregister.dao.interfaces.IUserDao;
 import cashregister.model.User;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IAuthenticationModule;
+import cashregister.modules.interfaces.IUserModule;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,6 +16,8 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -35,6 +38,8 @@ import java.util.ResourceBundle;
 
         IAuthenticationModule authenticationModule;
 
+        private IUserModule userModule;
+
         @Override
         public void initialize(URL location, ResourceBundle resources) {
 
@@ -42,6 +47,7 @@ import java.util.ResourceBundle;
 
         public LoginWindowController() {
             this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
+            this.userModule = ModulesManager.getObjectByType(IUserModule.class);
         }
 
         @FXML
@@ -65,8 +71,13 @@ import java.util.ResourceBundle;
             String password = userPasswordField.getText();
 
             if (authenticationModule.login(username, password)){
-                Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/MainWindow.fxml")));
+                User u = userModule.getUserByUserName(username);
+                FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
+                Scene scene = new Scene(fxmlLoader.load());
                 Stage primaryStage = cashregister.Main.getPrimaryStage();
+                MainWindowController controller = (MainWindowController) fxmlLoader.getController();
+                controller.showAdminButton(u.getIsAdmin());
+                controller.initCashierData(username);
                 primaryStage.setScene(scene);
                 primaryStage.setMaximized(true);
                 primaryStage.show();

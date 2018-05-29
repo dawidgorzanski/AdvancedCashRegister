@@ -40,7 +40,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TextField textFieldDisplay;
     @FXML
-    private Label labelTotalPrice;
+    private Label labelTotalPrice, cashier_name, customer_name;
     @FXML
     private TableView<ProductForSale> tableViewProducts;
     @FXML
@@ -52,11 +52,12 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
     @FXML
-    private Button enter, delete, finish, quantity, search, new_client, admin, backspace;
+    private Button enter, delete, finish, quantity, search, new_client, admin, backspace, display_customer;
 
     private IProductsListModule productsListModule;
     private IBarcodeChecker barcodeChecker;
     private ICustomerModule customerModule;
+    private Customer currentCustomer;
 
     public MainWindowController() {
         BarcodeReader.addListener(this);
@@ -73,6 +74,12 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         tableColumnTotalPrice.setCellValueFactory(cellData -> cellData.getValue().totalPriceProperty().asObject());
         tableViewProducts.setItems(productsListModule.getShoppingList());
     }
+
+    public void initCashierData(String username) { cashier_name.setText(username); }
+
+    public void initCustomerData(String name) { customer_name.setText(name); }
+
+    public void showAdminButton(boolean a) { admin.setVisible(a); }
 
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
@@ -194,6 +201,12 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     }
 
     @FXML
+    private void handleDisplayCustomerButtonAction(ActionEvent actionEvent){
+        if (currentCustomer != null)
+            displayCustomer(currentCustomer);
+    }
+
+    @FXML
     private void handleAdminButtonAction(ActionEvent actionEvent) throws IOException
     {
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/AdminWindow.fxml")));
@@ -269,7 +282,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 if (customer != null) {
                     productsListModule.setCustomerForTransaction(customer);
                     showCustomerAddedDialog(customer.getName());
-                    decideToShowCustomerData(customer);
+                    initCustomerData(customer.getName());
+                    currentCustomer = customer;
                 }
 
                 break;
@@ -283,21 +297,6 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         alert.setHeaderText("Uwaga! Produkt ma ograniczenie wiekowe.");
         alert.setContentText("Sprawdź czy klient ma ukończone 18 lat.\nW przeciwnym wypadku usuń produkt z listy.");
         alert.showAndWait();
-    }
-
-    private void decideToShowCustomerData(Customer customer){
-        String username = customer.getName();
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-        alert.setTitle("Czy wyświetlić dane użytkownika?");
-        alert.setHeaderText("Wybierz akcję");
-        alert.setContentText(String.format("Czy chcesz wyświetlić dane użytkownika %s?", username));
-        ButtonType buttonTypeTak = new ButtonType("Tak");
-        ButtonType buttonTypeCancel = new ButtonType("Nie", ButtonBar.ButtonData.CANCEL_CLOSE);
-        alert.getButtonTypes().setAll(buttonTypeTak, buttonTypeCancel);
-        Optional<ButtonType> result = alert.showAndWait();
-        if (result.get() == buttonTypeTak)
-            displayCustomer(customer);
-
     }
 
     private void showCustomerAddedDialog(String username) {

@@ -25,6 +25,8 @@ public class UserModule implements IUserModule {
         return usersList;
     }
 
+    public User getUserByUserName(String username){ return userDao.getUserByUserName(username); }
+
     public boolean addUser(User user) {
         userDao.saveOrUpdate(user);
 
