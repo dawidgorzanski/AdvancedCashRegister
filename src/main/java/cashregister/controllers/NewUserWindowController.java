@@ -1,10 +1,9 @@
 package cashregister.controllers;
 
 
-import cashregister.model.ProductDefinition;
+import cashregister.helpers.ValidatorHelper;
 import cashregister.model.User;
 import cashregister.modules.ModulesManager;
-import cashregister.modules.interfaces.IProductDefinitionModule;
 import cashregister.modules.interfaces.IUserModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,9 +14,6 @@ import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
@@ -85,39 +81,14 @@ public class NewUserWindowController {
         exitAction(event);
     }
 
-    private boolean validateName() {
-        String name = nameField.getText();
-        User u = userModule.getUserByUserName(name);
-
-        if (!edit && u == null)
-            return true;
-        if (edit && !name.equals(oldName) && u == null)
-            return true;
-        if (edit && name.equals(oldName))
-            return true;
-
-        return false;
-    }
-
-    private boolean validateInput() {
-        String password = passwordField.getText();
-        String name = nameField.getText();
-        Object a = isAdmin.getValue();
-
-        if (password.length() > 3 && name.length() > 0 && a != null)
-            return true;
-
-        return false;
-    }
-
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
 
-        if (!validateName()){
+        if (!ValidatorHelper.validateName(this.nameField, this.userModule, this.edit, this.oldName )){
             showNameAlert();
             return;
         }
-        if (!validateInput()) {
+        if (!ValidatorHelper.validateInput(this.passwordField, this.nameField, this.isAdmin)) {
             showAlert();
             return;
         }

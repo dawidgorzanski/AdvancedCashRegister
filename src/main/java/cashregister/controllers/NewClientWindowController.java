@@ -1,7 +1,7 @@
 package cashregister.controllers;
 
 
-import cashregister.dao.interfaces.ICustomerDao;
+import cashregister.helpers.ValidatorHelper;
 import cashregister.model.Customer;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.ICustomerModule;
@@ -16,7 +16,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import org.apache.commons.lang3.StringUtils;
 
 import java.io.IOException;
 
@@ -82,49 +81,24 @@ public class NewClientWindowController {
         alert.showAndWait();
     }
 
-    private boolean validatePhoneNumber(String number) {
-        if (StringUtils.isNumeric(number) && number.length() == 9)
-            return true;
-
-        if (number.length() == 0)
-            return true;
-
-        return false;
-    }
-
-    private boolean validateBarcode(String barcode) {
-        if (StringUtils.isNumeric(barcode) && barcode.length() == 15)
-            return true;
-
-        return false;
-    }
-
-    private boolean validateName(String name) {
-        return name.length() > 0;
-    }
-
-    private boolean validateMailAddress(String mailAddress) {
-        return mailAddress.length() > 0 && mailAddress.contains("@");
-    }
-
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
-        if (!validateName(nameField.getText())) {
+        if (!ValidatorHelper.validateNameNotEmpty(nameField.getText())) {
             showErrorAlert("Nazwa użytkownika jest wymagana!");
             return;
         }
 
-        if (!validateMailAddress(mailField.getText())) {
+        if (!ValidatorHelper.validateMailAddress(mailField.getText())) {
             showErrorAlert("Adres mailowy jest wymagany!");
             return;
         }
 
-        if (!validateBarcode(barcodeField.getText())){
+        if (!ValidatorHelper.validateClientBarcode(barcodeField.getText())){
             showErrorAlert("Kod kreskowy powinien składać się z 15 znaków!");
             return;
         }
 
-        if (!validatePhoneNumber(phoneField.getText())) {
+        if (!ValidatorHelper.validatePhoneNumber(phoneField.getText())) {
             showErrorAlert("Numer telefonu powinien składać się z 9 znaków!");
             return;
         }

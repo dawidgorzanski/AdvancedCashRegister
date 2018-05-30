@@ -1,0 +1,1 @@
+insert into users(id, name, admin, password) values (1, 'admin', True, 'admin')
