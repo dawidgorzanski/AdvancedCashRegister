@@ -52,6 +52,10 @@ public class ProductDefinition {
         this.quantity = quantity;
     }
 
+    public void decreaseQuantityBy(double quantity) {
+        this.quantity -= quantity;
+    }
+
     public double getPrice() {
         return price;
     }

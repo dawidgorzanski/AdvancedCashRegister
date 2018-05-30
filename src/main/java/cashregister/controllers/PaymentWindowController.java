@@ -3,8 +3,11 @@ package cashregister.controllers;
 import cashregister.dao.PaymentCardDao;
 import cashregister.model.Mail;
 import cashregister.model.PaymentCard;
+import cashregister.model.ProductDefinition;
+import cashregister.model.ProductForSale;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IPaymentModule;
+import cashregister.modules.interfaces.IProductDefinitionModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
 import javafx.extensions.DialogController;
@@ -34,10 +37,12 @@ public class PaymentWindowController extends DialogController implements Initial
     private IPaymentModule paymentModule;
     private double price;
     boolean cardHandling;
+    private IProductDefinitionModule productDefinitionModule;
 
     public PaymentWindowController() {
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
         this.paymentModule = ModulesManager.getObjectByType(IPaymentModule.class);
+        this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
     }
 
     @FXML
@@ -118,6 +123,15 @@ public class PaymentWindowController extends DialogController implements Initial
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
         paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
+
+        //paymentModule.finalizePayment(productsListModule);
+        for (Object iter : productsListModule.getShoppingList()){
+            ProductForSale productForSale = (ProductForSale)iter;
+            ProductDefinition product = productForSale.getProductDefinition();
+
+            product.decreaseQuantityBy(productForSale.getQuantity());
+            productDefinitionModule.addProduct(product);
+        }
         this.productsListModule.deleteAllProducts();
         this.productsListModule.deleteCustomerFromTransaction();
         Stage stage = (Stage) confirmButton.getScene().getWindow();
