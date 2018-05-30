@@ -39,20 +39,20 @@ public class NewUserWindowController {
     private boolean edit;
     private String oldName;
 
-    public void setOldName(String oldName) { this.oldName = oldName; }
-    public void setEdit(boolean edit) {this.edit = edit; }
     public void setUser(User user) {
+
         this.user = user;
+        if(user != null) {
+            this.nameField.setText(user.getName());
+
+            if(user.getIsAdmin())
+                isAdmin.getSelectionModel().select(0);
+            else
+                isAdmin.getSelectionModel().select(1);
+
+            title.setText("Edytuj użytkownika");
+        }
     }
-    public void setNameField(String name) { this.nameField.setText(name); }
-    public void setIsAdmin(Boolean admin) {
-        if(admin == true)
-            isAdmin.getSelectionModel().select(0);
-        else
-            isAdmin.getSelectionModel().select(1);
-    }
-    public void changeText() { enter.setText("Zmień"); title.setText("Edytuj użytkownika"); }
-    public void deleteUser(User user) { userModule.deleteUser(user); }
 
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {

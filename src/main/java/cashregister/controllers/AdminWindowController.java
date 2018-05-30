@@ -109,12 +109,7 @@ public class AdminWindowController {
         {
             User userToEdit = tableViewUsers.getSelectionModel().selectedItemProperty().get();
             NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
-            controller.setEdit(edit);
-            controller.setOldName(userToEdit.getName());
-            controller.setNameField(userToEdit.getName());
-            controller.setIsAdmin(userToEdit.getIsAdmin());
             controller.setUser(userToEdit);
-            controller.changeText();
         }
 
         this.loadStage(scene, actionEvent);
@@ -180,7 +175,7 @@ public class AdminWindowController {
                 return;
 
             NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
-            controller.deleteUser(userToDelete);
+            userModule.deleteUser(userToDelete);
             tableViewUsers.setItems(userModule.getAllUsers());
         }
 
