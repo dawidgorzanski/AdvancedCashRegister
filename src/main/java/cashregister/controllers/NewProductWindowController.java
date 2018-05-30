@@ -80,10 +80,6 @@ public class NewProductWindowController {
     }
 
     private void exitAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        AdminWindowController controller = (AdminWindowController)fxmlLoader.getController();
-        controller.showScene(event);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 

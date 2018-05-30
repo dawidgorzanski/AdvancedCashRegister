@@ -73,6 +73,7 @@ import java.util.ResourceBundle;
             if (authenticationModule.login(username, password)){
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
+                cashregister.Main.setMainWindowController(fxmlLoader.getController());
                 Stage primaryStage = cashregister.Main.getPrimaryStage();
                 primaryStage.setScene(scene);
                 primaryStage.setMaximized(true);

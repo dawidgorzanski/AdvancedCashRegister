@@ -265,7 +265,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.setWidth(750);
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+        stage.showAndWait();
     }
 
     @FXML

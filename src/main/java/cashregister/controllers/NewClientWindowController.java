@@ -71,13 +71,6 @@ public class NewClientWindowController {
     }
 
     private void exitAction(ActionEvent event) throws IOException {
-        User logggedUser = authenticationModule.getLoggedUser();
-        if(logggedUser.getIsAdmin() == true) {
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            AdminWindowController controller = (AdminWindowController) fxmlLoader.getController();
-            controller.showScene(event);
-        }
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
@@ -122,11 +115,6 @@ public class NewClientWindowController {
         customer.setPhone(phoneField.getText());
 
         customerModule.addCustomer(customer);
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
-        fxmlLoader.load();
-        AdminWindowController controller = (AdminWindowController) fxmlLoader.getController();
-        controller.showScene(event);
-
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        exitAction(event);
     }
 }

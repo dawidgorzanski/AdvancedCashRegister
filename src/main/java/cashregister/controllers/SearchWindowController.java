@@ -5,6 +5,7 @@ import cashregister.model.ProductDefinition;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.ICustomerModule;
 import cashregister.modules.interfaces.IProductDefinitionModule;
+import cashregister.modules.interfaces.IProductsListModule;
 import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
@@ -39,11 +40,13 @@ public class SearchWindowController {
 
     private IProductDefinitionModule productDefinitionModule;
     private ICustomerModule customerModule;
+    private IProductsListModule productsListModule;
 
     public SearchWindowController()
     {
         this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
+        this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
     }
 
     @FXML
@@ -89,20 +92,15 @@ public class SearchWindowController {
     private void handleAddButtonAction(ActionEvent event) throws IOException {
         if(tabPane.getSelectionModel().getSelectedIndex() == 0) {
             ProductDefinition productToAdd = tableViewProducts.getSelectionModel().selectedItemProperty().get();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            MainWindowController controller = (MainWindowController) fxmlLoader.getController();
-            controller.barcodeValueArrived(productToAdd.getBarcode());
+            productsListModule.addProduct(productToAdd.getBarcode());
         }
         else
         {
             Customer customerToAdd = tableViewCustomers.getSelectionModel().selectedItemProperty().get();
-            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
-            Scene scene = new Scene(fxmlLoader.load());
-            MainWindowController controller = (MainWindowController) fxmlLoader.getController();
-            controller.barcodeValueArrived(customerToAdd.getBarcode());
-            ((Node)(event.getSource())).getScene().getWindow().hide();
+            cashregister.Main.getMainWindowController().barcodeValueArrived(customerToAdd.getBarcode());
         }
+
+        ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
 

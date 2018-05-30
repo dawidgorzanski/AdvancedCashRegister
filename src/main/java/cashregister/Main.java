@@ -1,6 +1,7 @@
 package cashregister;
 
 import cashregister.barcode.BarcodeReader;
+import cashregister.controllers.MainWindowController;
 import cashregister.modules.ModulesManager;
 import javafx.application.Application;
 import javafx.event.EventHandler;
@@ -24,7 +25,8 @@ public class Main extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
-        Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginWindow.fxml"));
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginWindow.fxml"));
+        Parent root = fxmlLoader.load();
         primaryStage.setTitle("Kasa fiskalna");
         Scene scene = new Scene (root,300,300);
 
@@ -46,9 +48,16 @@ public class Main extends Application {
     }
 
     private static Stage primaryStage;
-
     public static Stage getPrimaryStage()
     {
         return primaryStage;
+    }
+
+    private static MainWindowController mainWindowController;
+    public static MainWindowController getMainWindowController() {
+        return mainWindowController;
+    }
+    public static void setMainWindowController(MainWindowController controller) {
+        mainWindowController = controller;
     }
 }

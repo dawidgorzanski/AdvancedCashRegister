@@ -83,7 +83,18 @@ public class AdminWindowController {
         String path = this.getPath();
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource(path)));
         this.loadStage(scene, actionEvent);
-        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        if(tabPane.getSelectionModel().getSelectedIndex() == 0)
+        {
+            tableViewProducts.setItems(productDefinitionModule.getAllProducts());
+        }
+        else if(tabPane.getSelectionModel().getSelectedIndex() == 1)
+        {
+            tableViewCustomers.setItems(customerModule.getAllCustomers());
+        }
+        else
+        {
+            tableViewUsers.setItems(userModule.getAllUsers());
+        }
     }
 
     @FXML
@@ -98,22 +109,25 @@ public class AdminWindowController {
             ProductDefinition productToEdit = tableViewProducts.getSelectionModel().selectedItemProperty().get();
             NewProductWindowController controller = (NewProductWindowController)fxmlLoader.getController();
             controller.setProductDefinition(productToEdit);
+            this.loadStage(scene, actionEvent);
+            tableViewProducts.setItems(productDefinitionModule.getAllProducts());
         }
         else if(tabPane.getSelectionModel().getSelectedIndex() == 1)
         {
             Customer customerToEdit = tableViewCustomers.getSelectionModel().selectedItemProperty().get();
             NewClientWindowController controller = (NewClientWindowController)fxmlLoader.getController();
             controller.setCustomer(customerToEdit);
+            this.loadStage(scene, actionEvent);
+            tableViewCustomers.setItems(customerModule.getAllCustomers());
         }
         else
         {
             User userToEdit = tableViewUsers.getSelectionModel().selectedItemProperty().get();
             NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
             controller.setUser(userToEdit);
+            this.loadStage(scene, actionEvent);
+            tableViewUsers.setItems(userModule.getAllUsers());
         }
-
-        this.loadStage(scene, actionEvent);
-        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
     }
 
     private void loadStage(Scene scene, ActionEvent actionEvent)
@@ -123,7 +137,7 @@ public class AdminWindowController {
         stage.setWidth(750);
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+        stage.showAndWait();
     }
 
     private String getPath() {
@@ -136,12 +150,6 @@ public class AdminWindowController {
             path = "/fxml/NewUserWindow.fxml";
 
         return path;
-    }
-
-    public void showScene(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
-        Scene refreshScene = new Scene(loader.load());
-        loadStage(refreshScene,event);
     }
 
     @FXML
