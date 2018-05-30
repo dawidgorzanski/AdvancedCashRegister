@@ -9,7 +9,9 @@ import javafx.beans.property.ReadOnlyObjectWrapper;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
@@ -79,6 +81,27 @@ public class SearchWindowController {
             customerMail.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMail()));
             customerPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
             tableViewCustomers.setItems(customerModule.getByName(searchField.getText()));
+        }
+        searchField.clear();
+    }
+
+    @FXML
+    private void handleAddButtonAction(ActionEvent event) throws IOException {
+        if(tabPane.getSelectionModel().getSelectedIndex() == 0) {
+            ProductDefinition productToAdd = tableViewProducts.getSelectionModel().selectedItemProperty().get();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            MainWindowController controller = (MainWindowController) fxmlLoader.getController();
+            controller.barcodeValueArrived(productToAdd.getBarcode());
+        }
+        else
+        {
+            Customer customerToAdd = tableViewCustomers.getSelectionModel().selectedItemProperty().get();
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            MainWindowController controller = (MainWindowController) fxmlLoader.getController();
+            controller.barcodeValueArrived(customerToAdd.getBarcode());
+            ((Node)(event.getSource())).getScene().getWindow().hide();
         }
     }
 

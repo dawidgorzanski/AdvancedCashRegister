@@ -1,12 +1,10 @@
 package cashregister.controllers;
 
 
-import cashregister.model.Customer;
+import cashregister.helpers.ValidatorHelper;
 import cashregister.model.ProductDefinition;
 import cashregister.modules.ModulesManager;
-import cashregister.modules.interfaces.ICustomerModule;
 import cashregister.modules.interfaces.IProductDefinitionModule;
-import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,9 +17,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
-import javafx.stage.Modality;
-import javafx.stage.Stage;
-import org.apache.commons.lang3.StringUtils;
 import org.decimal4j.util.DoubleRounder;
 
 import java.io.IOException;
@@ -98,73 +93,35 @@ public class NewProductWindowController {
         exitAction(event);
     }
 
-    private boolean validateBarcode(String barcode) {
-        if (StringUtils.isNumeric(barcode) && barcode.length() == 13)
-            return true;
-
-        return false;
-    }
-
-    private boolean validateName(String name) {
-        return name.length() > 0;
-    }
-
-    private boolean validateQuantity(String quantity) {
-        try {
-            double result = Double.parseDouble(quantity);
-            return true;
-        }
-        catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private boolean validatePrice(String price) {
-        try {
-            double result = Double.parseDouble(price);
-            if (result < 0)
-                return false;
-
-            return true;
-        }
-        catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
-    private boolean validateIsNotNull(Object object) {
-        return object != null;
-    }
-
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
 
-        if (!validateName(nameField.getText())) {
+        if (!ValidatorHelper.validateNameNotEmpty(nameField.getText())) {
             showErrorAlert("Pole nazwa jest wymagane!");
             return;
         }
 
-        if (!validateBarcode(barcodeField.getText())){
+        if (!ValidatorHelper.validateProductBarcodeLength(barcodeField.getText())){
             showErrorAlert("Kod kreskowy powinien składać się z 13 znaków!");
             return;
         }
 
-        if (!validateQuantity(quantityField.getText())) {
+        if (!ValidatorHelper.validateQuantity(quantityField.getText())) {
             showErrorAlert("Niepoprawna ilość!");
             return;
         }
 
-        if (!validatePrice(priceField.getText())) {
+        if (!ValidatorHelper.validatePrice(priceField.getText())) {
             showErrorAlert("Niepoprawna cena!");
             return;
         }
 
-        if (!validateIsNotNull(isCountable.getValue())) {
+        if (!ValidatorHelper.validateIsNotNull(isCountable.getValue())) {
             showErrorAlert("Jeden z typów: 'policzalny' lub 'niepoliczalny' musi zostać wybrany!");
             return;
         }
 
-        if (!validateIsNotNull(isAgeRestricted.getValue())) {
+        if (!ValidatorHelper.validateIsNotNull(isAgeRestricted.getValue())) {
             showErrorAlert("Jeden z typów: 'z ograniczeniami wiekowymi' lub 'bez ograniczeń wiekowych' musi zostać wybrany!");
             return;
         }
