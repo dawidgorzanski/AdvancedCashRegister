@@ -3,7 +3,9 @@ package cashregister.controllers;
 
 import cashregister.helpers.ValidatorHelper;
 import cashregister.model.Customer;
+import cashregister.model.User;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IAuthenticationModule;
 import cashregister.modules.interfaces.ICustomerModule;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -23,9 +25,12 @@ import java.io.IOException;
 public class NewClientWindowController {
 
     private ICustomerModule customerModule;
+    private IAuthenticationModule authenticationModule;
     private Customer customer;
     public NewClientWindowController() {
+
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
+        this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
     }
 
     @FXML
@@ -66,10 +71,13 @@ public class NewClientWindowController {
     }
 
     private void exitAction(ActionEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
-        AdminWindowController controller = (AdminWindowController)fxmlLoader.getController();
-        controller.showScene(event);
+        User logggedUser = authenticationModule.getLoggedUser();
+        if(logggedUser.getIsAdmin() == true) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
+            Scene scene = new Scene(fxmlLoader.load());
+            AdminWindowController controller = (AdminWindowController) fxmlLoader.getController();
+            controller.showScene(event);
+        }
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 

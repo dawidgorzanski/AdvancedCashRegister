@@ -82,9 +82,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         cashier_name.setText(username);
     }
 
-    private void showAdminButton(boolean value) {
-        admin.setVisible(value);
-    }
+    private void showAdminButton(boolean value) { admin.setVisible(value); }
 
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {

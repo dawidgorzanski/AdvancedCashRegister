@@ -18,14 +18,15 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                <children>
-                  <Button fx:id="exit" layoutX="169.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="41.0" prefWidth="147.0" text="Wstecz" />
-                  <Button fx:id="enter" layoutX="363.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="41.0" prefWidth="147.0" text="Wyszukaj" />
+                  <Button fx:id="exit" layoutX="102.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleExitButtonAction" prefHeight="41.0" prefWidth="147.0" text="Wstecz" />
+                  <Button fx:id="enter" layoutX="290.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="41.0" prefWidth="147.0" text="Wyszukaj" />
                   <TextField fx:id="searchField" layoutX="363.0" layoutY="60.0" prefHeight="49.0" prefWidth="260.0" />
                   <Label layoutX="233.0" layoutY="69.0" prefHeight="31.0" prefWidth="83.0" text="Nazwa">
                      <font>
                         <Font size="18.0" />
                      </font>
                   </Label>
+                  <Button fx:id="add" layoutX="466.0" layoutY="148.0" mnemonicParsing="false" onAction="#handleAddButtonAction" prefHeight="41.0" prefWidth="147.0" text="Dodaj do transakcji" />
                </children>
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
