@@ -71,13 +71,9 @@ import java.util.ResourceBundle;
             String password = userPasswordField.getText();
 
             if (authenticationModule.login(username, password)){
-                User u = userModule.getUserByUserName(username);
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 Stage primaryStage = cashregister.Main.getPrimaryStage();
-                MainWindowController controller = (MainWindowController) fxmlLoader.getController();
-                controller.showAdminButton(u.getIsAdmin());
-                controller.initCashierData(username);
                 primaryStage.setScene(scene);
                 primaryStage.setMaximized(true);
                 primaryStage.show();

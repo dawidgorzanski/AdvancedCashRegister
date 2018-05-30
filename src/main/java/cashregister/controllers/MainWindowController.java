@@ -8,13 +8,11 @@ import cashregister.dao.interfaces.IProductDefinitionDao;
 import cashregister.model.Customer;
 import cashregister.model.ProductDefinition;
 import cashregister.model.ProductForSale;
+import cashregister.model.User;
 import cashregister.model.enums.ObjectType;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.ProductDefinitionModule;
-import cashregister.modules.interfaces.IBarcodeChecker;
-import cashregister.modules.interfaces.ICustomerModule;
-import cashregister.modules.interfaces.IProductDefinitionModule;
-import cashregister.modules.interfaces.IProductsListModule;
+import cashregister.modules.interfaces.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.extensions.DialogResult;
@@ -52,18 +50,19 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     @FXML
     private TableColumn<ProductForSale, Double> tableColumnTotalPrice;
     @FXML
-    private Button enter, delete, finish, quantity, search, new_client, admin, backspace, display_customer;
+    private Button enter, delete, finish, quantity, search, new_client, admin, backspace, display_customer, btnRemoveUserFromTransaction;
 
     private IProductsListModule productsListModule;
     private IBarcodeChecker barcodeChecker;
     private ICustomerModule customerModule;
-    private Customer currentCustomer;
+    private IAuthenticationModule authenticationModule;
 
     public MainWindowController() {
         BarcodeReader.addListener(this);
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
         this.barcodeChecker = ModulesManager.getObjectByType(IBarcodeChecker.class);
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
+        this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
     }
 
     @FXML
@@ -73,13 +72,19 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         tableColumnPrice.setCellValueFactory(cellData -> cellData.getValue().priceProperty().asObject());
         tableColumnTotalPrice.setCellValueFactory(cellData -> cellData.getValue().totalPriceProperty().asObject());
         tableViewProducts.setItems(productsListModule.getShoppingList());
+
+        User logggedUser = authenticationModule.getLoggedUser();
+        initCashierData(logggedUser.getName());
+        showAdminButton(logggedUser.getIsAdmin());
     }
 
-    public void initCashierData(String username) { cashier_name.setText(username); }
+    private void initCashierData(String username) {
+        cashier_name.setText(username);
+    }
 
-    public void initCustomerData(String name) { customer_name.setText(name); }
-
-    public void showAdminButton(boolean a) { admin.setVisible(a); }
+    private void showAdminButton(boolean value) {
+        admin.setVisible(value);
+    }
 
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
@@ -168,7 +173,6 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         primaryStage.show();
     }
 
-
     @FXML
     private void handleClearButtonAction(ActionEvent event) {
         textFieldDisplay.clear();
@@ -178,6 +182,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
+        PaymentWindowController controller = (PaymentWindowController)fxmlLoader.getController();
         Parent root = (Parent) fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -186,7 +191,9 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.show();
-
+        if (controller.getDialogResult().equals(DialogResult.OK)) {
+            updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
+        }
     }
 
     @FXML
@@ -202,8 +209,14 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
     private void handleDisplayCustomerButtonAction(ActionEvent actionEvent){
-        if (currentCustomer != null)
-            displayCustomer(currentCustomer);
+        if (productsListModule.getCurrentCustomer() != null)
+            displayCustomerData(productsListModule.getCurrentCustomer());
+    }
+
+    @FXML
+    private void handleRemoveCustomerFromTransaction(ActionEvent actionEvent) {
+        productsListModule.deleteCustomerFromTransaction();
+        updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
     }
 
     @FXML
@@ -257,6 +270,13 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.show();
     }
 
+    @FXML
+    private void handleCancelTransaction(ActionEvent actionEvent) {
+        productsListModule.deleteCustomerFromTransaction();
+        productsListModule.deleteAllProducts();
+        updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
+    }
+
     @Override
     public void barcodeValueArrived(String value) {
         handleBarcode(value);
@@ -281,9 +301,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 Customer customer = customerModule.getCustomerByBarcode(value);
                 if (customer != null) {
                     productsListModule.setCustomerForTransaction(customer);
-                    showCustomerAddedDialog(customer.getName());
-                    initCustomerData(customer.getName());
-                    currentCustomer = customer;
+                    updateCurrentCustomerForTransaction(customer);
                 }
 
                 break;
@@ -299,19 +317,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         alert.showAndWait();
     }
 
-    private void showCustomerAddedDialog(String username) {
-        Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setTitle("Użytkownik został dodany");
-        alert.setHeaderText("Użytkownik został dodany");
-        alert.setContentText(String.format("Użytkownik %s został dodany.", username));
-        alert.showAndWait();
-    }
-
     private void updateTotalPrice() {
         this.labelTotalPrice.setText("SUMA: " + String.valueOf(DoubleRounder.round(productsListModule.getTotalPrice(),2)) + " PLN");
     }
 
-    private void displayCustomer(Customer customer) {
+    private void displayCustomerData(Customer customer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DisplayCustomerWindow.fxml"));
             Stage stage = new Stage();
@@ -325,6 +335,19 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         }
         catch (IOException ex) {
 
+        }
+    }
+
+    private void updateCurrentCustomerForTransaction(Customer customer) {
+        if (customer != null) {
+            customer_name.setText(customer.getName());
+            display_customer.setVisible(true);
+            btnRemoveUserFromTransaction.setVisible(true);
+        }
+        else {
+            customer_name.setText("");
+            display_customer.setVisible(false);
+            btnRemoveUserFromTransaction.setVisible(false);
         }
     }
 }

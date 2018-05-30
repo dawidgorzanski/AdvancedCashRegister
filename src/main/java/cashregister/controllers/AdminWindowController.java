@@ -32,19 +32,19 @@ public class AdminWindowController {
     @FXML
     private TableView<User> tableViewUsers;
     @FXML
-    private TableColumn<ProductDefinition, String> productName, productBarcode;
+    private TableColumn<ProductDefinition, String> tableColumnProductName, tableColumnProductBarcode;
     @FXML
-    private TableColumn<ProductDefinition, Double> productPrice, productQuantity;
+    private TableColumn<ProductDefinition, Double> tableColumnProductPrice, tableColumnProductQuantity;
     @FXML
-    private TableColumn<Customer, String> customerName, customerBarcode, customerAddress, customerPhone, customerMail;
+    private TableColumn<Customer, String> tableColumnCustomerName, tableColumnCustomerBarcode, tableColumnCustomerAddress, tableColumnCustomerPhone, tableColumnCustomerMail;
     @FXML
-    private TableColumn<User, String> userName;
+    private TableColumn<User, String> tableColumnUserName;
     @FXML
-    private TableColumn<User, Boolean> isAdmin;
+    private TableColumn<User, Boolean> tableColumnIsAdmin;
     @FXML
     private TabPane tabPane;
     @FXML
-    private Button exit, add, edit, delete;
+    private Button btnExit, btnAdd, btnEdit, btnDelete;
 
     private IProductDefinitionModule productDefinitionModule;
     private ICustomerModule customerModule;
@@ -59,21 +59,21 @@ public class AdminWindowController {
 
     @FXML
     private void initialize() {
-        productName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
-        productQuantity.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getQuantity()));
-        productPrice.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getPrice()));
-        productBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
+        tableColumnProductName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        tableColumnProductQuantity.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getQuantity()));
+        tableColumnProductPrice.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getPrice()));
+        tableColumnProductBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
         tableViewProducts.setItems(productDefinitionModule.getAllProducts());
 
-        customerName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
-        customerAddress.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAddress()));
-        customerBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
-        customerMail.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMail()));
-        customerPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
+        tableColumnCustomerName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        tableColumnCustomerAddress.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAddress()));
+        tableColumnCustomerBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
+        tableColumnCustomerMail.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMail()));
+        tableColumnCustomerPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
         tableViewCustomers.setItems(customerModule.getAllCustomers());
 
-        userName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
-        isAdmin.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getIsAdmin()));
+        tableColumnUserName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        tableColumnIsAdmin.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getIsAdmin()));
         tableViewUsers.setItems(userModule.getAllUsers());
     }
 
@@ -97,29 +97,12 @@ public class AdminWindowController {
         {
             ProductDefinition productToEdit = tableViewProducts.getSelectionModel().selectedItemProperty().get();
             NewProductWindowController controller = (NewProductWindowController)fxmlLoader.getController();
-            controller.setEdit(edit);
-            controller.setOldBarcode(productToEdit.getBarcode());
-            controller.setNameField(productToEdit.getName());
-            controller.setBarcodeField(productToEdit.getBarcode());
-            controller.setPriceField(productToEdit.getPrice());
-            controller.setQuantityField(productToEdit.getQuantity());
-            controller.setCountable(productToEdit.getCountable());
-            controller.setAgeRestricted(productToEdit.getAgeLimit());
-            controller.changeText();
-            controller.setProduct(productToEdit);
+            controller.setProductDefinition(productToEdit);
         }
         else if(tabPane.getSelectionModel().getSelectedIndex() == 1)
         {
             Customer customerToEdit = tableViewCustomers.getSelectionModel().selectedItemProperty().get();
             NewClientWindowController controller = (NewClientWindowController)fxmlLoader.getController();
-            controller.setEdit(edit);
-            controller.setOldBarcode(customerToEdit.getBarcode());
-            controller.setNameField(customerToEdit.getName());
-            controller.setBarcodeField(customerToEdit.getBarcode());
-            controller.setAddressField(customerToEdit.getAddress());
-            controller.setPhoneField(customerToEdit.getPhone());
-            controller.setMailField(customerToEdit.getMail());
-            controller.changeText();
             controller.setCustomer(customerToEdit);
         }
         else
@@ -160,7 +143,7 @@ public class AdminWindowController {
         return path;
     }
 
-    public void refreshScene(ActionEvent event) throws IOException {
+    public void showScene(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
         Scene refreshScene = new Scene(loader.load());
         loadStage(refreshScene,event);
@@ -170,28 +153,35 @@ public class AdminWindowController {
     private void handleDeleteButtonAction(ActionEvent actionEvent) throws IOException {
         String path = this.getPath();
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(path));
-        Scene scene = new Scene(fxmlLoader.load());
-        ((Node)(actionEvent.getSource())).getScene().getWindow().hide();
+        fxmlLoader.load();
         if(tabPane.getSelectionModel().getSelectedIndex() == 0)
         {
             ProductDefinition productToDelete = tableViewProducts.getSelectionModel().selectedItemProperty().get();
+            if (productToDelete == null)
+                return;
+
             NewProductWindowController controller = (NewProductWindowController)fxmlLoader.getController();
             controller.deleteProduct(productToDelete);
-            this.refreshScene(actionEvent);
+            tableViewProducts.setItems(productDefinitionModule.getAllProducts());
         }
         else if(tabPane.getSelectionModel().getSelectedIndex() == 1)
         {
             Customer customerToDelete = tableViewCustomers.getSelectionModel().selectedItemProperty().get();
-            NewClientWindowController controller = (NewClientWindowController)fxmlLoader.getController();
-            controller.deleteCustomer(customerToDelete);
-            this.refreshScene(actionEvent);
+            if (customerToDelete == null)
+                return;
+
+            customerModule.deleteCustomer(customerToDelete);
+            tableViewCustomers.setItems(customerModule.getAllCustomers());
         }
         else
         {
             User userToDelete = tableViewUsers.getSelectionModel().selectedItemProperty().get();
+            if (userToDelete == null)
+                return;
+
             NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
             controller.deleteUser(userToDelete);
-            this.refreshScene(actionEvent);
+            tableViewUsers.setItems(userModule.getAllUsers());
         }
 
     }

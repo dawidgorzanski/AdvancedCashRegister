@@ -19,10 +19,10 @@
                      <children>
                         <TableView fx:id="tableViewProducts" layoutX="-2.0" layoutY="-1.0" prefHeight="399.0" prefWidth="756.0">
                           <columns>
-                            <TableColumn fx:id="productName" prefWidth="150.0" text="Nazwa" />
-                            <TableColumn fx:id="productQuantity" prefWidth="75.0" text="Ilość" />
-                              <TableColumn fx:id="productPrice" prefWidth="100.0" text="Cena za szt." />
-                              <TableColumn fx:id="productBarcode" prefWidth="100.0" text="Kod" />
+                            <TableColumn fx:id="tableColumnProductName" prefWidth="150.0" text="Nazwa" />
+                            <TableColumn fx:id="tableColumnProductQuantity" prefWidth="75.0" text="Ilość" />
+                              <TableColumn fx:id="tableColumnProductPrice" prefWidth="100.0" text="Cena za szt." />
+                              <TableColumn fx:id="tableColumnProductBarcode" prefWidth="100.0" text="Kod" />
                           </columns>
                         </TableView>
                      </children>
@@ -35,11 +35,11 @@
                      <children>
                         <TableView fx:id="tableViewCustomers" prefHeight="397.0" prefWidth="750.0">
                            <columns>
-                              <TableColumn fx:id="customerName" prefWidth="150.0" text="Imię i nazwisko" />
-                              <TableColumn fx:id="customerBarcode" prefWidth="150.0" text="Kod" />
-                               <TableColumn fx:id="customerMail" prefWidth="100.0" text="E-mail" />
-                               <TableColumn fx:id="customerAddress" prefWidth="150.0" text="Adres" />
-                               <TableColumn fx:id="customerPhone" prefWidth="120.0" text="Numer telefonu" />
+                              <TableColumn fx:id="tableColumnCustomerName" prefWidth="150.0" text="Imię i nazwisko" />
+                              <TableColumn fx:id="tableColumnCustomerBarcode" prefWidth="150.0" text="Kod" />
+                               <TableColumn fx:id="tableColumnCustomerMail" prefWidth="100.0" text="E-mail" />
+                               <TableColumn fx:id="tableColumnCustomerAddress" prefWidth="150.0" text="Adres" />
+                               <TableColumn fx:id="tableColumnCustomerPhone" prefWidth="120.0" text="Numer telefonu" />
                            </columns>
                         </TableView>
                      </children>
@@ -52,8 +52,8 @@
                      <children>
                         <TableView fx:id="tableViewUsers" prefHeight="397.0" prefWidth="750.0">
                           <columns>
-                            <TableColumn fx:id="userName" prefWidth="150.0" text="Nazwa użytkownika" />
-                            <TableColumn fx:id="isAdmin" prefWidth="150.0" text="Czy administrator" />
+                            <TableColumn fx:id="tableColumnUserName" prefWidth="150.0" text="Nazwa użytkownika" />
+                            <TableColumn fx:id="tableColumnIsAdmin" prefWidth="150.0" text="Czy administrator" />
                           </columns>
                         </TableView>
                      </children>
@@ -64,10 +64,10 @@
       </TabPane>
       <Pane prefHeight="200.0" prefWidth="200.0">
          <children>
-            <Button fx:id="add" layoutX="102.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleAddButtonAction" prefHeight="44.0" prefWidth="143.0" text="Dodaj" />
-            <Button fx:id="exit" layoutX="290.0" layoutY="101.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="143.0" onAction="#handleExitButtonAction" text="Wyjdź" />
-            <Button fx:id="edit" layoutX="290.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleEditButtonAction" prefHeight="44.0" prefWidth="143.0" text="Edytuj" />
-            <Button fx:id="delete" layoutX="476.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="44.0" prefWidth="143.0" text="Usuń" />
+            <Button fx:id="btnAdd" layoutX="102.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleAddButtonAction" prefHeight="44.0" prefWidth="143.0" text="Dodaj" />
+            <Button fx:id="btnExit" layoutX="290.0" layoutY="101.0" mnemonicParsing="false" prefHeight="44.0" prefWidth="143.0" onAction="#handleExitButtonAction" text="Wyjdź" />
+            <Button fx:id="btnEdit" layoutX="290.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleEditButtonAction" prefHeight="44.0" prefWidth="143.0" text="Edytuj" />
+            <Button fx:id="btnDelete" layoutX="476.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="44.0" prefWidth="143.0" text="Usuń" />
          </children>
       </Pane>
    </children>

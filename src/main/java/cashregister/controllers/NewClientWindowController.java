@@ -32,32 +32,31 @@ public class NewClientWindowController {
     @FXML
     private TextField nameField, barcodeField, mailField, addressField, phoneField;
     @FXML
-    private Button enter, cancel;
+    private Button btnEnter, btnCancel;
     @FXML
     private Text title;
-    private boolean edit;
-    private String oldBarcode;
 
-    public void setOldBarcode(String oldBarcode) { this.oldBarcode = oldBarcode; }
-    public void setEdit(boolean edit) { this.edit = edit; }
-    public void setCustomer(Customer customer) { this.customer = customer; }
-    public void setNameField(String name) { nameField.setText(name); }
-    public void setBarcodeField(String barcode) { barcodeField.setText(barcode); }
-    public void setAddressField(String address) { addressField.setText(address); }
-    public void setPhoneField(String phone) { phoneField.setText(phone); }
-    public void setMailField(String mail) { mailField.setText(mail); }
-    public void changeText() { enter.setText("Zmień"); title.setText("Edytuj klienta"); }
-    public void deleteCustomer(Customer customer) { customerModule.deleteCustomer(customer); }
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+        if (customer != null) {
+            nameField.setText(customer.getName());
+            barcodeField.setText(customer.getBarcode());
+            addressField.setText(customer.getAddress());
+            phoneField.setText(customer.getPhone());
+            mailField.setText(customer.getMail());
+            title.setText("Edytuj klienta");
+        }
+    }
 
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
         if (keyCode.equals(KeyCode.ENTER)) {
-            enter.fire();
+            btnEnter.fire();
             return;
         }
         if (keyCode.equals(KeyCode.ESCAPE)) {
-            cancel.fire();
+            btnCancel.fire();
             return;
         }
     }
@@ -71,86 +70,69 @@ public class NewClientWindowController {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
         Scene scene = new Scene(fxmlLoader.load());
         AdminWindowController controller = (AdminWindowController)fxmlLoader.getController();
-        controller.refreshScene(event);
+        controller.showScene(event);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
-    private void showAlert() {
+    private void showErrorAlert(String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
         alert.setHeaderText("Niepoprawna wartość");
-        alert.setContentText("Proszę podać nazwę oraz 15-cyfrowy kod kreskowy.");
+        alert.setContentText(content);
         alert.showAndWait();
     }
 
-    private void showNumberAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Niepoprawna wartość");
-        alert.setHeaderText("Niepoprawna wartość");
-        alert.setContentText("Numer telefonu musi składać się z 9 cyfr.");
-        alert.showAndWait();
-    }
+    private boolean validatePhoneNumber(String number) {
+        if (StringUtils.isNumeric(number) && number.length() == 9)
+            return true;
 
-    private void showBarcodeAlert() {
-        Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Niepoprawna wartość");
-        alert.setHeaderText("Niepoprawna wartość");
-        alert.setContentText("Ten kod kreskowy znajduje się już w bazie danych.");
-        alert.showAndWait();
-    }
-
-    private boolean validateInput() {
-        String barcode = barcodeField.getText();
-        String name = nameField.getText();
-
-        if (StringUtils.isNumeric(barcode) && barcode.length() == 15 && name.length() > 0)
+        if (number.length() == 0)
             return true;
 
         return false;
     }
 
-    private boolean validateNumber() {
-        String phone = phoneField.getText();
-
-        if (StringUtils.isNumeric(phone) && phone.length() == 9)
-            return true;
-        if (phone.length() == 0)
+    private boolean validateBarcode(String barcode) {
+        if (StringUtils.isNumeric(barcode) && barcode.length() == 15)
             return true;
 
         return false;
     }
 
-    private boolean validateBarcode() {
-        String barcode = barcodeField.getText();
-        Customer c = customerModule.getCustomerByBarcode(barcode);
+    private boolean validateName(String name) {
+        return name.length() > 0;
+    }
 
-        if (!edit && c == null)
-            return true;
-        if (edit && !barcode.equals(oldBarcode) && c == null)
-            return true;
-        if (edit && barcode.equals(oldBarcode))
-            return true;
-
-        return false;
+    private boolean validateMailAddress(String mailAddress) {
+        return mailAddress.length() > 0 && mailAddress.contains("@");
     }
 
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
-        if (!validateBarcode()){
-            showBarcodeAlert();
-            return;
-        }
-        if (!validateInput()) {
-            showAlert();
-            return;
-        }
-        if (!validateNumber()) {
-            showNumberAlert();
+        if (!validateName(nameField.getText())) {
+            showErrorAlert("Nazwa użytkownika jest wymagana!");
             return;
         }
 
+        if (!validateMailAddress(mailField.getText())) {
+            showErrorAlert("Adres mailowy jest wymagany!");
+            return;
+        }
+
+        if (!validateBarcode(barcodeField.getText())){
+            showErrorAlert("Kod kreskowy powinien składać się z 15 znaków!");
+            return;
+        }
+
+        if (!validatePhoneNumber(phoneField.getText())) {
+            showErrorAlert("Numer telefonu powinien składać się z 9 znaków!");
+            return;
+        }
+
+
         if(customer == null)
             customer = new Customer();
+
         customer.setName(nameField.getText());
         customer.setAddress(addressField.getText());
         customer.setBarcode(barcodeField.getText());
@@ -159,9 +141,9 @@ public class NewClientWindowController {
 
         customerModule.addCustomer(customer);
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/AdminWindow.fxml"));
-        Scene scene = new Scene(fxmlLoader.load());
+        fxmlLoader.load();
         AdminWindowController controller = (AdminWindowController) fxmlLoader.getController();
-        controller.refreshScene(event);
+        controller.showScene(event);
 
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }

@@ -1,4 +1,5 @@
 package cashregister.controllers;
+import cashregister.helpers.ConvertHelper;
 import javafx.event.ActionEvent;
 import javafx.extensions.DialogController;
 import javafx.extensions.DialogResult;
@@ -19,7 +20,7 @@ public class EditQuantityWindowController extends DialogController {
 
     @FXML
     private void handleOKButton(ActionEvent event) {
-        if (!tryParsePositiveDouble(tbQuantity.getText())) {
+        if (!ConvertHelper.tryParsePositiveDouble(tbQuantity.getText())) {
             showAlert();
             return;
         }
@@ -47,24 +48,12 @@ public class EditQuantityWindowController extends DialogController {
         stage.close();
     }
 
-    private boolean tryParsePositiveDouble(String value) {
-        try {
-            double result = Double.parseDouble(value);
-            if (result < 0)
-                return false;
-
-            return true;
-        } catch (NumberFormatException e) {
-            return false;
-        }
-    }
-
     public void setQuantity(double quantity) {
         tbQuantity.setText(String.valueOf(quantity));
     }
 
     public double getQuantity() {
-        if (tryParsePositiveDouble(tbQuantity.getText())) {
+        if (ConvertHelper.tryParsePositiveDouble(tbQuantity.getText())) {
             return Double.parseDouble(tbQuantity.getText());
         }
 

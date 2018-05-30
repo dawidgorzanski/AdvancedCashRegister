@@ -7,6 +7,8 @@ import cashregister.modules.ModulesManager;
 import cashregister.modules.interfaces.IPaymentModule;
 import cashregister.modules.interfaces.IProductsListModule;
 import javafx.event.ActionEvent;
+import javafx.extensions.DialogController;
+import javafx.extensions.DialogResult;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.Node;
@@ -26,7 +28,7 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.concurrent.TimeUnit;
 
-public class PaymentWindowController implements Initializable {
+public class PaymentWindowController extends DialogController implements Initializable {
 
     private IProductsListModule productsListModule;
     private IPaymentModule paymentModule;
@@ -79,6 +81,7 @@ public class PaymentWindowController implements Initializable {
 
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {
+        setDialogResult(DialogResult.Cancel);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
@@ -126,5 +129,7 @@ public class PaymentWindowController implements Initializable {
             changeField.setText(paymentModule.cardPaymentHandler(Integer.parseInt(cashField.getText()), price));
             changeField.setVisible(true);
         }
+
+        setDialogResult(DialogResult.OK);
     }
 }

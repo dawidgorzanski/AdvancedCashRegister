@@ -48,7 +48,8 @@
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="display_customer" layoutX="610.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDisplayCustomerButtonAction" prefHeight="44.0" prefWidth="103.0" text="Wyświetl dane" />
+                  <Button fx:id="display_customer" layoutX="610.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDisplayCustomerButtonAction" prefHeight="44.0" prefWidth="103.0" text="Wyświetl dane" visible="false" />
+                   <Button fx:id="btnRemoveUserFromTransaction" layoutX="750.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRemoveCustomerFromTransaction" prefHeight="44.0" prefWidth="150.0" text="Usuń klienta z transakcji" visible="false" />
                </children></Pane>
             <SplitPane dividerPositions="0.5013368983957219" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="750.0" GridPane.rowIndex="1">
               <items>
@@ -101,7 +102,7 @@
                         <Button fx:id="search" layoutX="21.0" layoutY="317.0" mnemonicParsing="false" onAction="#handleSearchButtonAction" prefHeight="54.0" prefWidth="103.0" text="WYSZUKAJ" />
                         <Button fx:id="enter" layoutX="247.0" layoutY="202.0" mnemonicParsing="false" onAction="#handleEnterButtonAction" prefHeight="99.0" prefWidth="113.0" text="ENTER" />
                         <Button fx:id="delete" layoutX="247.0" layoutY="317.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDeleteButtonAction" prefHeight="54.0" prefWidth="113.0" text="Usuń pozycję" />
-                        <Button layoutX="24.0" layoutY="411.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="78.0" prefWidth="113.0" text="Anuluj paragon" />
+                        <Button layoutX="24.0" layoutY="411.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="78.0" prefWidth="113.0" text="Anuluj paragon" onAction="#handleCancelTransaction"/>
                         <Button fx:id="finish" layoutX="205.0" layoutY="411.0" mnemonicParsing="false" onAction="#handleFinalizeButtonAction" prefHeight="78.0" prefWidth="152.0" text="Zakończ transakcję" />
                      </children>
                   </AnchorPane>

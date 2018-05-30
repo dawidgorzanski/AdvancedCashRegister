@@ -1,17 +1,12 @@
 package cashregister;
 
-import cashregister.model.User;
 import cashregister.barcode.BarcodeReader;
-import cashregister.dao.interfaces.IUserDao;
 import cashregister.modules.ModulesManager;
 import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.input.KeyCode;
-import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -27,21 +22,7 @@ public class Main extends Application {
     }
 
     @Override
-    @Transactional
     public void start(Stage primaryStage) throws Exception{
-
-        IUserDao dao = ModulesManager.getObjectByType(IUserDao.class);
-        List<User> usersList = dao.getAll();
-        if (usersList.size() == 0)
-        {
-            User admin = new User();
-            admin.setId(1);
-            admin.setName("admin");
-            admin.setIsAdmin(true);
-            admin.setPassword("admin");
-            dao.save(admin);
-        }
-
         this.primaryStage = primaryStage;
         Parent root = FXMLLoader.load(getClass().getResource("/fxml/LoginWindow.fxml"));
         primaryStage.setTitle("Kasa fiskalna");

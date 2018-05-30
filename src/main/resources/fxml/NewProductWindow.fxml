@@ -77,8 +77,8 @@
             </SplitPane>
             <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="103.0" prefWidth="750.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
 
-                    <Button fx:id="cancel" layoutX="130.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="62.0" prefWidth="113.0" text="Wstecz" />
-                    <Button fx:id="enter" layoutX="257.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="62.0" prefWidth="164.0" text="Dodaj produkt" />
+                    <Button fx:id="cancel" layoutX="130.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleCancelButtonAction" prefHeight="62.0" prefWidth="113.0" text="Anuluj" />
+                    <Button fx:id="enter" layoutX="257.0" layoutY="21.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="62.0" prefWidth="164.0" text="Zapisz" />
 
             </Pane>
     </GridPane>
