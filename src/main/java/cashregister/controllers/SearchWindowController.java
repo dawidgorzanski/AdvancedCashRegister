@@ -92,7 +92,7 @@ public class SearchWindowController {
     private void handleAddButtonAction(ActionEvent event) throws IOException {
         if(tabPane.getSelectionModel().getSelectedIndex() == 0) {
             ProductDefinition productToAdd = tableViewProducts.getSelectionModel().selectedItemProperty().get();
-            productsListModule.addProduct(productToAdd.getBarcode());
+            cashregister.Main.getMainWindowController().barcodeValueArrived(productToAdd.getBarcode());
         }
         else
         {
