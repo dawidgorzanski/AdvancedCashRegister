@@ -4,9 +4,12 @@ import cashregister.dao.CustomerDao;
 import cashregister.dao.interfaces.ICustomerDao;
 import cashregister.model.Customer;
 import cashregister.modules.interfaces.ICustomerModule;
+import javafx.collections.ObservableList;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
@@ -18,37 +21,34 @@ import java.util.List;
 public class CustomerModuleTest {
 
     @Mock
-    Customer customer1;
-
-    @Mock
-    Customer customer2;
-
-    @Mock
-    Customer customer3;
+    Customer customer1, customer2, customer3;
 
     @Mock
     CustomerDao customerDaoMock;
 
-    ICustomerModule customerModule;
-    List<Customer> customerList;
+    @InjectMocks
+    ICustomerModule customerModule = new CustomerModule(customerDaoMock);
 
     @Before
     public void setUp(){
-        //customerModule = new CustomerModule(customerDaoMock);
-        customerDaoMock = new CustomerDao();
-        customerList = new ArrayList<Customer>();
-        customerList.add(customer1);
-        customerList.add(customer2);
-        customerList.add(customer3);
+
     }
 
     @Test
-    public void doesGetAllCustomersMethodReturnsAllCustomersTest(){
+    public void getAllCustomersMethodReturnsAllCustomersFromDatabaseTest(){
 
+        //Arrange
+        List<Customer> customerList = new ArrayList<Customer>();
+        customerList.add(customer1);
+        customerList.add(customer2);
+        customerList.add(customer3);
         Mockito.when(customerDaoMock.getAll()).thenReturn(customerList);
 
-        Mockito.verify(customerDaoMock).getAll().containsAll(customerList);
+        //Act
+        List<Customer> customersFromFunction = customerModule.getAllCustomers();
 
+        //Assert
+        Assert.assertEquals(customersFromFunction, customerList);
     }
 
 }
