@@ -7,5 +7,6 @@ public interface IBaseDao<T> {
     public List<T> getAll();
     public T save(final T object);
     public void saveOrUpdate(final T object);
+    public void update(final T object);
     public void delete(final Object object);
 }

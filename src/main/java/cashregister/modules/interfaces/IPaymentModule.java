@@ -8,7 +8,7 @@ import cashregister.model.Receipt;
 import java.util.List;
 
 public interface IPaymentModule {
-    Receipt createSummary(Customer customer, List<ProductForSale> products);
-    //public void finalizePayment(IProductsListModule productsListModule);
+    Receipt createSummary(IProductsListModule productsListModule);
+    public void finalizePayment(IProductsListModule productsListModule, IProductDefinitionModule productDefinitionModule);
     String cardPaymentHandler(int sum, double price);
 }

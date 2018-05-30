@@ -33,6 +33,11 @@ public class ProductDefinitionModule implements IProductDefinitionModule {
         productDefinitionDao.saveOrUpdate(product);
     }
 
+    public void updateProduct(ProductDefinition product)
+    {
+        productDefinitionDao.update(product);
+    }
+
     public void deleteProduct(ProductDefinition product)
     {
         productDefinitionDao.delete(product);

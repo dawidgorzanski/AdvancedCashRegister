@@ -21,27 +21,30 @@ public class PaymentModule implements IPaymentModule {
         //this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
     }
 
-    public Receipt createSummary(Customer customer, List<ProductForSale> products) {
+    public Receipt createSummary(IProductsListModule productsListModule) {
         Receipt newReceipt = new Receipt();
-        newReceipt.setProductForSales(products);
-        newReceipt.setCustomer(customer);
+        newReceipt.setProductForSales( productsListModule.getShoppingList());
+        newReceipt.setCustomer(productsListModule.getCurrentCustomer());
         newReceipt.setDate(new Date());
 
         receiptDao.save(newReceipt);
         return newReceipt;
     }
-/*
-    public void finalizePayment(IProductsListModule productsListModule)
+
+    public void finalizePayment(IProductsListModule productsListModule, IProductDefinitionModule productDefinitionModule)
     {
         for (Object iter : productsListModule.getShoppingList()){
             ProductForSale productForSale = (ProductForSale)iter;
             ProductDefinition product = productForSale.getProductDefinition();
 
             product.decreaseQuantityBy(productForSale.getQuantity());
-            productDefinitionModule.addProduct(product);
+            productDefinitionModule.updateProduct(product);
         }
+
+        productsListModule.deleteAllProducts();
+        productsListModule.deleteCustomerFromTransaction();
     }
-*/
+
     @Transactional
     public String cardPaymentHandler(int sum, double price){
         boolean isInTable = false;

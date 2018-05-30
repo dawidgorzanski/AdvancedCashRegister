@@ -122,18 +122,10 @@ public class PaymentWindowController extends DialogController implements Initial
     @FXML
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
-        paymentModule.createSummary(productsListModule.getCurrentCustomer(), productsListModule.getShoppingList());
+        paymentModule.createSummary(productsListModule);
 
-        //paymentModule.finalizePayment(productsListModule);
-        for (Object iter : productsListModule.getShoppingList()){
-            ProductForSale productForSale = (ProductForSale)iter;
-            ProductDefinition product = productForSale.getProductDefinition();
+        paymentModule.finalizePayment(productsListModule, productDefinitionModule);
 
-            product.decreaseQuantityBy(productForSale.getQuantity());
-            productDefinitionModule.addProduct(product);
-        }
-        this.productsListModule.deleteAllProducts();
-        this.productsListModule.deleteCustomerFromTransaction();
         Stage stage = (Stage) confirmButton.getScene().getWindow();
         if(!cardHandling) {
             double change = Double.parseDouble(cashField.getText()) - this.price;

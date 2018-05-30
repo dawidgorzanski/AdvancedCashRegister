@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 
 public interface IProductDefinitionModule {
     void addProduct(ProductDefinition product);
+    void updateProduct(ProductDefinition product);
     void deleteProduct(ProductDefinition product);
     ObservableList<ProductDefinition> getByName(String name);
     ProductDefinition getByBarcode(String barcode);

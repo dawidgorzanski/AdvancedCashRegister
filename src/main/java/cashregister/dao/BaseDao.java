@@ -53,6 +53,12 @@ public abstract class BaseDao<T> implements IBaseDao<T> {
     }
 
     @Transactional
+    public void update(final T object){
+        Session session = sessionFactory.getCurrentSession();
+        session.update(object);
+    }
+
+    @Transactional
     public void delete(final Object object){
         Session session = sessionFactory.getCurrentSession();
         session.delete(object);
