@@ -79,12 +79,12 @@ public class NewUserWindowController {
 
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
-
-        if (!ValidatorHelper.validateName(this.nameField, this.userModule, this.edit, this.oldName )){
+        String name = this.nameField.getText();
+        if (!ValidatorHelper.validateName(name, this.userModule.getUserByUserName(name), this.edit, this.oldName )){
             showNameAlert();
             return;
         }
-        if (!ValidatorHelper.validateInput(this.passwordField, this.nameField, this.isAdmin)) {
+        if (!ValidatorHelper.validateInput(this.passwordField.getText(), this.nameField.getText(), this.isAdmin.getValue())) {
             showAlert();
             return;
         }

@@ -1,10 +1,6 @@
 package cashregister.helpers;
 
 import cashregister.model.User;
-import cashregister.modules.interfaces.IUserModule;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import org.apache.commons.lang3.StringUtils;
 
 public class ValidatorHelper {
@@ -68,13 +64,11 @@ public class ValidatorHelper {
         return object != null;
     }
 
-    public static boolean validateName(TextField nameField, IUserModule userModule, boolean edit, String oldName) {
-        String name = nameField.getText();
-        User u = userModule.getUserByUserName(name);
+    public static boolean validateName(String name, User user, boolean edit, String oldName) {
 
-        if (!edit && u == null)
+        if (!edit && user == null)
             return true;
-        if (edit && !name.equals(oldName) && u == null)
+        if (edit && !name.equals(oldName) && user == null)
             return true;
         if (edit && name.equals(oldName))
             return true;
@@ -82,12 +76,9 @@ public class ValidatorHelper {
         return false;
     }
 
-    public static boolean validateInput(PasswordField passwordField, TextField nameField, ComboBox isAdmin) {
-        String password = passwordField.getText();
-        String name = nameField.getText();
-        Object a = isAdmin.getValue();
+    public static boolean validateInput(String password, String name, Object isAdmin) {
 
-        if (password.length() > 3 && name.length() > 0 && a != null)
+        if (password.length() > 3 && name.length() > 0 && isAdmin != null)
             return true;
 
         return false;
