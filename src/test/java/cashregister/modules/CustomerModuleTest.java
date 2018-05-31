@@ -10,9 +10,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
+import org.mockito.Matchers;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.mockito.stubbing.Answer;
+import org.mockito.stubbing.OngoingStubbing;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -31,7 +34,7 @@ public class CustomerModuleTest {
 
     @Before
     public void setUp(){
-
+    //    Mockito.reset(customerDaoMock);
     }
 
     @Test
@@ -49,6 +52,27 @@ public class CustomerModuleTest {
 
         //Assert
         Assert.assertEquals(customersFromFunction, customerList);
+    }
+
+    @Test
+    public void addCustomerMethodAddsCustomerToDatabaseTest(){
+        //Arrange
+        List<Customer> customerList = new ArrayList<Customer>();
+
+        Mockito.doAnswer( (Answer) invocation -> {
+            Customer arg0 = invocation.getArgumentAt(0,Customer.class);
+            customerList.add(arg0);
+            return null;
+        }).when(customerDaoMock).saveOrUpdate(Matchers.anyObject());
+
+        //Act
+        customerModule.addCustomer(customer1);
+        customerModule.addCustomer(customer2);
+
+        //Assert
+        Assert.assertTrue(customerList.size() == 2  );
+        customerModule.addCustomer(customer3);
+        Assert.assertTrue(customerList.size() == 3  );
     }
 
 }
