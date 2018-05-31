@@ -77,7 +77,7 @@ public class ProductDefinitionModuleTest {
         ArrayList<ProductDefinition> ProductDefinitionList = new ArrayList<ProductDefinition>();
         ProductDefinitionList.add(productDefinition1);
 
-        ProductDefinition productForUpdate = new ProductDefinition(4, "Chleb", 100.0, 2.5, "1234123412341", true, false);
+        ProductDefinition productForUpdate = new ProductDefinition(4, "bread", 100.0, 2.5, "1234123412341", true, false);
         ProductDefinitionList.add(productForUpdate);
 
 

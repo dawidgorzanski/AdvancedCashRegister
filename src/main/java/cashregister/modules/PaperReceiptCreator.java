@@ -10,8 +10,11 @@ public class PaperReceiptCreator implements IPaperReceiptCreator {
         float sum = 0;
         builder.append("Paragon Fiskalny\n");
         for(ProductForSale ps : receipt.getProductForSales()) {
+            String totalPrice = "" + ps.getTotalPrice();
+            if(totalPrice.length() > 5)
+                totalPrice = totalPrice.substring(0,5);
             builder.append(ps.getName() + "\t" + ps.getQuantity() + "*" + ps.getPrice() + "\t"
-                    + ps.getTotalPrice() + "\n");
+                    + totalPrice + "\n");
 
             sum += ps.getTotalPrice();
         }
