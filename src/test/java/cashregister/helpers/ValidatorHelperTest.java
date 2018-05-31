@@ -6,8 +6,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ValidatorHelperTest {
-    //@Before
-    //private ValidatorHelper validatorHelper = new ValidatorHelper();
+
     @Test
     public void validatePhoneNumber_NumberNotNumeric_ReturnFalse() {
         assertFalse(ValidatorHelper.validatePhoneNumber("887228a78"));

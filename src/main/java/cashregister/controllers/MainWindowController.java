@@ -295,6 +295,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 break;
             }
             case User:
+            case Unknown:
             {
                 Customer customer = customerModule.getCustomerByBarcode(value);
                 if (customer != null) {

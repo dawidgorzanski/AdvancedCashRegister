@@ -9,8 +9,10 @@ public class BarcodeChecker implements IBarcodeChecker {
         if (barcode.length() == 15){
             return ObjectType.User;
         }
-        else {
+        else if (barcode.length() == 13){
             return ObjectType.Product;
         }
+        else
+            return ObjectType.Unknown;
     }
 }
