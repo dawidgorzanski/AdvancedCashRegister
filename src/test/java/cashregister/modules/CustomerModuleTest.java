@@ -32,11 +32,6 @@ public class CustomerModuleTest {
     @InjectMocks
     ICustomerModule customerModule = new CustomerModule(customerDaoMock);
 
-    @Before
-    public void setUp(){
-    //    Mockito.reset(customerDaoMock);
-    }
-
     @Test
     public void getAllCustomersMethodReturnsAllCustomersFromDatabaseTest(){
 
@@ -73,6 +68,31 @@ public class CustomerModuleTest {
         Assert.assertTrue(customerList.size() == 2  );
         customerModule.addCustomer(customer3);
         Assert.assertTrue(customerList.size() == 3  );
+    }
+
+    @Test
+    public void addCustomerMethodReturnsTrueWhenCustomerIsAddedToDatabaseTest(){
+        Assert.assertTrue(customerModule.addCustomer(customer1));
+    }
+
+    @Test
+    public void deleteCustomerMethodDeletesCustomerFromDatabaseTest(){
+
+        //Arrange
+        List<Customer> customerList = new ArrayList<Customer>();
+        customerList.add(customer1);
+        customerList.add(customer2);
+        customerList.add(customer3);
+
+        Mockito.doAnswer( (Answer)invocation-> {
+            customerList.remove(invocation.getArgumentAt(0,Customer.class));
+            return null;
+        }).when(customerDaoMock).delete(Matchers.anyObject());
+
+        //Act
+        customerModule.deleteCustomer(customer2);
+        //Assert
+        Assert.assertTrue(customerList.size() == 2);
     }
 
 }

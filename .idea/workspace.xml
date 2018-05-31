@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5d9b1c-5a8e-42bd-9f45-39f5a5d259c6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cashregister/modules/CustomerModuleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cashregister/modules/CustomerModuleTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -31,12 +29,13 @@
       <file leaf-file-name="CustomerModuleTest.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="493">
-              <caret line="74" column="54" lean-forward="true" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+            <state relative-caret-position="310">
+              <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1006#1016#0" expanded="true" />
                 <element signature="e#1545#1555#0" expanded="true" />
+                <element signature="e#2316#2326#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -46,7 +45,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/CustomerModule.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="289">
-              <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+              <caret line="30" column="64" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
             </state>
           </provider>
         </entry>
@@ -315,26 +314,9 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.CustomerModuleTest">
+  <component name="RunManager" selected="JUnit.CustomerModuleTest.deleteCustomerMethodDeletesCustomerFromDatabaseTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-    </configuration>
-    <configuration name="All in AdvancedCashRegister" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="AdvancedCashRegister" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="package" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
-      <option name="PASS_PARENT_ENVS" value="true" />
-      <option name="TEST_SEARCH_SCOPE">
-        <value defaultName="singleModule" />
-      </option>
-      <patterns />
     </configuration>
     <configuration name="CustomerModuleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
@@ -382,7 +364,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="CustomerModuleTest.doesGetAllCustomersMethodReturnsAllCustomersTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="CustomerModuleTest.addCustomerMethodReturnsTrueWhenCustomerIsAddedCorrectlyTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
       <extension name="coverage">
         <pattern>
@@ -394,7 +376,30 @@
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cashregister.modules" />
       <option name="MAIN_CLASS_NAME" value="cashregister.modules.CustomerModuleTest" />
-      <option name="METHOD_NAME" value="doesGetAllCustomersMethodReturnsAllCustomersTest" />
+      <option name="METHOD_NAME" value="addCustomerMethodReturnsTrueWhenCustomerIsAddedCorrectlyTest" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
+    <configuration name="CustomerModuleTest.deleteCustomerMethodDeletesCustomerFromDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="AdvancedCashRegister" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="cashregister.modules.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cashregister.modules" />
+      <option name="MAIN_CLASS_NAME" value="cashregister.modules.CustomerModuleTest" />
+      <option name="METHOD_NAME" value="deleteCustomerMethodDeletesCustomerFromDatabaseTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -468,18 +473,18 @@
     </configuration>
     <list>
       <item itemvalue="JUnit.CustomerModuleTest" />
-      <item itemvalue="JUnit.CustomerModuleTest.doesGetAllCustomersMethodReturnsAllCustomersTest" />
-      <item itemvalue="JUnit.All in AdvancedCashRegister" />
       <item itemvalue="JUnit.CustomerModuleTest.getAllCustomersMethodReturnsAllCustomersFromDatabaseTest" />
       <item itemvalue="JUnit.CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" />
+      <item itemvalue="JUnit.CustomerModuleTest.addCustomerMethodReturnsTrueWhenCustomerIsAddedCorrectlyTest" />
+      <item itemvalue="JUnit.CustomerModuleTest.deleteCustomerMethodDeletesCustomerFromDatabaseTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.CustomerModuleTest.deleteCustomerMethodDeletesCustomerFromDatabaseTest" />
+        <item itemvalue="JUnit.CustomerModuleTest.addCustomerMethodReturnsTrueWhenCustomerIsAddedCorrectlyTest" />
         <item itemvalue="JUnit.CustomerModuleTest" />
         <item itemvalue="JUnit.CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" />
         <item itemvalue="JUnit.CustomerModuleTest.getAllCustomersMethodReturnsAllCustomersFromDatabaseTest" />
-        <item itemvalue="JUnit.All in AdvancedCashRegister" />
-        <item itemvalue="JUnit.CustomerModuleTest.doesGetAllCustomersMethodReturnsAllCustomersTest" />
       </list>
     </recent_temporary>
   </component>
@@ -597,18 +602,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 11h 53m 30s.xml">
-      <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 11h 53m 57s.xml">
-      <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 11h 54m 19s.xml">
-      <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 11h 54m 38s.xml">
-      <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 11h 54m 53s.xml">
       <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
     </history-entry>
@@ -627,6 +620,18 @@
     <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 12h 58m 47s.xml">
       <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
     </history-entry>
+    <history-entry file="CustomerModuleTest_addCustomerMethodAddsCustomerToDatabaseTest - 2018.05.31 at 13h 02m 40s.xml">
+      <configuration name="CustomerModuleTest.addCustomerMethodAddsCustomerToDatabaseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerModuleTest - 2018.05.31 at 13h 02m 49s.xml">
+      <configuration name="CustomerModuleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerModuleTest_addCustomerMethodReturnsTrueWhenCustomerIsAddedCorrectlyTest - 2018.05.31 at 13h 29m 15s.xml">
+      <configuration name="CustomerModuleTest.addCustomerMethodReturnsTrueWhenCustomerIsAddedCorrectlyTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="CustomerModuleTest_deleteCustomerMethodDeletesCustomerFromDatabaseTest - 2018.05.31 at 13h 41m 35s.xml">
+      <configuration name="CustomerModuleTest.deleteCustomerMethodDeletesCustomerFromDatabaseTest" configurationId="JUnit" />
+    </history-entry>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1296" height="776" extended-state="6" />
@@ -640,12 +645,12 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.23548046" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.042296074" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.09969789" />
       <window_info anchor="bottom" id="Version Control" order="15" weight="0.32911393" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2671875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.2671875" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -734,20 +739,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/dao/CustomerDaoTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="28" selection-start-line="2" selection-start-column="28" selection-end-line="2" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/model/CustomerTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="25" selection-start-line="2" selection-start-column="25" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$MAVEN_REPOSITORY$/org/decimal4j/decimal4j/1.0.3/decimal4j-1.0.3.jar!/org/decimal4j/util/DoubleRounder.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1024">
@@ -1042,13 +1033,6 @@
     <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/interfaces/IBaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="136">
@@ -1073,21 +1057,43 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/CustomerModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="289">
-          <caret line="24" column="27" lean-forward="true" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
+          <caret line="30" column="64" selection-start-line="30" selection-start-column="64" selection-end-line="30" selection-end-column="64" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/EmailRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="5" column="13" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/MailSenderModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-965">
+          <caret line="19" column="13" selection-start-line="19" selection-start-column="13" selection-end-line="19" selection-end-column="13" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="74" column="54" lean-forward="true" selection-start-line="74" selection-start-column="54" selection-end-line="74" selection-end-column="54" />
+        <state relative-caret-position="310">
+          <caret line="84" column="36" lean-forward="true" selection-start-line="84" selection-start-column="36" selection-end-line="84" selection-end-column="36" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1006#1016#0" expanded="true" />
             <element signature="e#1545#1555#0" expanded="true" />
+            <element signature="e#2316#2326#0" expanded="true" />
           </folding>
         </state>
       </provider>
