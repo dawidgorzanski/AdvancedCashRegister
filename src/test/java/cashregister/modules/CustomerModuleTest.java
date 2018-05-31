@@ -4,6 +4,7 @@ import cashregister.dao.CustomerDao;
 import cashregister.dao.interfaces.ICustomerDao;
 import cashregister.model.Customer;
 import cashregister.modules.interfaces.ICustomerModule;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.junit.Assert;
 import org.junit.Before;
@@ -27,7 +28,7 @@ public class CustomerModuleTest {
     Customer customer1, customer2, customer3;
 
     @Mock
-    CustomerDao customerDaoMock;
+    ICustomerDao customerDaoMock;
 
     @InjectMocks
     ICustomerModule customerModule = new CustomerModule(customerDaoMock);
@@ -77,7 +78,6 @@ public class CustomerModuleTest {
 
     @Test
     public void deleteCustomerMethodDeletesCustomerFromDatabaseTest(){
-
         //Arrange
         List<Customer> customerList = new ArrayList<Customer>();
         customerList.add(customer1);
@@ -93,6 +93,48 @@ public class CustomerModuleTest {
         customerModule.deleteCustomer(customer2);
         //Assert
         Assert.assertTrue(customerList.size() == 2);
+        customerModule.deleteCustomer(customer1);
+        Assert.assertTrue(customerList.size() == 1);
     }
 
+    @Test
+    public void getCustomerByBarcodeReturnsCorrectCustomerTest(){
+        //Arrange
+        final String barcode = "barcode12345";
+        Mockito.when(customerDaoMock.getCustomerByBarcode(barcode)).thenReturn(customer1);
+
+        //Act
+        Customer customerTest = customerModule.getCustomerByBarcode(barcode);
+
+        //Assert
+        Assert.assertTrue(customerTest.equals(customer1));
+    }
+
+    @Test
+    public void getCustomerByNameReturnsCorrectCustomerTest(){
+        final String name = "test";
+
+        List<Customer> customers = new ArrayList<>();
+        customers.add(customer1);
+        ObservableList<Customer> customersList = FXCollections.observableArrayList(customers);
+
+        Mockito.when(customerDaoMock.getByName(name)).thenReturn(customersList);
+
+        Assert.assertTrue(customerModule.getByName(name) == customersList);
+    }
+
+    @Test
+    public void getCustomerByNameReturnsCorrectListOfCustomersTest(){
+        final String name = "test";
+
+        List<Customer> customers = new ArrayList<>();
+        customers.add(customer1);
+        customers.add(customer2);
+        ObservableList<Customer> customersList = FXCollections.observableArrayList(customers);
+
+        Mockito.when(customerDaoMock.getByName(name)).thenReturn(customersList);
+
+        Assert.assertTrue(customerModule.getByName(name) == customersList);
+        Assert.assertTrue(customerModule.getByName(name).size() == 2);
+    }
 }
