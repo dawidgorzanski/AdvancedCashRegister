@@ -9,6 +9,7 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -18,6 +19,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Modality;
+import javafx.stage.Screen;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
@@ -65,6 +67,17 @@ import java.util.ResourceBundle;
             }
         }
 
+        private void maximizeScreen(Stage primaryStage)//used before Java 8
+        {
+            Screen screen = Screen.getPrimary();
+            Rectangle2D bounds = screen.getVisualBounds();
+
+            primaryStage.setX(bounds.getMinX());
+            primaryStage.setY(bounds.getMinY());
+            primaryStage.setWidth(bounds.getWidth());
+            primaryStage.setHeight(bounds.getHeight());
+        }
+
         @FXML
         private void handleCheckLoginButtonAction(ActionEvent event) throws IOException {
             String username = userIdTextField.getText();
@@ -76,7 +89,8 @@ import java.util.ResourceBundle;
                 cashregister.Main.setMainWindowController(fxmlLoader.getController());
                 Stage primaryStage = cashregister.Main.getPrimaryStage();
                 primaryStage.setScene(scene);
-                primaryStage.setMaximized(true);
+                maximizeScreen(primaryStage); //primaryStage.setMaximized(true);
+
                 primaryStage.show();
             }
             else {
