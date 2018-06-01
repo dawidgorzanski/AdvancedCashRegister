@@ -2,9 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5d9b1c-5a8e-42bd-9f45-39f5a5d259c6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/cashregister/modules/UserModuleTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cashregister/dao/CustomerDaoTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/cashregister/model/CustomerTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/LoginWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/controllers/LoginWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/MainWindowController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/controllers/MainWindowController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/MainWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/controllers/MainWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/NewUserWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/controllers/NewUserWindowController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/helpers/ValidatorHelper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/helpers/ValidatorHelper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/BarcodeChecker.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/modules/BarcodeChecker.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/PaperReceiptCreator.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/modules/PaperReceiptCreator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/cashregister/modules/CustomerModuleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cashregister/modules/CustomerModuleTest.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -19,59 +28,55 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="CustomerModuleTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-204">
-              <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
+            <state relative-caret-position="238">
+              <caret line="92" column="24" lean-forward="true" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1000#1001#0" expanded="true" />
                 <element signature="e#1076#1077#0" expanded="true" />
+                <element signature="e#1113#1123#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthenticationModuleTest.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java">
+      <file leaf-file-name="UserModuleTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/UserModuleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="195">
-              <caret line="38" column="75" selection-start-line="38" selection-start-column="75" selection-end-line="38" selection-end-column="75" />
+            <state relative-caret-position="147">
+              <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#741#742#0" expanded="true" />
-                <element signature="e#817#818#0" expanded="true" />
-                <element signature="e#1754#1755#0" expanded="true" />
-                <element signature="e#1819#1820#0" expanded="true" />
+                <element signature="e#385#386#0" expanded="true" />
+                <element signature="e#429#430#0" expanded="true" />
+                <element signature="e#704#710#0" expanded="true" />
+                <element signature="e#1588#1594#0" expanded="true" />
+                <element signature="e#2089#2095#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="AuthenticationModule.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/AuthenticationModule.java">
+      <file leaf-file-name="AuthenticationModuleTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="314">
-              <caret line="31" column="4" lean-forward="true" selection-start-line="31" selection-start-column="4" selection-end-line="33" selection-end-column="5" />
+            <state relative-caret-position="-264">
+              <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/UserDao.java">
+      <file leaf-file-name="UserModule.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/UserModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="15" lean-forward="true" selection-start-line="15" selection-end-line="15" />
+            <state relative-caret-position="334">
+              <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="38" selection-end-column="5" />
             </state>
           </provider>
         </entry>
@@ -96,7 +101,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/LoginWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/ProductsDefinitionModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/interfaces/IProductsListModule.java" />
@@ -147,10 +151,11 @@
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/CustomerModule.java" />
         <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java" />
+        <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/UserModuleTest.java" />
       </list>
     </option>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
+  <component name="ProjectFrameBounds" extendedState="6">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1296" />
@@ -265,42 +270,6 @@
               <item name="test" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cashregister" type="462c0819:PsiDirectoryNode" />
-              <item name="barcode" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
-              <item name="controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
-              <item name="dao" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
-              <item name="model" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
-              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
               <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -335,11 +304,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.AuthenticationModuleTest">
+  <component name="RunManager" selected="JUnit.UserModuleTest">
     <configuration default="true" type="Application" factoryName="Application">
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
-    <configuration name="AuthenticationModuleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserModuleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
       <extension name="coverage">
         <pattern>
@@ -350,7 +319,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cashregister.modules" />
-      <option name="MAIN_CLASS_NAME" value="cashregister.modules.AuthenticationModuleTest" />
+      <option name="MAIN_CLASS_NAME" value="cashregister.modules.UserModuleTest" />
       <option name="METHOD_NAME" />
       <option name="TEST_OBJECT" value="class" />
       <option name="VM_PARAMETERS" value="-ea" />
@@ -362,7 +331,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="AuthenticationModuleTest.getLoggedUserReturnsCorrectUserTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserModuleTest.addUserAddsUserToDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
       <extension name="coverage">
         <pattern>
@@ -373,8 +342,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cashregister.modules" />
-      <option name="MAIN_CLASS_NAME" value="cashregister.modules.AuthenticationModuleTest" />
-      <option name="METHOD_NAME" value="getLoggedUserReturnsCorrectUserTest" />
+      <option name="MAIN_CLASS_NAME" value="cashregister.modules.UserModuleTest" />
+      <option name="METHOD_NAME" value="addUserAddsUserToDatabaseTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -385,7 +354,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserModuleTest.deleteUserMethodDeletesUserFromDatabase" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
       <extension name="coverage">
         <pattern>
@@ -396,8 +365,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cashregister.modules" />
-      <option name="MAIN_CLASS_NAME" value="cashregister.modules.AuthenticationModuleTest" />
-      <option name="METHOD_NAME" value="logoutMethodIsLoggingOutNecessaryTest" />
+      <option name="MAIN_CLASS_NAME" value="cashregister.modules.UserModuleTest" />
+      <option name="METHOD_NAME" value="deleteUserMethodDeletesUserFromDatabase" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -408,7 +377,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="AuthenticationModuleTest.logoutMethodIsUserLoggedOutWhenNecessaryTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserModuleTest.getAllUserMethodReturnsAllCustomerFromDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
       <extension name="coverage">
         <pattern>
@@ -419,8 +388,8 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cashregister.modules" />
-      <option name="MAIN_CLASS_NAME" value="cashregister.modules.AuthenticationModuleTest" />
-      <option name="METHOD_NAME" value="logoutMethodIsUserLoggedOutWhenNecessaryTest" />
+      <option name="MAIN_CLASS_NAME" value="cashregister.modules.UserModuleTest" />
+      <option name="METHOD_NAME" value="getAllUserMethodReturnsAllCustomerFromDatabaseTest" />
       <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
@@ -431,7 +400,7 @@
       </option>
       <patterns />
     </configuration>
-    <configuration name="CustomerModuleTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+    <configuration name="UserModuleTest.getUserByUserNameReturnsUserFromDatabaseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="AdvancedCashRegister" />
       <extension name="coverage">
         <pattern>
@@ -442,9 +411,9 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PACKAGE_NAME" value="cashregister.modules" />
-      <option name="MAIN_CLASS_NAME" value="cashregister.modules.CustomerModuleTest" />
-      <option name="METHOD_NAME" />
-      <option name="TEST_OBJECT" value="class" />
+      <option name="MAIN_CLASS_NAME" value="cashregister.modules.UserModuleTest" />
+      <option name="METHOD_NAME" value="getUserByUserNameReturnsUserFromDatabaseTest" />
+      <option name="TEST_OBJECT" value="method" />
       <option name="VM_PARAMETERS" value="-ea" />
       <option name="PARAMETERS" />
       <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
@@ -493,19 +462,19 @@
       <listeners />
     </configuration>
     <list>
-      <item itemvalue="JUnit.AuthenticationModuleTest" />
-      <item itemvalue="JUnit.AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" />
-      <item itemvalue="JUnit.AuthenticationModuleTest.logoutMethodIsUserLoggedOutWhenNecessaryTest" />
-      <item itemvalue="JUnit.CustomerModuleTest" />
-      <item itemvalue="JUnit.AuthenticationModuleTest.getLoggedUserReturnsCorrectUserTest" />
+      <item itemvalue="JUnit.UserModuleTest.getAllUserMethodReturnsAllCustomerFromDatabaseTest" />
+      <item itemvalue="JUnit.UserModuleTest.getUserByUserNameReturnsUserFromDatabaseTest" />
+      <item itemvalue="JUnit.UserModuleTest.addUserAddsUserToDatabaseTest" />
+      <item itemvalue="JUnit.UserModuleTest.deleteUserMethodDeletesUserFromDatabase" />
+      <item itemvalue="JUnit.UserModuleTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="JUnit.AuthenticationModuleTest" />
-        <item itemvalue="JUnit.AuthenticationModuleTest.getLoggedUserReturnsCorrectUserTest" />
-        <item itemvalue="JUnit.CustomerModuleTest" />
-        <item itemvalue="JUnit.AuthenticationModuleTest.logoutMethodIsUserLoggedOutWhenNecessaryTest" />
-        <item itemvalue="JUnit.AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" />
+        <item itemvalue="JUnit.UserModuleTest" />
+        <item itemvalue="JUnit.UserModuleTest.deleteUserMethodDeletesUserFromDatabase" />
+        <item itemvalue="JUnit.UserModuleTest.addUserAddsUserToDatabaseTest" />
+        <item itemvalue="JUnit.UserModuleTest.getUserByUserNameReturnsUserFromDatabaseTest" />
+        <item itemvalue="JUnit.UserModuleTest.getAllUserMethodReturnsAllCustomerFromDatabaseTest" />
       </list>
     </recent_temporary>
   </component>
@@ -623,24 +592,6 @@
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AuthenticationModuleTest_logoutMethodIsLoggingOutNecessaryTest - 2018.06.01 at 10h 20m 15s.xml">
-      <configuration name="AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthenticationModuleTest_logoutMethodIsLoggingOutNecessaryTest - 2018.06.01 at 10h 21m 18s.xml">
-      <configuration name="AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthenticationModuleTest_logoutMethodIsLoggingOutNecessaryTest - 2018.06.01 at 10h 27m 17s.xml">
-      <configuration name="AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthenticationModuleTest_logoutMethodIsLoggingOutNecessaryTest - 2018.06.01 at 10h 27m 33s.xml">
-      <configuration name="AuthenticationModuleTest.logoutMethodIsLoggingOutNecessaryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthenticationModuleTest_logoutMethodIsUserLoggedOutWhenNecessaryTest - 2018.06.01 at 10h 27m 38s.xml">
-      <configuration name="AuthenticationModuleTest.logoutMethodIsUserLoggedOutWhenNecessaryTest" configurationId="JUnit" />
-    </history-entry>
-    <history-entry file="AuthenticationModuleTest_logoutMethodIsUserLoggedOutWhenNecessaryTest - 2018.06.01 at 10h 28m 34s.xml">
-      <configuration name="AuthenticationModuleTest.logoutMethodIsUserLoggedOutWhenNecessaryTest" configurationId="JUnit" />
-    </history-entry>
     <history-entry file="AuthenticationModuleTest_logoutMethodIsUserLoggedOutWhenNecessaryTest - 2018.06.01 at 10h 28m 49s.xml">
       <configuration name="AuthenticationModuleTest.logoutMethodIsUserLoggedOutWhenNecessaryTest" configurationId="JUnit" />
     </history-entry>
@@ -652,6 +603,24 @@
     </history-entry>
     <history-entry file="CustomerModuleTest - 2018.06.01 at 10h 30m 19s.xml">
       <configuration name="CustomerModuleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AuthenticationModuleTest_getLoggedUserReturnsCorrectUserTest - 2018.06.01 at 10h 40m 04s.xml">
+      <configuration name="AuthenticationModuleTest.getLoggedUserReturnsCorrectUserTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="AuthenticationModuleTest - 2018.06.01 at 10h 40m 10s.xml">
+      <configuration name="AuthenticationModuleTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserModuleTest_getAllUserMethodReturnsAllCustomerFromDatabaseTest - 2018.06.01 at 13h 43m 21s.xml">
+      <configuration name="UserModuleTest.getAllUserMethodReturnsAllCustomerFromDatabaseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserModuleTest_getUserByUserNameReturnsUserFromDatabaseTest - 2018.06.01 at 13h 48m 08s.xml">
+      <configuration name="UserModuleTest.getUserByUserNameReturnsUserFromDatabaseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserModuleTest_addUserAddsUserToDatabaseTest - 2018.06.01 at 13h 53m 38s.xml">
+      <configuration name="UserModuleTest.addUserAddsUserToDatabaseTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UserModuleTest_addUserAddsUserToDatabaseTest - 2018.06.01 at 13h 54m 03s.xml">
+      <configuration name="UserModuleTest.addUserAddsUserToDatabaseTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -666,7 +635,7 @@
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.23548046" />
       <window_info anchor="right" id="Maven Projects" order="4" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24773414" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.1918429" />
       <window_info anchor="bottom" id="Version Control" order="15" weight="0.32911393" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="2" />
@@ -760,34 +729,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.fxml/javafx/fxml/FXMLLoader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="236">
-          <caret line="1670" selection-start-line="1670" selection-end-line="1670" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/DisplayCustomerWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="17" column="11" selection-start-line="17" selection-start-column="11" selection-end-line="17" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.1/commons-lang3-3.1.jar!/org/apache/commons/lang3/StringUtils.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="29" lean-forward="true" selection-start-line="29" selection-end-line="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/helpers/ConvertHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="12" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/helpers/ValidatorHelper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -1107,13 +1048,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/AuthenticationModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="314">
@@ -1121,28 +1055,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java">
+    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/model/CustomerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-204">
-          <caret line="26" column="9" lean-forward="true" selection-start-line="26" selection-start-column="9" selection-end-line="26" selection-end-column="9" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#1000#1001#0" expanded="true" />
-            <element signature="e#1076#1077#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/dao/CustomerDaoTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="7" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="38" column="75" selection-start-line="38" selection-start-column="75" selection-end-line="38" selection-end-column="75" />
+        <state relative-caret-position="-264">
+          <caret line="39" column="5" lean-forward="true" selection-start-line="39" selection-start-column="5" selection-end-line="39" selection-end-column="5" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#741#742#0" expanded="true" />
-            <element signature="e#817#818#0" expanded="true" />
-            <element signature="e#1754#1755#0" expanded="true" />
-            <element signature="e#1819#1820#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/UserModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="334">
+          <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="38" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/CustomerModuleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="92" column="24" lean-forward="true" selection-start-line="92" selection-start-column="24" selection-end-line="92" selection-end-column="24" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1000#1001#0" expanded="true" />
+            <element signature="e#1076#1077#0" expanded="true" />
+            <element signature="e#1113#1123#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/cashregister/modules/UserModuleTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="75" column="10" selection-start-line="75" selection-start-column="10" selection-end-line="75" selection-end-column="10" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#385#386#0" expanded="true" />
+            <element signature="e#429#430#0" expanded="true" />
+            <element signature="e#704#710#0" expanded="true" />
+            <element signature="e#1588#1594#0" expanded="true" />
+            <element signature="e#2089#2095#0" expanded="true" />
           </folding>
         </state>
       </provider>
