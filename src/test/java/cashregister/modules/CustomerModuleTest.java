@@ -30,8 +30,12 @@ public class CustomerModuleTest {
     @Mock
     ICustomerDao customerDaoMock;
 
-    @InjectMocks
-    ICustomerModule customerModule = new CustomerModule(customerDaoMock);
+    ICustomerModule customerModule;
+
+    @Before
+    public void setUp(){
+        customerModule = new CustomerModule(customerDaoMock);
+    }
 
     @Test
     public void getAllCustomersMethodReturnsAllCustomersFromDatabaseTest(){
