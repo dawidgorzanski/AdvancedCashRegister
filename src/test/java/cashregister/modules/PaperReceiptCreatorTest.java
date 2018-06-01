@@ -27,7 +27,7 @@ public class PaperReceiptCreatorTest {
 
         PaperReceiptCreator paperReceiptCreator = new PaperReceiptCreator();
         String paperReceipt = paperReceiptCreator.createPaperReceipt(receiptMock);
-        System.out.println(paperReceipt);
+        //System.out.println(paperReceipt);
         assertEquals(paperReceipt, "Paragon Fiskalny\nbeer\t20.0*2.39\t47.80\n\n\nRazem: 47.8zł");
     }
 
@@ -39,7 +39,7 @@ public class PaperReceiptCreatorTest {
 
         PaperReceiptCreator paperReceiptCreator = new PaperReceiptCreator();
         String paperReceipt = paperReceiptCreator.createPaperReceipt(receiptMock);
-        System.out.println(paperReceipt);
+        //System.out.println(paperReceipt);
         assertEquals(paperReceipt, "Paragon Fiskalny\n\t0.0*0.0\t0.0\n\n\nRazem: 0.0zł");
     }
 }

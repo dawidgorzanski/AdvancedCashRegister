@@ -1,15 +1,20 @@
 package cashregister.modules;
 
 import cashregister.model.enums.ObjectType;
+import cashregister.modules.interfaces.IBarcodeChecker;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 
 import static org.junit.Assert.*;
 
 public class BarcodeCheckerTest {
 
-    private BarcodeChecker barcodeChecker = new BarcodeChecker();
+    private IBarcodeChecker barcodeChecker;
+
+    @Before
+    public void setUp() {
+        barcodeChecker = new BarcodeChecker();
+    }
 
     @Test
     public void getObjectTypeByBarcode_BarcodeLength15_ReturnsUser() {
