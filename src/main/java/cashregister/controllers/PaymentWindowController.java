@@ -1,14 +1,10 @@
 package cashregister.controllers;
 
 import cashregister.dao.PaymentCardDao;
-import cashregister.model.Mail;
-import cashregister.model.PaymentCard;
-import cashregister.model.ProductDefinition;
-import cashregister.model.ProductForSale;
+import cashregister.model.*;
+import cashregister.modules.EmailRunnable;
 import cashregister.modules.ModulesManager;
-import cashregister.modules.interfaces.IPaymentModule;
-import cashregister.modules.interfaces.IProductDefinitionModule;
-import cashregister.modules.interfaces.IProductsListModule;
+import cashregister.modules.interfaces.*;
 import javafx.event.ActionEvent;
 import javafx.extensions.DialogController;
 import javafx.extensions.DialogResult;
@@ -38,11 +34,15 @@ public class PaymentWindowController extends DialogController implements Initial
     private double price;
     boolean cardHandling;
     private IProductDefinitionModule productDefinitionModule;
+    private IPaperReceiptCreator paperReceiptCreator;
+    private IMailSenderModule mailSenderModule;
 
     public PaymentWindowController() {
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
         this.paymentModule = ModulesManager.getObjectByType(IPaymentModule.class);
         this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
+        this.paperReceiptCreator = ModulesManager.getObjectByType(IPaperReceiptCreator.class);
+        this.mailSenderModule = ModulesManager.getObjectByType(IMailSenderModule.class);
     }
 
     @FXML
@@ -122,6 +122,12 @@ public class PaymentWindowController extends DialogController implements Initial
     @FXML
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
+        Receipt receipt = paymentModule.createSummary(productsListModule);
+        String paperReceipt = paperReceiptCreator.createPaperReceipt(receipt);
+        Mail mail = mailSenderModule.createMail(receipt, paperReceipt);
+
+        EmailRunnable emailRunnable = new EmailRunnable(mailSenderModule, mail);
+        new Thread(emailRunnable).start();
         paymentModule.createSummary(productsListModule);
 
         paymentModule.finalizePayment(productsListModule, productDefinitionModule);

@@ -1,5 +1,5 @@
 Paragon Fiskalny
-Żubrówka biała	1.0*19.9	19.9
+123	1.0*1.0	1.0
 
 
-Razem: 19.9zł
+Razem: 1.0zł
