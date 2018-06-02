@@ -12,7 +12,9 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.io.FileNotFoundException;
 import java.io.PrintWriter;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
@@ -44,11 +46,7 @@ public class MailSenderModule implements IMailSenderModule {
         return mail;
     }
 
-    public void sendMail(Mail mail)
-    {
-        String to = mail.getReceipt().getCustomer().getMail();
-        String from = "advancedcashregister@gmail.com";
-
+    private javax.mail.Session createSession(Mail mail) {
         final String user = "advancedcashregister@gmail.com";
         final String pass = "io!@2018";
 
@@ -60,48 +58,80 @@ public class MailSenderModule implements IMailSenderModule {
         props.put("mail.smtp.auth","true");
         props.put("mail.smtp.ssl.trust","smtp.gmail.com");
 
-        javax.mail.Session session = Session.getInstance(props,new javax.mail.Authenticator()
-        {
+        javax.mail.Session session = Session.getInstance(props,new javax.mail.Authenticator() {
             @Override
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(user,pass);
             }
         });
+        return session;
+    }
 
+    public void savePaperReceiptFromMail(Mail mail, String filename) throws FileNotFoundException, UnsupportedEncodingException {
+        PrintWriter writer = null;
         try{
-            Message msg = new MimeMessage(session);
-            msg.setFrom(new InternetAddress(from));
-            InternetAddress[] address = {new InternetAddress(to)};
-            msg.setRecipients(Message.RecipientType.TO,address);
-            msg.setSubject(mail.getSubject());
-            msg.setSentDate(new Date());
-
-            String filename = "receipt.txt";
-            PrintWriter writer = new PrintWriter(filename,"UTF-8");
+            writer = new PrintWriter(filename,"UTF-8");
             writer.print(mail.getPaperReceipt());
             writer.close();
+        }
+        catch(FileNotFoundException | UnsupportedEncodingException e){
+            if(writer!=null)
+                writer.close();
+            throw e;
+        }
+    }
 
-            MimeBodyPart attachmentBodyPart;
-            MimeBodyPart messageBodyPart;
+    public Multipart concatenateEmailFromMailAndFile(Mail mail, String filename) throws MessagingException {
+        MimeBodyPart attachmentBodyPart;
+        MimeBodyPart messageBodyPart;
 
-            Multipart multipart = new MimeMultipart();
+        Multipart multipart = new MimeMultipart();
 
-            messageBodyPart = new MimeBodyPart();
-            messageBodyPart.setText(mail.getBody());
+        messageBodyPart = new MimeBodyPart();
 
-            attachmentBodyPart = new MimeBodyPart();
-            DataSource source = new FileDataSource(filename);
-            attachmentBodyPart.setDataHandler(new DataHandler(source));
-            attachmentBodyPart.setFileName(filename);
+        messageBodyPart.setText(mail.getBody());
 
-            multipart.addBodyPart(messageBodyPart);
-            multipart.addBodyPart(attachmentBodyPart);
+        attachmentBodyPart = new MimeBodyPart();
+        DataSource source = new FileDataSource(filename);
+        attachmentBodyPart.setDataHandler(new DataHandler(source));
+        attachmentBodyPart.setFileName(filename);
+
+        multipart.addBodyPart(messageBodyPart);
+        multipart.addBodyPart(attachmentBodyPart);
+        return multipart;
+    }
+
+    public Message createMessage(javax.mail.Session session, Mail mail) throws MessagingException
+    {
+        String to = mail.getReceipt().getCustomer().getMail();
+        String from = "advancedcashregister@gmail.com";
+
+        Message msg = new MimeMessage(session);
+        msg.setFrom(new InternetAddress(from));
+        InternetAddress[] address = {new InternetAddress(to)};
+        msg.setRecipients(Message.RecipientType.TO, address);
+        msg.setSubject(mail.getSubject());
+        msg.setSentDate(new Date());
+        return msg;
+    }
+
+    public void sendMail(Mail mail)
+    {
+        javax.mail.Session session = createSession(mail);
+        
+        try{
+            Message msg = createMessage(session, mail);
+
+            String filename = "receipt.txt";
+            savePaperReceiptFromMail(mail, filename);
+
+            Multipart multipart = concatenateEmailFromMailAndFile(mail, filename);
 
             msg.setContent(multipart);
-
             Transport.send(msg);
         }
         catch (Exception e) {
+            System.out.println("/nmail hasnt been sent, the reason is: /n/n");
             System.out.println(e);
         }
     }
