@@ -12,6 +12,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -101,7 +102,7 @@ public class MailSenderModule implements IMailSenderModule {
         return multipart;
     }
 
-    public Message createMessage(javax.mail.Session session, Mail mail) throws MessagingException
+    private Message createMessage(javax.mail.Session session, Mail mail) throws MessagingException
     {
         String to = mail.getReceipt().getCustomer().getMail();
         String from = "advancedcashregister@gmail.com";
@@ -130,9 +131,13 @@ public class MailSenderModule implements IMailSenderModule {
             msg.setContent(multipart);
             Transport.send(msg);
         }
-        catch (Exception e) {
-            System.out.println("/nmail hasnt been sent, the reason is: /n/n");
+        catch (MessagingException | FileNotFoundException | UnsupportedEncodingException e ) {
+            System.out.println("\nmail hasnt been sent, the reason is: \n\n");
             System.out.println(e);
+        }
+        catch(NullPointerException e){
+            System.out.println("\nmail hasnt been sent, probably argument has null attributes\n\n");
+
         }
     }
 }

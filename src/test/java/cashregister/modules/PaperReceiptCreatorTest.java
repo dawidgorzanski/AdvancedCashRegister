@@ -20,7 +20,7 @@ public class PaperReceiptCreatorTest {
     private Receipt receiptMock;
 
     @Test
-    public void createPaperReceipt_FineValues_ReturnPaperReceiptProperly() {
+    public void createPaperReceipt_ProperValues_ReturnPaperReceiptProperly() {
         List<ProductForSale> psList = new ArrayList<>();
         psList.add(new ProductForSale("beer", 20, 2.39, true));
         Mockito.when((receiptMock).getProductForSales()).thenReturn(psList);
