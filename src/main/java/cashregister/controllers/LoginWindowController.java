@@ -83,7 +83,7 @@ import java.util.ResourceBundle;
             String username = userIdTextField.getText();
             String password = userPasswordField.getText();
 
-            if (authenticationModule.login(username, password)){
+            if ( authenticationModule.login(username, password) ){
                 FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/MainWindow.fxml"));
                 Scene scene = new Scene(fxmlLoader.load());
                 cashregister.Main.setMainWindowController(fxmlLoader.getController());

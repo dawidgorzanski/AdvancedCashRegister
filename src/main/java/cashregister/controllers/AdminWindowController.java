@@ -4,6 +4,7 @@ import cashregister.model.Customer;
 import cashregister.model.ProductDefinition;
 import cashregister.model.User;
 import cashregister.modules.ModulesManager;
+import cashregister.modules.interfaces.IAuthenticationModule;
 import cashregister.modules.interfaces.ICustomerModule;
 import cashregister.modules.interfaces.IProductDefinitionModule;
 import cashregister.modules.interfaces.IUserModule;
@@ -14,10 +15,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
@@ -49,12 +47,14 @@ public class AdminWindowController {
     private IProductDefinitionModule productDefinitionModule;
     private ICustomerModule customerModule;
     private IUserModule userModule;
+    IAuthenticationModule authenticationModule;
 
     public AdminWindowController()
     {
         this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
         this.userModule = ModulesManager.getObjectByType(IUserModule.class);
+        this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
     }
 
     @FXML
@@ -182,9 +182,18 @@ public class AdminWindowController {
             if (userToDelete == null)
                 return;
 
-            NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
-            userModule.deleteUser(userToDelete);
-            tableViewUsers.setItems(userModule.getAllUsers());
+            if(authenticationModule.isLogged(userToDelete) ) {
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("błąd podczas usuwania");
+                alert.setHeaderText("błąd podczas usuwania");
+                alert.setContentText("Nie można usunąć użytkownika, który jest zalogowany!");
+                alert.showAndWait();
+            }
+            else {
+                NewUserWindowController controller = (NewUserWindowController)fxmlLoader.getController();
+                userModule.deleteUser(userToDelete);
+                tableViewUsers.setItems(userModule.getAllUsers());
+            }
         }
 
     }
