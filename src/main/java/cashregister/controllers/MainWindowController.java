@@ -178,9 +178,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
-
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
-        PaymentWindowController controller = (PaymentWindowController)fxmlLoader.getController();
         Parent root = (Parent) fxmlLoader.load();
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -188,7 +186,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.setWidth(750);
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
-        stage.show();
+        stage.showAndWait();
+        PaymentWindowController controller = (PaymentWindowController)fxmlLoader.getController();
         if (controller.getDialogResult().equals(DialogResult.OK)) {
             updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
         }
