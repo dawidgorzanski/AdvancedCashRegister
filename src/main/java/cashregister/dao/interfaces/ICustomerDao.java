@@ -5,5 +5,5 @@ import javafx.collections.ObservableList;
 
 public interface ICustomerDao extends IBaseDao<Customer>{
     Customer getCustomerByBarcode(String barcode);
-    ObservableList<Customer> getByName(String name);
+    ObservableList<Customer> getByNameBarcodeOrMail(String name);
 }

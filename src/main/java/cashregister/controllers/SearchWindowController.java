@@ -40,13 +40,25 @@ public class SearchWindowController {
 
     private IProductDefinitionModule productDefinitionModule;
     private ICustomerModule customerModule;
-    private IProductsListModule productsListModule;
 
     public SearchWindowController()
     {
         this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
-        this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
+    }
+
+    @FXML
+    private void initialize() throws IOException {
+        productName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        productQuantity.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getQuantity()));
+        productPrice.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getPrice()));
+        productBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
+
+        customerName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
+        customerAddress.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAddress()));
+        customerBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
+        customerMail.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMail()));
+        customerPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
     }
 
     @FXML
@@ -71,19 +83,10 @@ public class SearchWindowController {
     private void handleSearchButtonAction(ActionEvent actionEvent) throws IOException {
 
         if(tabPane.getSelectionModel().getSelectedIndex() == 0) {
-            productName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
-            productQuantity.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getQuantity()));
-            productPrice.setCellValueFactory(data -> new ReadOnlyObjectWrapper<>(data.getValue().getPrice()));
-            productBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
             tableViewProducts.setItems(productDefinitionModule.getByName(searchField.getText()));
         }
         else {
-            customerName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
-            customerAddress.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getAddress()));
-            customerBarcode.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getBarcode()));
-            customerMail.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getMail()));
-            customerPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
-            tableViewCustomers.setItems(customerModule.getByName(searchField.getText()));
+            tableViewCustomers.setItems(customerModule.getByNameBarcodeOrMail(searchField.getText()));
         }
         searchField.clear();
     }

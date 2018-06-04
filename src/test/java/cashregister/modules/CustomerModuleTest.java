@@ -122,9 +122,9 @@ public class CustomerModuleTest {
         customers.add(customer1);
         ObservableList<Customer> customersList = FXCollections.observableArrayList(customers);
 
-        Mockito.when(customerDaoMock.getByName(name)).thenReturn(customersList);
+        Mockito.when(customerDaoMock.getByNameBarcodeOrMail(name)).thenReturn(customersList);
 
-        Assert.assertTrue(customerModule.getByName(name) == customersList);
+        Assert.assertTrue(customerModule.getByNameBarcodeOrMail(name) == customersList);
     }
 
     @Test
@@ -136,9 +136,9 @@ public class CustomerModuleTest {
         customers.add(customer2);
         ObservableList<Customer> customersList = FXCollections.observableArrayList(customers);
 
-        Mockito.when(customerDaoMock.getByName(name)).thenReturn(customersList);
+        Mockito.when(customerDaoMock.getByNameBarcodeOrMail(name)).thenReturn(customersList);
 
-        Assert.assertTrue(customerModule.getByName(name) == customersList);
-        Assert.assertTrue(customerModule.getByName(name).size() == 2);
+        Assert.assertTrue(customerModule.getByNameBarcodeOrMail(name) == customersList);
+        Assert.assertTrue(customerModule.getByNameBarcodeOrMail(name).size() == 2);
     }
 }

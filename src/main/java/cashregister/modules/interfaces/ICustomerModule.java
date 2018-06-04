@@ -8,5 +8,5 @@ public interface ICustomerModule {
     void deleteCustomer(Customer customer);
     Customer getCustomerByBarcode(String barcode);
     ObservableList<Customer> getAllCustomers();
-    ObservableList<Customer> getByName(String name);
+    ObservableList<Customer> getByNameBarcodeOrMail(String name);
 }

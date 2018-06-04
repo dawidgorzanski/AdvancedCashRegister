@@ -5,6 +5,7 @@ import cashregister.model.Customer;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
+import org.hibernate.criterion.Criterion;
 import org.hibernate.criterion.Restrictions;
 
 import javax.transaction.Transactional;
@@ -26,9 +27,12 @@ public class CustomerDao extends BaseDao<Customer> implements ICustomerDao {
     }
 
     @Transactional
-    public ObservableList<Customer> getByName(String name) {
+    public ObservableList<Customer> getByNameBarcodeOrMail(String name) {
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
-        criteria.add(Restrictions.like("name", "%"+name+"%").ignoreCase());
+        Criterion criterion1 = Restrictions.like("name", "%"+name+"%").ignoreCase();
+        Criterion criterion2 = Restrictions.like("barcode", "%" + name + "%").ignoreCase();
+        Criterion criterion3 = Restrictions.like("mail", "%" + name + "%").ignoreCase();
+        criteria.add(Restrictions.or(criterion1, criterion2, criterion3));
         List<Customer> results = criteria.list();
         ObservableList<Customer> resultsList = FXCollections.observableArrayList(results);
         return resultsList;

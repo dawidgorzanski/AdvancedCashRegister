@@ -1,5 +1,5 @@
 Paragon Fiskalny
-123	1.0*1.0	1.0
+chlebek	1.0*6.5	6.5
 
 
-Razem: 1.0zł
+Razem: 6.5zł
