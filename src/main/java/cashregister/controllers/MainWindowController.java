@@ -178,8 +178,12 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
+        if(productsListModule.getShoppingList().isEmpty())
+            return;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
         Parent root = (Parent) fxmlLoader.load();
+        PaymentWindowController controller = (PaymentWindowController)fxmlLoader.getController();
+        controller.setMainWindowController(this);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
         stage.setScene(scene);
@@ -187,7 +191,6 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.setHeight(650);
         stage.initModality(Modality.APPLICATION_MODAL);
         stage.showAndWait();
-        PaymentWindowController controller = (PaymentWindowController)fxmlLoader.getController();
         if (controller.getDialogResult().equals(DialogResult.OK)) {
             updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
         }
@@ -286,15 +289,33 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             case Product:
             {
                 ProductDefinition product= productsListModule.getByBarcode(value);
-                boolean ageLimit = product.getAgeLimit();
-                if (ageLimit)
-                    showAgeLimitWarning();
-                productsListModule.addProduct(value);
-                updateTotalPrice();
+                if(product != null) {
+                    boolean ageLimit = product.getAgeLimit();
+                    if (ageLimit)
+                        showAgeLimitWarning();
+                    productsListModule.addProduct(value);
+                    updateTotalPrice();
+                }
+                else
+                {
+                    Alert alert = new Alert(Alert.AlertType.ERROR);
+                    alert.setTitle("Błąd");
+                    alert.setHeaderText("Błąd");
+                    alert.setContentText("Produkt nie znajduje się w bazie danych");
+                    alert.showAndWait();
+                }
+
                 break;
             }
-            case User:
             case Unknown:
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Błąd");
+                alert.setHeaderText("Błąd");
+                alert.setContentText("Nieprawidłowy kod");
+                alert.showAndWait();
+
+                break;
+            case User:
             {
                 Customer customer = customerModule.getCustomerByBarcode(value);
                 if (customer != null) {
@@ -315,7 +336,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         alert.showAndWait();
     }
 
-    private void updateTotalPrice() {
+    public void updateTotalPrice() {
         this.labelTotalPrice.setText("SUMA: " + String.valueOf(DoubleRounder.round(productsListModule.getTotalPrice(),2)) + " PLN");
     }
 
