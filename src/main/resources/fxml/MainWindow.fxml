@@ -25,32 +25,39 @@
             <RowConstraints maxHeight="1.7976931348623157E308" minHeight="10.0" prefHeight="513.0" vgrow="ALWAYS" />
          </rowConstraints>
          <children>
-            <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="92.0" prefWidth="750.0" GridPane.halignment="CENTER" GridPane.hgrow="SOMETIMES" GridPane.valignment="TOP" GridPane.vgrow="ALWAYS">
+            <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity">
                <children>
-                  <Label layoutX="14.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="59.0" text="KASJER:">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Button contentDisplay="RIGHT" layoutX="620.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="93.0" text="Wyloguj" />
-                  <Button fx:id="new_client" layoutX="507.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddClientButtonAction" prefHeight="44.0" prefWidth="103.0" text="Nowy klient" />
-                  <Button fx:id="admin" layoutX="338.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAdminButtonAction" prefHeight="44.0" prefWidth="158.0" text="Panel administratora" />
-                  <Label fx:id="cashier_name" layoutX="93.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="93.0" text="username">
-                     <font>
-                        <Font size="14.0" />
-                     </font></Label>
-                  <Label layoutX="186.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="59.0" text="KLIENT:">
-                     <font>
-                        <Font size="14.0" />
-                     </font>
-                  </Label>
-                  <Label fx:id="customer_name" layoutX="245.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="93.0" text="">
+                  <Pane layoutX="-14.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="750.0" AnchorPane.bottomAnchor="21.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="22.0">
+                     <children>
+                        <Button contentDisplay="RIGHT" layoutX="640.0" maxHeight="-Infinity" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" nodeOrientation="LEFT_TO_RIGHT" onAction="#handleLogoutButtonAction" prefHeight="44.0" prefWidth="81.0" text="Wyloguj" />
+                        <Button fx:id="new_client" layoutX="200.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAddClientButtonAction" prefHeight="44.0" prefWidth="100.0" text="Nowy klient" />
+                        <Button fx:id="admin" layoutX="30.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleAdminButtonAction" prefHeight="44.0" prefWidth="150.0" text="Panel administratora" />
+                         <Button fx:id="btnRemoveUserFromTransaction" layoutX="450.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRemoveCustomerFromTransaction" prefHeight="44.0" prefWidth="170.0" text="Usuń klienta z transakcji" visible="false" />
+                        <Button fx:id="display_customer" layoutX="320.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDisplayCustomerButtonAction" prefHeight="44.0" prefWidth="110.0" text="Wyświetl dane" visible="false" />
+                     </children>
+                  </Pane>
+                  <Label fx:id="cashier_name" layoutX="76.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="93.0" text="username">
                      <font>
                         <Font size="14.0" />
                      </font>
                   </Label>
-                  <Button fx:id="display_customer" layoutX="610.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleDisplayCustomerButtonAction" prefHeight="44.0" prefWidth="103.0" text="Wyświetl dane" visible="false" />
-                   <Button fx:id="btnRemoveUserFromTransaction" layoutX="750.0" layoutY="24.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#handleRemoveCustomerFromTransaction" prefHeight="44.0" prefWidth="150.0" text="Usuń klienta z transakcji" visible="false" />
-               </children></Pane>
+                  <Label layoutX="188.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="59.0" text="KLIENT:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="customer_name" layoutX="247.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="93.0" text="">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="14.0" layoutY="22.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="44.0" prefWidth="59.0" text="KASJER:">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+               </children>
+            </AnchorPane>
             <SplitPane dividerPositions="0.5013368983957219" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="418.0" prefWidth="750.0" GridPane.rowIndex="1">
               <items>
                 <AnchorPane fx:id="pane" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="371.0" prefWidth="362.0">
