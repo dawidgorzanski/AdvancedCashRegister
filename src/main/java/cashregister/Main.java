@@ -19,7 +19,7 @@ import java.util.List;
 
 public class Main extends Application {
     public Main() {
-        BarcodeReader.initializeBarcode("COM4");
+        BarcodeReader.initializeBarcode("COM3");
     }
 
     @Override

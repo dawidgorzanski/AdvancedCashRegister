@@ -13,6 +13,7 @@ import cashregister.model.enums.ObjectType;
 import cashregister.modules.ModulesManager;
 import cashregister.modules.ProductDefinitionModule;
 import cashregister.modules.interfaces.*;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.extensions.DialogResult;
@@ -279,7 +280,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     @Override
     public void barcodeValueArrived(String value) {
-        handleBarcode(value);
+        handleBarcode(value.replace("\r\n", ""));
     }
 
     private void handleBarcode(String value) {
@@ -359,14 +360,18 @@ public class MainWindowController implements IBarcodeReaderDataListener {
 
     private void updateCurrentCustomerForTransaction(Customer customer) {
         if (customer != null) {
-            customer_name.setText(customer.getName());
-            display_customer.setVisible(true);
-            btnRemoveUserFromTransaction.setVisible(true);
+            Platform.runLater(() -> {
+                customer_name.setText(customer.getName());
+                display_customer.setVisible(true);
+                btnRemoveUserFromTransaction.setVisible(true);
+            });
         }
         else {
-            customer_name.setText("");
-            display_customer.setVisible(false);
-            btnRemoveUserFromTransaction.setVisible(false);
+            Platform.runLater(() -> {
+                customer_name.setText("");
+                display_customer.setVisible(false);
+                btnRemoveUserFromTransaction.setVisible(false);
+            });
         }
     }
 }

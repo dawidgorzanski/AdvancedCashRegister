@@ -34,13 +34,7 @@ public class AuthenticationModule implements IAuthenticationModule {
     }
 
     public boolean isLogged(User user) {
-        //System.out.println(""+user.getName()+user.getPassword()+user.getIsAdmin()+user.getId()+"\n");
-        //System.out.println(""+getLoggedUser().getName()+getLoggedUser().getPassword()+getLoggedUser().getIsAdmin()+getLoggedUser().getId()+"\n");
-
-        return user.getName().equals(getLoggedUser().getName()) && user.getPassword().equals(getLoggedUser().getPassword()) && user.getIsAdmin() == getLoggedUser().getIsAdmin() && user.getId() == getLoggedUser().getId();
-        //I dont know why it doesnt work when returned as below
-        //return getLoggedUser().equals(userDao.getUserByUserNameAndPassword(user.getName(), user.getPassword()));
-
+        return user.getId() == getLoggedUser().getId();
     }
 
 }
