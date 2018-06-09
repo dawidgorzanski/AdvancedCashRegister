@@ -1,8 +1,5 @@
 package cashregister.modules;
 
-import cashregister.dao.PaymentCardDao;
-import cashregister.dao.ProductDefinitionDao;
-import cashregister.dao.interfaces.IPaymentCardDao;
 import cashregister.dao.interfaces.IReceiptDao;
 import cashregister.model.*;
 import cashregister.modules.interfaces.IProductDefinitionModule;
@@ -33,9 +30,6 @@ public class PaymentModuleTest {
 
     @Mock
     IProductDefinitionModule productDefinitionModule;
-
-    @Mock
-    IPaymentCardDao paymentCardDao;
 
     PaymentModule paymentModule;
 

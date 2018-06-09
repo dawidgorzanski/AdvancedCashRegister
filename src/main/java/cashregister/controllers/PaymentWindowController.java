@@ -1,6 +1,5 @@
 package cashregister.controllers;
 
-import cashregister.dao.PaymentCardDao;
 import cashregister.model.*;
 import cashregister.modules.EmailRunnable;
 import cashregister.modules.ModulesManager;
@@ -19,15 +18,11 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.net.URL;
 import java.text.DecimalFormat;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
-import java.util.concurrent.TimeUnit;
 
 public class PaymentWindowController extends DialogController implements Initializable {
 
@@ -74,12 +69,11 @@ public class PaymentWindowController extends DialogController implements Initial
 
     @FXML
     private void handleCardPayment(ActionEvent event){
-        cashField.setVisible(true);
-        cashLabel.setVisible(true);
+        cashField.setVisible(false);
+        cashLabel.setVisible(false);
         cashField.clear();
         changeField.clear();
         changeField.setVisible(false);
-        cashLabel.setText("PIN: ");
         changeLabel.setVisible(false);
         plnLabel1.setVisible(false);
         plnLabel2.setVisible(false);
@@ -146,8 +140,8 @@ public class PaymentWindowController extends DialogController implements Initial
             }
         }
         else{
-            changeField.setText(paymentModule.cardPaymentHandler(Integer.parseInt(cashField.getText()), price));
-            changeField.setVisible(true);
+            Stage stage = (Stage) confirmButton.getScene().getWindow();
+            stage.close();
         }
         Receipt receipt = paymentModule.createSummary(productsListModule);
         String paperReceipt = paperReceiptCreator.createPaperReceipt(receipt);

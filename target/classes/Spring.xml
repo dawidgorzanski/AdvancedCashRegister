@@ -26,9 +26,6 @@
     <bean id="customerDao" class="cashregister.dao.CustomerDao">
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
-    <bean id="paymendCardDao" class="cashregister.dao.PaymentCardDao">
-        <property name="sessionFactory" ref="sessionFactory" />
-    </bean>
 
     <!-- Modules -->
     <bean id="authenticationModule" class="cashregister.modules.AuthenticationModule" autowire="constructor" />

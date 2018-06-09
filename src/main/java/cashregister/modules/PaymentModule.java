@@ -1,6 +1,5 @@
 package cashregister.modules;
 
-import cashregister.dao.interfaces.IPaymentCardDao;
 import cashregister.dao.interfaces.IReceiptDao;
 import cashregister.model.*;
 import cashregister.modules.interfaces.IPaymentModule;
@@ -45,25 +44,4 @@ public class PaymentModule implements IPaymentModule {
         productsListModule.deleteCustomerFromTransaction();
     }
 
-    @Transactional
-    public String cardPaymentHandler(int sum, double price){
-        boolean isInTable = false;
-        IPaymentCardDao paymentCardDao = ModulesManager.getObjectByType(IPaymentCardDao.class);
-        String cardPaymentMessage = new String();
-        List<PaymentCard> paymentCardList = new ArrayList<PaymentCard>(paymentCardDao.getAll());
-        for(PaymentCard it : paymentCardList) {
-            if (it.getPIN() == sum) {
-                isInTable = true;
-                if (it.getAccountBalance() > price) {
-                    paymentCardDao.updateAccountBalance(it,price); // sam nie wiem
-                    cardPaymentMessage += "Transakcja zakończona pomyślnie.";
-                } else
-                    cardPaymentMessage += "Za mało środków na koncie!";
-            }
-        }
-        if(!isInTable)
-            cardPaymentMessage += "Podano zły PIN!";
-
-        return cardPaymentMessage;
-    }
 }
