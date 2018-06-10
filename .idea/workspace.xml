@@ -1,38 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="5c5d9b1c-5a8e-42bd-9f45-39f5a5d259c6" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Lato-Bold.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/fonts/Lato-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style/adminWindow.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style/displayCustomerWindow.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style/loginWindow.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/controllers/EditQuantityWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/controllers/EditQuantityWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/DisplayCustomerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/DisplayCustomerWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/EditQuantityWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/EditQuantityWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/LoginWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/LoginWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/NewClientWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/NewClientWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/NewProductWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/NewProductWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/NewUserWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/NewUserWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/SearchWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/SearchWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/Main$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/Main$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/EditQuantityWindowController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/controllers/EditQuantityWindowController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/AdminWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/DisplayCustomerWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/DisplayCustomerWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/EditQuantityWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/EditQuantityWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/LoginWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/LoginWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/MainWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/MainWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/NewClientWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/NewClientWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/fxml/NewProductWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/fxml/NewProductWindow.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="5c5d9b1c-5a8e-42bd-9f45-39f5a5d259c6" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -219,11 +188,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1296" />
-    <option name="height" value="776" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="794" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -671,7 +639,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22028000" />
+    <option name="totallyTimeSpent" value="22610000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="794" extended-state="6" />
@@ -687,7 +655,7 @@
       <window_info anchor="right" id="Maven Projects" order="4" />
       <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="15" weight="0.32911393" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33055556" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33055556" />
       <window_info anchor="bottom" id="Spring" order="13" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="2" />

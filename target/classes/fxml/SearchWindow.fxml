@@ -63,7 +63,7 @@
                                         <columns>
                                           <TableColumn fx:id="customerName" prefWidth="150.0" text="Imię i nazwisko" />
                                           <TableColumn fx:id="customerBarcode" prefWidth="150.0" text="Kod" />
-                                          <TableColumn fx:id="customerMail" prefWidth="170.0" text="E-mail" />
+                                          <TableColumn fx:id="customerMail" prefWidth="180.0" text="E-mail" />
                                           <TableColumn fx:id="customerAddress" prefWidth="150.0" text="Adres" />
                                           <TableColumn fx:id="customerPhone" prefWidth="120.0" text="Numer telefonu" />
                                       </columns>
