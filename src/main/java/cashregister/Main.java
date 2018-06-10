@@ -28,8 +28,9 @@ public class Main extends Application {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/LoginWindow.fxml"));
         Parent root = fxmlLoader.load();
         primaryStage.setTitle("Kasa fiskalna");
-        Scene scene = new Scene (root,300,300);
-
+        Scene scene = new Scene (root,335,400);
+        javafx.scene.text.Font latoFont = javafx.scene.text.Font.loadFont(getClass().getResourceAsStream("/fonts/Lato-Regular.ttf"), 10);
+        javafx.scene.text.Font latoBoldFont = javafx.scene.text.Font.loadFont(getClass().getResourceAsStream("/fonts/Lato-Bold.ttf"), 10);
         primaryStage.setScene(scene);
 
         primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>() {

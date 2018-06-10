@@ -12,7 +12,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.DisplayCustomerWindowController">
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@../style/style.css, @../style/displayCustomerWindow.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.DisplayCustomerWindowController">
 
     <GridPane VBox.vgrow="ALWAYS">
         <columnConstraints>
@@ -28,41 +28,38 @@
 
             <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="634.0" prefWidth="748.0">
 
-                <Text layoutX="105.0" layoutY="62.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Dane klienta">
-                    <font>
-                        <Font name="System Bold" size="24.0" />
-                    </font>
+                <Text id="title" layoutX="60.0" layoutY="65.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DANE KLIENTA">
                 </Text>
-                <Label layoutX="60.0" layoutY="110.0" prefHeight="44.0" prefWidth="156.0" text="Imię i nazwisko">
+                <Label styleClass="labels" layoutX="60.0" layoutY="110.0" prefHeight="50.0" prefWidth="156.0" text="Imię i nazwisko:">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="60.0" layoutY="176.0" prefHeight="44.0" prefWidth="156.0" text="Adres">
+                <Label styleClass="labels" layoutX="60.0" layoutY="180.0" prefHeight="50.0" prefWidth="156.0" text="Adres:">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="60.0" layoutY="241.0" prefHeight="44.0" prefWidth="156.0" text="Mail">
+                <Label styleClass="labels" layoutX="60.0" layoutY="250.0" prefHeight="50.0" prefWidth="156.0" text="E-mail:">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="60.0" layoutY="310.0" prefHeight="44.0" prefWidth="156.0" text="Telefon">
+                <Label styleClass="labels" layoutX="60.0" layoutY="320.0" prefHeight="44.0" prefWidth="156.0" text="Telefon:">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label layoutX="60.0" layoutY="376.0" prefHeight="44.0" prefWidth="156.0" text="Kod kreskowy">
+                <Label styleClass="labels" layoutX="60.0" layoutY="390.0" prefHeight="50.0" prefWidth="156.0" text="Kod klienta:">
                     <font>
                         <Font size="18.0" />
                     </font>
                 </Label>
-                <Label fx:id="name_label" layoutX="307.0" layoutY="110.0" prefHeight="44.0" prefWidth="318.0" text="Name label" />
-                <Label fx:id="address_label" layoutX="307.0" layoutY="176.0" prefHeight="44.0" prefWidth="318.0" text="Address Label" />
-                <Label fx:id="mail_label" layoutX="307.0" layoutY="241.0" prefHeight="44.0" prefWidth="318.0" text="Mail Label" />
-                <Label fx:id="phone_label" layoutX="307.0" layoutY="310.0" prefHeight="44.0" prefWidth="318.0" text="Phone Label" />
-                <Label fx:id="barcode_label" layoutX="307.0" layoutY="376.0" prefHeight="44.0" prefWidth="318.0" text="Barcode Label" />
+                <Label fx:id="name_label" layoutX="307.0" layoutY="110.0" prefHeight="50.0" prefWidth="318.0" text="Name label" />
+                <Label fx:id="address_label" layoutX="307.0" layoutY="180.0" prefHeight="50.0" prefWidth="318.0" text="Address Label" />
+                <Label fx:id="mail_label" layoutX="307.0" layoutY="250.0" prefHeight="50.0" prefWidth="318.0" text="Mail Label" />
+                <Label fx:id="phone_label" layoutX="307.0" layoutY="320.0" prefHeight="50.0" prefWidth="318.0" text="Phone Label" />
+                <Label fx:id="barcode_label" layoutX="307.0" layoutY="390.0" prefHeight="50.0" prefWidth="318.0" text="Barcode Label" />
                 <Button layoutX="286.0" layoutY="485.0" mnemonicParsing="false" onAction="#handleOkButtonAction" prefHeight="61.0" prefWidth="118.0" text="Ok" />
 
             </AnchorPane>

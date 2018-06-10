@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<VBox maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="150.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.EditQuantityWindowController">
+<VBox maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="300.0" onKeyPressed="#handleKeyAction" prefHeight="150.0" prefWidth="300.0" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.EditQuantityWindowController">
   <children>
     <AnchorPane maxHeight="150.0" maxWidth="300.0" minHeight="150.0" minWidth="300.0" prefHeight="139.0" prefWidth="200.0">
       <children>
@@ -16,9 +16,9 @@
             <Font size="18.0" />
           </font>
         </Label>
-            <Label layoutX="14.0" layoutY="40.0" prefHeight="27.0" prefWidth="46.0" text="Ilość:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="40.0" />
-            <Button fx:id="btnCancel" layoutX="236.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleCancelButton" text="Anuluj" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
-            <Button fx:id="btnOk" layoutX="168.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleOKButton" prefHeight="25.0" prefWidth="52.0" text="OK" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="80.0" />
+            <Label layoutX="14.0" layoutY="45.0" prefHeight="27.0" prefWidth="46.0" text="Ilość:" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="45.0" />
+            <Button fx:id="btnCancel" layoutX="230.0" layoutY="111.0" mnemonicParsing="false" onAction="#handleCancelButton" prefHeight="30.0" text="Anuluj" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="14.0" />
+            <Button fx:id="btnOk" layoutX="160.0" layoutY="106.0" mnemonicParsing="false" onAction="#handleOKButton" prefHeight="30.0" prefWidth="55.0" text="OK" AnchorPane.bottomAnchor="14.0" AnchorPane.rightAnchor="85.0" />
             <TextField fx:id="tbQuantity" layoutX="60.0" layoutY="41.0" prefHeight="25.0" prefWidth="225.0" AnchorPane.leftAnchor="60.0" AnchorPane.topAnchor="41.0" />
       </children>
     </AnchorPane>

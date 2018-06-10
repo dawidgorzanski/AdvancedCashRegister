@@ -5,9 +5,13 @@ import javafx.extensions.DialogController;
 import javafx.extensions.DialogResult;
 import javafx.scene.control.*;
 import javafx.fxml.FXML;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Stage;
 
 import javafx.event.ActionEvent;
+
+import java.io.IOException;
 
 public class EditQuantityWindowController extends DialogController {
 
@@ -27,6 +31,19 @@ public class EditQuantityWindowController extends DialogController {
 
         this.setDialogResult(DialogResult.OK);
         closeWindow();
+    }
+
+    @FXML
+    private void handleKeyAction(KeyEvent key) throws IOException {
+        KeyCode keyCode = key.getCode();
+        if (keyCode.equals(KeyCode.ENTER)) {
+            btnOk.fire();
+            return;
+        }
+        if (keyCode.equals(KeyCode.ESCAPE)) {
+            btnCancel.fire();
+            return;
+        }
     }
 
     private void showAlert() {

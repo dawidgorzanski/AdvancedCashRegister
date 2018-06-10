@@ -9,7 +9,8 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.AdminWindowController">
+<?import javafx.scene.control.Label?>
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="750.0" stylesheets="@../style/style.css, @../style/adminWindow.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="cashregister.controllers.AdminWindowController">
    <children>
       <TabPane fx:id="tabPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="430.0" prefWidth="750.0" tabClosingPolicy="UNAVAILABLE">
         <tabs>
@@ -18,11 +19,14 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="475.0" prefWidth="745.0">
                      <children>
                         <TableView fx:id="tableViewProducts" layoutX="-2.0" layoutY="-1.0" prefHeight="399.0" prefWidth="756.0">
-                          <columns>
-                            <TableColumn fx:id="tableColumnProductName" prefWidth="150.0" text="Nazwa" />
-                            <TableColumn fx:id="tableColumnProductQuantity" prefWidth="75.0" text="Ilość" />
+                            <placeholder>
+                                <Label text="" />
+                            </placeholder>
+                            <columns>
+                            <TableColumn fx:id="tableColumnProductName" prefWidth="180.0" text="Nazwa" />
+                            <TableColumn fx:id="tableColumnProductQuantity" prefWidth="100.0" text="Ilość" />
                               <TableColumn fx:id="tableColumnProductPrice" prefWidth="100.0" text="Cena za szt." />
-                              <TableColumn fx:id="tableColumnProductBarcode" prefWidth="100.0" text="Kod" />
+                              <TableColumn fx:id="tableColumnProductBarcode" prefWidth="180.0" text="Kod" />
                           </columns>
                         </TableView>
                      </children>
@@ -34,11 +38,14 @@
                   <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tableViewCustomers" prefHeight="397.0" prefWidth="750.0">
-                           <columns>
+                            <placeholder>
+                                <Label text="" />
+                            </placeholder>
+                            <columns>
                               <TableColumn fx:id="tableColumnCustomerName" prefWidth="150.0" text="Imię i nazwisko" />
                               <TableColumn fx:id="tableColumnCustomerBarcode" prefWidth="150.0" text="Kod" />
-                               <TableColumn fx:id="tableColumnCustomerMail" prefWidth="100.0" text="E-mail" />
-                               <TableColumn fx:id="tableColumnCustomerAddress" prefWidth="150.0" text="Adres" />
+                               <TableColumn fx:id="tableColumnCustomerMail" prefWidth="180.0" text="E-mail" />
+                               <TableColumn fx:id="tableColumnCustomerAddress" prefWidth="140.0" text="Adres" />
                                <TableColumn fx:id="tableColumnCustomerPhone" prefWidth="120.0" text="Numer telefonu" />
                            </columns>
                         </TableView>
@@ -51,8 +58,11 @@
               <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
                         <TableView fx:id="tableViewUsers" prefHeight="397.0" prefWidth="750.0">
-                          <columns>
-                            <TableColumn fx:id="tableColumnUserName" prefWidth="150.0" text="Nazwa użytkownika" />
+                            <placeholder>
+                                <Label text="" />
+                            </placeholder>
+                            <columns>
+                            <TableColumn fx:id="tableColumnUserName" prefWidth="200.0" text="Nazwa użytkownika" />
                             <TableColumn fx:id="tableColumnIsAdmin" prefWidth="150.0" text="Czy administrator" />
                           </columns>
                         </TableView>

@@ -1,0 +1,40 @@
+
+.root {
+    -fx-font-size: 14px;
+    -fx-font-family: Lato;
+    -fx-background-color: #fcfdfe;
+    -fx-border-radius: 0;
+}
+
+.text-field {
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 0;
+}
+
+.password-field {
+    -fx-background-color: #f2f2f2;
+    -fx-background-radius: 0;
+}
+
+#enter {
+    -fx-background-color: #4CAF50;
+    -fx-background-radius: 0;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+}
+
+#enter:hover {
+    -fx-background-color: #43A047;
+}
+
+#exit {
+    -fx-background-color: #A70F01;
+    -fx-background-radius: 0;
+    -fx-text-fill: #ffffff;
+    -fx-font-weight: bold;
+}
+
+#exit:hover {
+    -fx-background-color: #77241D;
+}
