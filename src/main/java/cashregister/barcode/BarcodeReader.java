@@ -12,10 +12,10 @@ public class BarcodeReader {
     private static Set<IBarcodeReaderDataListener> listeners;
     private static boolean initialized = false;
 
-    public static void initializeBarcode(String port)
+    public static boolean initializeBarcode(String port)
     {
         if (initialized)
-            return;
+            return initialized;
 
         listeners = new HashSet<IBarcodeReaderDataListener>();
         comPort = SerialPort.getCommPort(port);
@@ -23,6 +23,7 @@ public class BarcodeReader {
         comPort.addDataListener(new CustomSerialPortDataListener());
 
         initialized = true;
+        return initialized;
     }
 
     public static void uinitializeBarcode() {
