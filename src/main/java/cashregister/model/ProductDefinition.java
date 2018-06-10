@@ -1,5 +1,7 @@
 package cashregister.model;
 
+import javafx.scene.control.Alert;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -54,6 +56,10 @@ public class ProductDefinition {
 
     public void decreaseQuantityBy(double quantity) {
         this.quantity -= quantity;
+        if(this.quantity<0)
+        {
+            showNegativeQuantityAlert();
+        }
     }
 
     public double getPrice() {
@@ -90,5 +96,13 @@ public class ProductDefinition {
 
     public void setProductForSales(List<ProductForSale> productForSales) {
         this.productForSales = productForSales;
+    }
+
+    private void showNegativeQuantityAlert() {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Ilość produktów w bazie mniejsza od 0");
+        alert.setHeaderText("Ilość produktów w bazie mniejsza od 0");
+        alert.setContentText("Proszę powiadomić administratora.");
+        alert.showAndWait();
     }
 }
