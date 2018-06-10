@@ -149,7 +149,6 @@ public class PaymentWindowController extends DialogController implements Initial
 
         EmailRunnable emailRunnable = new EmailRunnable(mailSenderModule, mail);
         new Thread(emailRunnable).start();
-        paymentModule.createSummary(productsListModule);
 
         paymentModule.finalizePayment(productsListModule, productDefinitionModule);
 
