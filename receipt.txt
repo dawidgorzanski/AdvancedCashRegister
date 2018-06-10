@@ -1,5 +1,5 @@
 Paragon Fiskalny
-wódeczka	1.0*19.0	19.0
+chlebek	1.0*6.5	6.5
 
 
-Razem: 19.0zł
+Razem: 6.5zł
