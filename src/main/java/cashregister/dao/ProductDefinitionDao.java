@@ -9,11 +9,19 @@ import org.hibernate.criterion.Restrictions;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * Data Access Object for ProductDefinition class.
+ */
 public class ProductDefinitionDao extends BaseDao<ProductDefinition> implements IProductDefinitionDao {
     public ProductDefinitionDao() {
         super.setClass(ProductDefinition.class);
     }
 
+    /**
+     * Returns ProductDefinition by barcode.
+     * @param barcode Barcode string.
+     * @return ProductDefinition or null value if barcode not exists.
+     */
     @Transactional
     public ProductDefinition getByBarcode(String barcode) {
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ProductDefinition.class);
@@ -25,6 +33,11 @@ public class ProductDefinitionDao extends BaseDao<ProductDefinition> implements 
         return null;
     }
 
+    /**
+     * Returns ProductDefinitions by name.
+     * @param name Value to search.
+     * @return List of ProductDefinitions which match searching criteria.
+     */
     @Transactional
     public ObservableList<ProductDefinition> getByName(String name) {
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(ProductDefinition.class);

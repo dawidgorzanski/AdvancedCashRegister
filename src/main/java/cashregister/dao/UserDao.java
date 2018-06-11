@@ -2,18 +2,26 @@ package cashregister.dao;
 
 import cashregister.dao.interfaces.IUserDao;
 import cashregister.model.User;
-import javafx.collections.ObservableList;
 import org.hibernate.Criteria;
 import org.hibernate.criterion.Restrictions;
 
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * Data Access Object for User class.
+ */
 public class UserDao extends BaseDao<User> implements IUserDao {
     public UserDao() {
         super.setClass(User.class);
     }
 
+    /**
+     * Returns User by username and password.
+     * @param username UserName
+     * @param password Password
+     * @return User
+     */
     @Transactional
     public User getUserByUserNameAndPassword(String username, String password){
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);
@@ -26,6 +34,11 @@ public class UserDao extends BaseDao<User> implements IUserDao {
         return null;
     }
 
+    /**
+     * Returns User by username.
+     * @param username UserName
+     * @return User
+     */
     @Transactional
     public User getUserByUserName(String username){
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(User.class);

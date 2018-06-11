@@ -11,10 +11,18 @@ import org.hibernate.criterion.Restrictions;
 import javax.transaction.Transactional;
 import java.util.List;
 
+/**
+ * Data Access Object for Customer class.
+ */
 public class CustomerDao extends BaseDao<Customer> implements ICustomerDao {
 
     public CustomerDao() {super.setClass(Customer.class);}
 
+    /**
+     * Returns Customer by barcode.
+     * @param barcode Barcode string.
+     * @return Customer or null value if barcode not exists.
+     */
     @Transactional
     public Customer getCustomerByBarcode(String barcode) {
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
@@ -26,6 +34,11 @@ public class CustomerDao extends BaseDao<Customer> implements ICustomerDao {
         return null;
     }
 
+    /**
+     * Returns Customers by name, barcode or mail.
+     * @param name Value to search.
+     * @return List of Customers which match searching criteria.
+     */
     @Transactional
     public ObservableList<Customer> getByNameBarcodeOrMail(String name) {
         final Criteria criteria = sessionFactory.getCurrentSession().createCriteria(Customer.class);
