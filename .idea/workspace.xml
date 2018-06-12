@@ -47,21 +47,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="304">
-              <caret line="359" column="55" lean-forward="false" selection-start-line="359" selection-start-column="55" selection-end-line="359" selection-end-column="55" />
+            <state relative-caret-position="372">
+              <caret line="282" column="4" lean-forward="true" selection-start-line="282" selection-start-column="4" selection-end-line="285" selection-end-column="7" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarcodeReader.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="BarcodeReader.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/barcode/BarcodeReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+            <state relative-caret-position="1003">
+              <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
               <folding />
             </state>
           </provider>
@@ -110,7 +110,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cashregister/helpers/ValidatorHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/ProductDefinitionModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/LoginWindowController.java" />
         <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java" />
@@ -161,6 +160,7 @@
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/SearchWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/Main.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cashregister/barcode/BarcodeReader.java" />
       </list>
     </option>
   </component>
@@ -1222,18 +1222,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/barcode/BarcodeReader.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="10" column="31" lean-forward="false" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        <state relative-caret-position="372">
+          <caret line="282" column="4" lean-forward="true" selection-start-line="282" selection-start-column="4" selection-end-line="285" selection-end-column="7" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/barcode/BarcodeReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="304">
-          <caret line="359" column="55" lean-forward="false" selection-start-line="359" selection-start-column="55" selection-end-line="359" selection-end-column="55" />
+        <state relative-caret-position="1003">
+          <caret line="65" column="4" lean-forward="false" selection-start-line="65" selection-start-column="4" selection-end-line="65" selection-end-column="4" />
           <folding />
         </state>
       </provider>

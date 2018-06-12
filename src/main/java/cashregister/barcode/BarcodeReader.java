@@ -12,6 +12,10 @@ public class BarcodeReader {
     private static Set<IBarcodeReaderDataListener> listeners;
     private static boolean initialized = false;
 
+    /**
+     * Initializes connection
+     * @param port
+     */
     public static boolean initializeBarcode(String port)
     {
         if (initialized)
@@ -26,12 +30,19 @@ public class BarcodeReader {
         return initialized;
     }
 
+    /**
+     * Finishes connection
+     */
     public static void uinitializeBarcode() {
         if (comPort != null) {
             comPort.closePort();
         }
     }
 
+    /**
+     * Adds listener
+     * @param listener
+     */
     public static boolean addListener(IBarcodeReaderDataListener listener) {
         if (!initialized)
             return false;
@@ -40,6 +51,10 @@ public class BarcodeReader {
         return true;
     }
 
+    /**
+     * Notifies listeners about barcode
+     * @param value
+     */
     public static void notifyAllListeners(String value) {
         for(IBarcodeReaderDataListener listener : listeners) {
             listener.barcodeValueArrived(value);
