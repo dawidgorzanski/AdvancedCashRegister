@@ -22,11 +22,18 @@ import javafx.scene.text.Text;
 import java.io.IOException;
 
 
+/**
+ * Controller class for NewClientWindow
+ */
 public class NewClientWindowController {
 
     private ICustomerModule customerModule;
     private IAuthenticationModule authenticationModule;
     private Customer customer;
+
+    /**
+     * Initializes IAuthenticationModule and ICustomerModule by ModulesManager
+     */
     public NewClientWindowController() {
 
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
@@ -40,6 +47,10 @@ public class NewClientWindowController {
     @FXML
     private Text title;
 
+    /**
+     * Function for displaying all stored information about the given customer
+     * @param customer
+     */
     public void setCustomer(Customer customer) {
         this.customer = customer;
         if (customer != null) {
@@ -52,6 +63,11 @@ public class NewClientWindowController {
         }
     }
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE or ENTER key is clicked
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
@@ -65,15 +81,29 @@ public class NewClientWindowController {
         }
     }
 
+    /**
+     * Function is activated when cancel button is clicked, function closes current stage
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) throws IOException {
         exitAction(event);
     }
 
+    /**
+     * Function closes current stage
+     * @param event
+     * @throws IOException
+     */
     private void exitAction(ActionEvent event) throws IOException {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Function is activated when wrong Customer data was entered, function shows an error alert
+     * @param content
+     */
     private void showErrorAlert(String content) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
@@ -82,6 +112,11 @@ public class NewClientWindowController {
         alert.showAndWait();
     }
 
+    /**
+     * Function is activated when OK button is clicked, validates entered data and creates new Customer with entered informations
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
         if (!ValidatorHelper.validateNameNotEmpty(nameField.getText())) {

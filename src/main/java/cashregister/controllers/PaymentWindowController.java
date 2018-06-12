@@ -24,6 +24,9 @@ import java.net.URL;
 import java.text.DecimalFormat;
 import java.util.ResourceBundle;
 
+/**
+ * Controller class for PaymentWindow
+ */
 public class PaymentWindowController extends DialogController implements Initializable {
 
     private MainWindowController mainWindowController;
@@ -35,6 +38,9 @@ public class PaymentWindowController extends DialogController implements Initial
     private IPaperReceiptCreator paperReceiptCreator;
     private IMailSenderModule mailSenderModule;
 
+    /**
+     * Initializes IProductDefinitionModule, IPaymentModule, IProductDefinitionModule, IPaperReceiptCreatorModule, IMailSenderModule by ModulesManager
+     */
     public PaymentWindowController() {
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
         this.paymentModule = ModulesManager.getObjectByType(IPaymentModule.class);
@@ -52,6 +58,10 @@ public class PaymentWindowController extends DialogController implements Initial
     @FXML
     private Button confirmButton;
 
+    /**
+     * Function is activated when Cash button is clicked, sets fields needed for cash payment visible
+     * @param event
+     */
     @FXML
     private void handleCashButtonAction(ActionEvent event) {
         cashField.setVisible(true);
@@ -63,6 +73,10 @@ public class PaymentWindowController extends DialogController implements Initial
         cardHandling = false;
     }
 
+    /**
+     * Function is activated when Card button is clicked, sets fields needed for card payment visible
+     * @param event
+     */
     @FXML
     private void handleCardPayment(ActionEvent event){
         cashField.setVisible(false);
@@ -73,12 +87,22 @@ public class PaymentWindowController extends DialogController implements Initial
         cardHandling = true;
     }
 
+    /**
+     * Function is activated when cancel button is clicked, function closes current stage
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {
         setDialogResult(DialogResult.Cancel);
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Function hides payment fields and sets total price
+     * @param location
+     * @param resources
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cashField.setVisible(false);
@@ -90,6 +114,11 @@ public class PaymentWindowController extends DialogController implements Initial
         textTotalPrice.setText("SUMA: " + this.price + " PLN");
     }
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE or ENTER key is clicked
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
@@ -105,6 +134,11 @@ public class PaymentWindowController extends DialogController implements Initial
         }
     }
 
+    /**
+     * Function is activated when OK button is clicked, function handles payment: validates entered data, calculates change, creates receipt and sends email
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleConfirmButtonAction(ActionEvent event) throws IOException
     {
@@ -150,8 +184,12 @@ public class PaymentWindowController extends DialogController implements Initial
 
         setDialogResult(DialogResult.OK);
     }
+    }
 
+    /**
+     * Function sets mainWindowController
+     * @param mainWindowController
+     */
     public void setMainWindowController(MainWindowController mainWindowController) {
             this.mainWindowController = mainWindowController;
     }
-}

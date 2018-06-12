@@ -22,6 +22,11 @@ public class Main extends Application {
         BarcodeReader.initializeBarcode("COM3");
     }
 
+    /**
+     * Shows windor for logging
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         this.primaryStage = primaryStage;
@@ -49,15 +54,27 @@ public class Main extends Application {
     }
 
     private static Stage primaryStage;
+    /**
+     * Gets primaryStage
+     * @return primaryStage
+     */
     public static Stage getPrimaryStage()
     {
         return primaryStage;
     }
 
     private static MainWindowController mainWindowController;
+    /**
+     * Gets mainWindowController
+     * @return mainWindowController
+     */
     public static MainWindowController getMainWindowController() {
         return mainWindowController;
     }
+    /**
+     * Sets mainWindowController
+     * @param controller
+     */
     public static void setMainWindowController(MainWindowController controller) {
         mainWindowController = controller;
     }

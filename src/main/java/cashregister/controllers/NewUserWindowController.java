@@ -17,12 +17,17 @@ import javafx.scene.text.Text;
 
 import java.io.IOException;
 
-
+/**
+ * Controller class for NewUserWindow
+ */
 public class NewUserWindowController {
 
     private IUserModule userModule;
     private User user;
 
+    /**
+     * Initializes IUserModule by ModulesManager
+     */
     public NewUserWindowController() { this.userModule = ModulesManager.getObjectByType(IUserModule.class);
     }
 
@@ -39,6 +44,10 @@ public class NewUserWindowController {
     private boolean edit;
     private String oldName;
 
+    /**
+     * Function for displaying name of a logged User. Checkes if logged User is an admin to show admin buttons
+     * @param product
+     */
     public void setUser(User user) {
 
         this.user = user;
@@ -54,6 +63,11 @@ public class NewUserWindowController {
         }
     }
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE or ENTER key is clicked
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
@@ -67,16 +81,30 @@ public class NewUserWindowController {
         }
     }
 
+    /**
+     * Function closes current stage
+     * @param event
+     * @throws IOException
+     */
     private void exitAction(ActionEvent event) throws IOException {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
-
+    /**
+     * Function is activated when cancel button is clicked, function closes current stage
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) throws IOException {
         exitAction(event);
     }
 
+    /**
+     * Function is activated when wrong OK button is clicked, validates entered data and creates new User with entered informations
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
         String name = this.nameField.getText();
@@ -102,6 +130,10 @@ public class NewUserWindowController {
 
     }
 
+    /**
+     * Function is activated when not all the fields were filled, function shows an alert
+     * @param content
+     */
     private void showAlert() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
@@ -110,6 +142,10 @@ public class NewUserWindowController {
         alert.showAndWait();
     }
 
+    /**
+     * Function is activated when entered User name already exists, function shows an alert
+     * @param content
+     */
     private void showNameAlert() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
@@ -118,6 +154,9 @@ public class NewUserWindowController {
         alert.showAndWait();
     }
 
+    /**
+     * Function initializes isAdmin
+     */
     @FXML
     private void initialize()
     {

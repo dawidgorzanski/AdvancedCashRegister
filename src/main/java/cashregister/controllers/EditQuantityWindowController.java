@@ -13,6 +13,9 @@ import javafx.event.ActionEvent;
 
 import java.io.IOException;
 
+/**
+ * Controller class for EditQuantityWindow
+ */
 public class EditQuantityWindowController extends DialogController {
 
     @FXML
@@ -22,6 +25,10 @@ public class EditQuantityWindowController extends DialogController {
     @FXML
     private TextField tbQuantity;
 
+    /**
+     * Function is activated when OK button is clicked, function parses entered quantity value
+     * @param event
+     */
     @FXML
     private void handleOKButton(ActionEvent event) {
         if (!ConvertHelper.tryParsePositiveDouble(tbQuantity.getText())) {
@@ -33,6 +40,11 @@ public class EditQuantityWindowController extends DialogController {
         closeWindow();
     }
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE key or OK button is clicked
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
@@ -46,6 +58,10 @@ public class EditQuantityWindowController extends DialogController {
         }
     }
 
+    /**
+     * Function is activated when wrong quantity value was entered, function shows an alert
+     * @param event
+     */
     private void showAlert() {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
@@ -54,21 +70,36 @@ public class EditQuantityWindowController extends DialogController {
         alert.showAndWait();
     }
 
+    /**
+     * Function is activated when cancel button is clicked, function closes current stage
+     * @param event
+     */
     @FXML
     private void handleCancelButton(ActionEvent event) {
         this.setDialogResult(DialogResult.Cancel);
         closeWindow();
     }
 
+    /**
+     * Function function closes current stage
+     */
     private void closeWindow() {
         Stage stage = (Stage) btnOk.getScene().getWindow();
         stage.close();
     }
 
+    /**
+     * Sets quantity of product
+     * @param quantity
+     */
     public void setQuantity(double quantity) {
         tbQuantity.setText(String.valueOf(quantity));
     }
 
+    /**
+     *
+     * @return quantity of product
+     */
     public double getQuantity() {
         if (ConvertHelper.tryParsePositiveDouble(tbQuantity.getText())) {
             return Double.parseDouble(tbQuantity.getText());

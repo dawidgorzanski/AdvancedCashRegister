@@ -19,7 +19,7 @@ public class DisplayCustomerWindowController {
     }
 
     /**
-     * Function for displaying all stored information about the given customer
+     * Function for displaying all stored information about the given Customer
      * @param customer
      */
     public void initData(Customer customer) {

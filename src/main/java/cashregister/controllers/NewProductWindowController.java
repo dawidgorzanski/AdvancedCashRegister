@@ -21,11 +21,17 @@ import org.decimal4j.util.DoubleRounder;
 
 import java.io.IOException;
 
-
+/**
+ * Controller class for NewProductWindow
+ */
 public class NewProductWindowController {
 
     private IProductDefinitionModule productDefinitionModule;
     private ProductDefinition product;
+
+    /**
+     * Initializes IProductDefinitionModule by ModulesManager
+     */
     public NewProductWindowController() { this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
     }
 
@@ -38,6 +44,10 @@ public class NewProductWindowController {
     @FXML
     private Text title;
 
+    /**
+     * Function for displaying all stored information about the given ProductDefinition
+     * @param product
+     */
     public void setProductDefinition(ProductDefinition product) {
         this.product = product;
         if (product != null) {
@@ -64,8 +74,17 @@ public class NewProductWindowController {
         }
     }
 
+    /**
+     * Function deletes product from productDefinitionModule
+     * @param product
+     */
     public void deleteProduct(ProductDefinition product) { productDefinitionModule.deleteProduct(product);}
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE or ENTER key is clicked
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
@@ -79,16 +98,30 @@ public class NewProductWindowController {
         }
     }
 
+    /**
+     * Function closes current stage
+     * @param event
+     * @throws IOException
+     */
     private void exitAction(ActionEvent event) throws IOException {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
-
+    /**
+     * Function is activated when cancel button is clicked, function closes current stage
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) throws IOException {
         exitAction(event);
     }
 
+    /**
+     * Function is activated when wrong OK button is clicked, validates entered data and creates new ProductDefinition with entered informations
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleOkButtonAction(ActionEvent event) throws IOException {
 
@@ -150,6 +183,10 @@ public class NewProductWindowController {
         exitAction(event);
     }
 
+    /**
+     * Function is activated when wrong ProductDefinition data was entered, function shows an error alert
+     * @param content
+     */
     private void showErrorAlert(String context) {
         Alert alert = new Alert(Alert.AlertType.ERROR);
         alert.setTitle("Niepoprawna wartość");
@@ -158,6 +195,9 @@ public class NewProductWindowController {
         alert.showAndWait();
     }
 
+    /**
+     * Function initializes isCountable and isAgeRestricted
+     */
     @FXML
     private void initialize()
     {

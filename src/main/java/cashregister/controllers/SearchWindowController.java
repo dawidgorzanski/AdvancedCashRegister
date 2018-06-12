@@ -19,6 +19,9 @@ import javafx.scene.input.KeyEvent;
 
 import java.io.IOException;
 
+/**
+ * Controller class for SearchWindow
+ */
 public class SearchWindowController {
 
     @FXML
@@ -41,12 +44,19 @@ public class SearchWindowController {
     private IProductDefinitionModule productDefinitionModule;
     private ICustomerModule customerModule;
 
+    /**
+     * Initializes IProductDefinitionModule, ICustomerModule by ModulesManager
+     */
     public SearchWindowController()
     {
         this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
         this.customerModule = ModulesManager.getObjectByType(ICustomerModule.class);
     }
 
+    /**
+     * Sets CellValueFactory and the content of TableView in each of three tabs
+     * @throws IOException
+     */
     @FXML
     private void initialize() throws IOException {
         productName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
@@ -61,6 +71,11 @@ public class SearchWindowController {
         customerPhone.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getPhone()));
     }
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE or ENTER key is clicked
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) {
         KeyCode keyCode = key.getCode();
@@ -74,11 +89,20 @@ public class SearchWindowController {
         }
     }
 
+    /**
+     * Function closes current stage
+     * @param event
+     */
     @FXML
     private void handleExitButtonAction(ActionEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
     }
 
+    /**
+     * Function checks what data type is searched and handles searching
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleSearchButtonAction(ActionEvent actionEvent) throws IOException {
 
@@ -91,6 +115,11 @@ public class SearchWindowController {
         searchField.clear();
     }
 
+    /**
+     * Function checks what data type was searched and handles adding it to transaction
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleAddButtonAction(ActionEvent event) throws IOException {
         if(tabPane.getSelectionModel().getSelectedIndex() == 0) {

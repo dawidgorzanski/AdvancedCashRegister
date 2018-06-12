@@ -34,6 +34,9 @@ import org.decimal4j.util.DoubleRounder;
 import java.io.IOException;
 import java.util.Optional;
 
+/**
+ * Controller class for MainWindow
+ */
 public class MainWindowController implements IBarcodeReaderDataListener {
 
     @FXML
@@ -58,6 +61,9 @@ public class MainWindowController implements IBarcodeReaderDataListener {
     private ICustomerModule customerModule;
     private IAuthenticationModule authenticationModule;
 
+    /**
+     * Initializes IProductsListModule, IBarcodeChecker, ICustomerModule, IAuthenticationModule by ModulesManager
+     */
     public MainWindowController() {
         BarcodeReader.addListener(this);
         this.productsListModule = ModulesManager.getObjectByType(IProductsListModule.class);
@@ -330,6 +336,9 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         }
     }
 
+    /**
+     * Function is activated when entered product has an age limit, function shows an alert
+     */
     private void showAgeLimitWarning(){
         Alert alert = new Alert(Alert.AlertType.WARNING);
         alert.setTitle("Ograniczenie wiekowe");
@@ -338,10 +347,17 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         alert.showAndWait();
     }
 
+    /**
+     * Function calculates and sets total price
+     */
     public void updateTotalPrice() {
         this.labelTotalPrice.setText("SUMA: " + String.valueOf(DoubleRounder.round(productsListModule.getTotalPrice(),2)) + " PLN");
     }
 
+    /**
+     * Function opens new window with Customer data
+     * @param customer
+     */
     private void displayCustomerData(Customer customer) {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/DisplayCustomerWindow.fxml"));
@@ -359,6 +375,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         }
     }
 
+    /**
+     * Function handles adding and deleting Customer to transaction
+     * @param customer
+     */
     private void updateCurrentCustomerForTransaction(Customer customer) {
         if (customer != null) {
             Platform.runLater(() -> {
