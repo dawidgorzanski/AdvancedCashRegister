@@ -20,13 +20,26 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Properties;
 
+/**
+ * class responsible for managing mail sending
+ */
 public class MailSenderModule implements IMailSenderModule {
     private IReceiptDao receiptDao;
 
+    /**
+     * initializes instance with IReceiptDao object
+     * @param receiptDao IReceiptDao object that allows database operations with Receipt objects
+     */
     public MailSenderModule(IReceiptDao receiptDao) {
         this.receiptDao = receiptDao;
     }
 
+    /**
+     * creates new Mail with Receipt and paperReceipt passed as arguments
+     * @param receipt Receipt object
+     * @param paperReceipt receipt in string version that allows to create .txt file for customer
+     * @return created Mail object
+     */
     public Mail createMail(Receipt receipt, String paperReceipt) {
         if (receipt.getCustomer() == null)
             return null;
@@ -47,6 +60,11 @@ public class MailSenderModule implements IMailSenderModule {
         return mail;
     }
 
+    /**
+     * creates session which allow send email to customer
+     * @param mail Mail object to send
+     * @return javax.Mail.Session desirable object
+     */
     private javax.mail.Session createSession(Mail mail) {
         final String user = "advancedcashregister@gmail.com";
         final String pass = "io!@2018";
@@ -68,6 +86,13 @@ public class MailSenderModule implements IMailSenderModule {
         return session;
     }
 
+    /**
+     * writes mail receipt to .txt file
+     * @param mail Mail object from which receipt is taken
+     * @param filename filename to which receipt will be writen
+     * @throws FileNotFoundException exception if file with filename doesn't exist
+     * @throws UnsupportedEncodingException exception if encoding troubles occurred
+     */
     public void savePaperReceiptFromMail(Mail mail, String filename) throws FileNotFoundException, UnsupportedEncodingException {
         PrintWriter writer = null;
         try{
@@ -82,6 +107,13 @@ public class MailSenderModule implements IMailSenderModule {
         }
     }
 
+    /**
+     * creates Multipart object from two separated parts i.e mail body message and attachment of mail
+     * @param mail Mail object that contains needed attributes
+     * @param filename filename where paper receipt is written
+     * @return created Multipart object
+     * @throws MessagingException
+     */
     public Multipart concatenateEmailFromMailAndFile(Mail mail, String filename) throws MessagingException {
         MimeBodyPart attachmentBodyPart;
         MimeBodyPart messageBodyPart;
@@ -102,6 +134,13 @@ public class MailSenderModule implements IMailSenderModule {
         return multipart;
     }
 
+    /**
+     * creates message to customer
+     * @param session created session between user email and application
+     * @param mail Mail object that contains required attributes for message
+     * @return created Message object
+     * @throws MessagingException
+     */
     private Message createMessage(javax.mail.Session session, Mail mail) throws MessagingException
     {
         String to = mail.getReceipt().getCustomer().getMail();
@@ -116,6 +155,10 @@ public class MailSenderModule implements IMailSenderModule {
         return msg;
     }
 
+    /**
+     * sending mail to customer
+     * @param mail Mail object to send
+     */
     public void sendMail(Mail mail)
     {
         javax.mail.Session session = createSession(mail);

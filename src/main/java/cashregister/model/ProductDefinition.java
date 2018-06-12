@@ -19,6 +19,16 @@ public class ProductDefinition {
         this.id = 0;
     }
 
+    /**
+     * Initializes instance with attributes passed as parameters
+     * @param id
+     * @param name
+     * @param quantity
+     * @param price
+     * @param barcode
+     * @param countable
+     * @param ageLimit
+     */
     public ProductDefinition(int id, String name, double quantity, double price, String barcode, boolean countable, boolean ageLimit) {
         this.id = id;
         this.name = name;
@@ -30,30 +40,58 @@ public class ProductDefinition {
         this.productForSales = new ArrayList<ProductForSale>();
     }
 
+    /**
+     *
+     * @return id of ProductDefinition
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * Sets id of ProductDefinition
+     * @param id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return name of ProductDefinition
+     */
     public String getName() {
         return new String(name);
     }
 
+    /**
+     * Sets name of ProductDefinition
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return quantity of ProductDefinition
+     */
     public double getQuantity() {
         return quantity;
     }
 
+    /**
+     * Sets quantity of ProductDefinition
+     * @param quantity
+     */
     public void setQuantity(double quantity) {
         this.quantity = quantity;
     }
 
+    /**
+     * Decreases quantity of ProductDefinition by value passed as parameter
+     * @param quantity
+     */
     public void decreaseQuantityBy(double quantity) {
         this.quantity -= quantity;
         if(this.quantity<0)
@@ -62,38 +100,78 @@ public class ProductDefinition {
         }
     }
 
+    /**
+     *
+     * @return price of ProductDefinition
+     */
     public double getPrice() {
         return price;
     }
 
+    /**
+     * Sets price of ProductDefinition
+     * @param price
+     */
     public void setPrice(double price) {
         this.price = price;
     }
 
+    /**
+     *
+     * @return true if ProductDefinition is countable, false otherwise
+     */
     public boolean getCountable() {
         return countable;
     }
 
+    /**
+     * Sets whether ProductDefinition is countable or not
+     * @param countable
+     */
     public void setCountable(boolean countable) {
         this.countable = countable;
     }
 
+    /**
+     *
+     * @return barcode of ProductDefiniton
+     */
     public String getBarcode() {
         return new String(barcode);
     }
 
+    /**
+     * Sets barcode of ProductDefinition
+     * @param barcode
+     */
     public void setBarcode(String barcode) {
         this.barcode = barcode;
     }
 
+    /**
+     *
+     * @return true if ProductDefinition is for adults, false otherwise
+     */
     public boolean getAgeLimit() { return ageLimit;}
 
+    /**
+     * Sets if ProductDefinition is for adults or not
+     * @param ageLimit
+     */
     public void setAgeLimit(boolean ageLimit) { this.ageLimit = ageLimit;}
 
+    /**
+     *
+     * @return List of ProductForSale objects assigned to ProductDefinition
+     */
     public List<ProductForSale> getProductForSales() {
         return productForSales;
     }
 
+    /**
+     * Assigns list of ProductForSale objects to ProductDefinition
+     * @param productForSales
+     */
     public void setProductForSales(List<ProductForSale> productForSales) {
         this.productForSales = productForSales;
     }

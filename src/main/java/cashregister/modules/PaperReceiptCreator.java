@@ -4,7 +4,15 @@ import cashregister.modules.interfaces.IPaperReceiptCreator;
 import cashregister.model.Receipt;
 import cashregister.model.ProductForSale;
 
+/**
+ * Responsible for creating paper receipts
+ */
 public class PaperReceiptCreator implements IPaperReceiptCreator {
+    /**
+     * Creates new paper receipt(String) based on passed Receipt
+     * @param receipt receipt object
+     * @return
+     */
     public String createPaperReceipt(Receipt receipt) {
         StringBuilder builder = new StringBuilder();
         float sum = 0;

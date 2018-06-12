@@ -15,11 +15,20 @@ public class PaymentModule implements IPaymentModule {
     private IReceiptDao receiptDao;
     //private IProductDefinitionModule productDefinitionModule;
 
+    /**
+     * Initializes instance with IReceiptDao object
+     * @param receiptDao object that allows to operate with Receipt objects on database
+     */
     public PaymentModule(IReceiptDao receiptDao) {
         this.receiptDao = receiptDao;
         //this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
     }
 
+    /**
+     * Creates summary for transaction i.e creates Receipt associated with transaction
+     * @param productsListModule
+     * @return
+     */
     public Receipt createSummary(IProductsListModule productsListModule) {
         Receipt newReceipt = new Receipt();
         newReceipt.setProductForSales( productsListModule.getShoppingList());
@@ -30,6 +39,11 @@ public class PaymentModule implements IPaymentModule {
         return newReceipt;
     }
 
+    /**
+     * finalizing payment for transaction i.e removing all products and customer from her
+     * @param productsListModule manages of ProductForSale list in transaction
+     * @param productDefinitionModule manages of ProductDefinition objects
+     */
     public void finalizePayment(IProductsListModule productsListModule, IProductDefinitionModule productDefinitionModule)
     {
         for (Object iter : productsListModule.getShoppingList()){

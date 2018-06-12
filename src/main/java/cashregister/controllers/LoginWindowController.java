@@ -47,17 +47,30 @@ import java.util.ResourceBundle;
 
         }
 
+        /**
+         * Initializes IAuthenticationModule and IUserModule by ModulesManager
+         */
         public LoginWindowController() {
             this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
             this.userModule = ModulesManager.getObjectByType(IUserModule.class);
         }
 
+        /**
+         * Exits the application when quit button is clicked
+         * @param actionEvent
+         * @throws IOException
+         */
         @FXML
         private void handleQuitButtonAction(ActionEvent actionEvent) throws IOException{
             Platform.exit();
             System.exit(0);
         }
 
+        /**
+         * Tries to log in when enter is clicked
+         * @param key
+         * @throws IOException
+         */
         @FXML
         private void handleKeyAction(KeyEvent key) throws IOException {
             KeyCode keyCode = key.getCode();
@@ -67,6 +80,10 @@ import java.util.ResourceBundle;
             }
         }
 
+        /**
+         * Sets width and height of Stage passed as parameter to max values
+         * @param primaryStage
+         */
         private void maximizeScreen(Stage primaryStage)//used before Java 8
         {
             Screen screen = Screen.getPrimary();
@@ -78,6 +95,12 @@ import java.util.ResourceBundle;
             primaryStage.setHeight(bounds.getHeight());
         }
 
+        /**
+         * Function is activated when login button is clicked, function checks if username and password are correct
+         * and if they are then user is logged in and main window is showed, otherwise alert with message is showed
+         * @param event
+         * @throws IOException
+         */
         @FXML
         private void handleCheckLoginButtonAction(ActionEvent event) throws IOException {
             String username = userIdTextField.getText();
