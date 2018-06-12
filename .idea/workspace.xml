@@ -2,23 +2,73 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5c5d9b1c-5a8e-42bd-9f45-39f5a5d259c6" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/controllers/PaymentWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/controllers/PaymentWindowController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader$CustomSerialPortDataListener.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader$CustomSerialPortDataListener.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/BaseDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/dao/BaseDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/CustomerDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/dao/CustomerDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/MailDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/dao/MailDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/ProductDefinitionDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/dao/ProductDefinitionDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/ReceiptDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/dao/ReceiptDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/UserDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/cashregister/dao/UserDao.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/cashregister/barcode/BarcodeReaderTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/test-classes/cashregister/barcode/BarcodeReaderTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/controllers/DisplayCustomerWindowController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/controllers/DisplayCustomerWindowController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/Main$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/Main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader$CustomSerialPortDataListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/barcode/BarcodeReader.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/barcode/IBarcodeReaderDataListener.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/AdminWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/DisplayCustomerWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/EditQuantityWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/LoginWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/MainWindowController$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/MainWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/NewClientWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/NewProductWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/NewUserWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/PaymentWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/controllers/SearchWindowController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/BaseDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/CustomerDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/MailDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/ProductDefinitionDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/ReceiptDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/UserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/interfaces/IBaseDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/interfaces/ICustomerDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/interfaces/IMailDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/interfaces/IProductDefinitionDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/interfaces/IReceiptDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/dao/interfaces/IUserDao.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/helpers/ConvertHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/helpers/ValidatorHelper.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/Mail.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/ProductDefinition.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/ProductForSale.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/Receipt.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/model/enums/ObjectType.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/AuthenticationModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/BarcodeChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/CustomerModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/EmailRunnable.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/MailSenderModule$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/MailSenderModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/ModulesManager.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/PaperReceiptCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/PaymentModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/ProductDefinitionModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/ProductsListModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/UserModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IAuthenticationModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IBarcodeChecker.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/ICustomerModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IMailSenderModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IPaperReceiptCreator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IPaymentModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IProductDefinitionModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IProductsListModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/cashregister/modules/interfaces/IUserModule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafx/extensions/DialogController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/javafx/extensions/DialogResult.class" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,11 +83,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="UserDao.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/UserDao.java">
+      <file leaf-file-name="AdminWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="56">
-              <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+            <state relative-caret-position="226">
+              <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="DisplayCustomerWindowController.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/DisplayCustomerWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminWindow.fxml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="LoginWindowController.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/LoginWindowController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-17">
+              <caret line="85" column="11" lean-forward="true" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -45,26 +123,29 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="MainWindowController.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java">
+      <file leaf-file-name="PaymentModule.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="223">
-              <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
+            <state relative-caret-position="296">
+              <caret line="42" column="88" selection-start-line="42" selection-start-column="88" selection-end-line="42" selection-end-column="88" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentWindow.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder" />
-          <provider selected="true" editor-type-id="text-editor" />
+      <file leaf-file-name="ProductDefinitionDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/ProductDefinitionDao.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="11" selection-start-line="11" selection-end-line="13" selection-end-column="3" />
+            </state>
+          </provider>
         </entry>
       </file>
-      <file leaf-file-name="PaymentWindowController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/PaymentWindowController.java">
+      <file leaf-file-name="MailDao.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/MailDao.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-719">
-              <caret line="86" selection-start-line="86" selection-end-line="86" />
+            <state relative-caret-position="75">
+              <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -96,13 +177,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/cashregister/helpers/ConvertHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/helpers/ValidatorHelper.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/ProductDefinitionModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/NewProductWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/NewClientWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/NewUserWindowController.java" />
-        <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/LoginWindowController.java" />
         <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/AuthenticationModuleTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/UserModuleTest.java" />
@@ -114,7 +193,6 @@
         <option value="$PROJECT_DIR$/src/diagrams/class diagram.puml" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/AuthenticationModule.java" />
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/interfaces/IPaymentModule.java" />
         <option value="$PROJECT_DIR$/src/test/java/cashregister/modules/PaymentModuleTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/Spring.xml" />
@@ -133,7 +211,6 @@
         <option value="$PROJECT_DIR$/src/main/resources/fxml/MainWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/style/style.css" />
-        <option value="$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/resources/style/adminWindow.css" />
         <option value="$PROJECT_DIR$/src/main/resources/fxml/SearchWindow.fxml" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/model/ProductDefinition.java" />
@@ -147,6 +224,10 @@
         <option value="$PROJECT_DIR$/src/main/java/cashregister/dao/UserDao.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/PaymentWindowController.java" />
         <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml" />
+        <option value="$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/cashregister/controllers/DisplayCustomerWindowController.java" />
       </list>
     </option>
   </component>
@@ -177,10 +258,10 @@
   <component name="NodePackageJsonFileManager">
     <packageJsonPaths />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="953" />
-    <option name="width" value="974" />
-    <option name="height" value="1167" />
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="794" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -188,7 +269,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AndroidView" />
+      <pane id="Scope" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -229,7 +311,72 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="barcode" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
               <item name="controllers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="dao" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="helpers" type="462c0819:PsiDirectoryNode" />
+              <item name="ConvertHelper" type="1a9f42e2:ClassTreeNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
+              <item name="enums" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
+              <item name="AdvancedCashRegister" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="cashregister" type="462c0819:PsiDirectoryNode" />
+              <item name="modules" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="AdvancedCashRegister" type="b2602c69:ProjectViewProjectNode" />
@@ -250,8 +397,7 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane" />
-      <pane id="Scope" />
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -282,7 +428,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="JUnit.All in AdvancedCashRegister (1)">
+  <component name="RunManager" selected="Application.Unnamed">
     <configuration name="Unnamed" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="cashregister.Main" />
       <module name="AdvancedCashRegister" />
@@ -497,6 +643,8 @@
       <workItem from="1526463853290" duration="5726000" />
       <workItem from="1526898406269" duration="1870000" />
       <workItem from="1528147218734" duration="1138000" />
+      <workItem from="1528830572437" duration="195000" />
+      <workItem from="1528837148766" duration="1417000" />
     </task>
     <task id="LOCAL-00001" summary="add Customer class">
       <created>1523702155778</created>
@@ -624,26 +772,28 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="22610000" />
+    <option name="totallyTimeSpent" value="24222000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="916" extended-state="6" />
+    <frame x="0" y="23" width="1440" height="794" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.23220974" />
       <window_info anchor="right" id="Palette&#9;" order="9" />
       <window_info id="Image Layers" order="6" />
       <window_info anchor="right" id="Capture Analysis" order="7" />
       <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5005208" side_tool="true" weight="0.23548046" />
       <window_info anchor="right" id="Maven Projects" order="4" />
+      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="15" weight="0.32911393" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.19101124" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.19101124" />
+      <window_info anchor="bottom" id="Spring" order="13" />
       <window_info anchor="bottom" id="Terminal" order="14" />
       <window_info id="Capture Tool" order="2" />
       <window_info id="Designer" order="3" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.57127774" visible="true" weight="0.266875" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.57127774" visible="true" weight="0.26666668" />
+      <window_info anchor="right" id="Database" order="5" />
       <window_info id="Structure" order="1" sideWeight="0.4287223" side_tool="true" weight="0.2671875" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info id="UI Designer" order="4" />
@@ -651,16 +801,14 @@
       <window_info id="Favorites" order="5" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3410771" />
       <window_info anchor="right" id="JetGradle" order="6" />
-      <window_info anchor="bottom" id="Spring" order="13" />
+      <window_info anchor="bottom" id="Messages" order="11" sideWeight="0.49947917" weight="0.23220974" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="right" id="PlantUML" order="3" weight="0.3296875" />
       <window_info anchor="bottom" id="Changes" order="10" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="right" id="Database" order="5" />
       <window_info anchor="bottom" id="Profiler" order="9" />
       <window_info anchor="bottom" id="Problems" order="12" />
-      <window_info anchor="bottom" id="Database Changes" order="12" show_stripe_button="false" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.24742268" />
@@ -741,60 +889,10 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="uml://JAVA/cashregister.model.enums.ObjectType" />
-    <entry file="uml://JAVA/cashregister" />
-    <entry file="uml://JAVA/cashregister.dao.interfaces.IBaseDao" />
-    <entry file="uml://JAVA/cashregister.modules.ProductDefinitionModule" />
-    <entry file="uml://JAVA/cashregister.dao.CustomerDao" />
-    <entry file="uml://JAVA/cashregister.modules.interfaces.IPaperReceiptCreator" />
-    <entry file="uml://JAVA/cashregister.model.Customer" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/AuthenticationModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.0.2.RELEASE/spring-aop-5.0.2.RELEASE.jar!/org/springframework/aop/framework/JdkDynamicAopProxy.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="147" selection-start-line="147" selection-end-line="147" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/CustomerModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="34" selection-start-line="34" selection-end-line="34" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/BarcodeChecker.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="8" selection-start-line="8" selection-end-line="8" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/workspace.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="154">
-          <caret line="1197" column="19" selection-start-line="1197" selection-start-column="19" selection-end-line="1197" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.idea/modules.xml" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="119">
           <caret line="7" column="49" lean-forward="true" selection-start-line="7" selection-start-column="49" selection-end-line="7" selection-end-column="49" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/MailSenderModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="9" column="16" selection-start-line="9" selection-start-column="16" selection-end-line="9" selection-end-column="16" />
         </state>
       </provider>
     </entry>
@@ -826,13 +924,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1534">
-          <caret line="184" column="39" selection-start-line="184" selection-start-column="39" selection-end-line="184" selection-end-column="39" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/SearchWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-470">
@@ -854,13 +945,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/helpers/ConvertHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/AdvancedCashRegister.iml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -871,27 +955,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/ProductDefinitionModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="38" column="35" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.controls/javafx/scene/control/Alert.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
-          <caret line="107" column="13" selection-start-line="107" selection-start-column="13" selection-end-line="107" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://C:/Program Files/Java/jdk-9.0.4/lib/src.zip!/javafx.controls/javafx/scene/control/Alert.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/ProductsListModule.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="540">
@@ -918,30 +982,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
           <caret line="9" column="18" selection-start-line="9" selection-start-column="18" selection-end-line="9" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/LoginWindowController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="87" column="51" selection-start-line="87" selection-start-column="51" selection-end-line="87" selection-end-column="51" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/Main.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/barcode/BarcodeReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -980,9 +1020,142 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/CustomerDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="510">
+          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="279" column="5" selection-start-line="279" selection-start-column="5" selection-end-line="279" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/PaymentWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="78" selection-start-line="78" selection-end-line="78" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/barcode/BarcodeReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-230">
+          <caret line="10" column="31" lean-forward="true" selection-start-line="10" selection-start-column="31" selection-end-line="10" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/barcode/IBarcodeReaderDataListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/AuthenticationModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="8" column="28" selection-start-line="8" selection-start-column="28" selection-end-line="8" selection-end-column="28" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/BarcodeChecker.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/ModulesManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="12" column="13" selection-start-line="12" selection-start-column="13" selection-end-line="12" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/model/Customer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1310">
+          <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="41" lean-forward="true" selection-start-line="41" selection-end-line="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/helpers/ValidatorHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="8" column="13" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/helpers/ConvertHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="225">
+          <caret line="15" selection-start-line="15" selection-end-line="15" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/model/enums/ObjectType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="5" column="12" selection-start-line="5" selection-start-column="12" selection-end-line="5" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/ProductDefinitionModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-365">
+          <caret line="14" column="13" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/MailSenderModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="153">
+          <caret line="25" column="13" selection-start-line="25" selection-start-column="13" selection-end-line="25" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/model/ProductForSale.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2090">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/UserModule.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-95">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/UserDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/BaseDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1513">
+        <state relative-caret-position="1335">
           <caret line="100" column="46" selection-start-line="100" selection-start-column="46" selection-end-line="100" selection-end-column="46" />
           <folding>
             <element signature="e#1322#1323#0" expanded="true" />
@@ -993,57 +1166,75 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/MailDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="75">
           <caret line="6" column="30" selection-start-line="6" selection-start-column="30" selection-end-line="6" selection-end-column="30" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/CustomerDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/DisplayCustomerWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="39" column="54" selection-start-line="39" selection-start-column="54" selection-end-line="39" selection-end-column="54" />
+        <state relative-caret-position="-29" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/LoginWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="43" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/ProductDefinitionDao.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/LoginWindowController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="68">
-          <caret line="11" selection-start-line="11" selection-end-line="13" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/ReceiptDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/UserDao.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="56">
-          <caret line="22" column="19" selection-start-line="22" selection-start-column="19" selection-end-line="22" selection-end-column="19" />
+        <state relative-caret-position="-17">
+          <caret line="85" column="11" lean-forward="true" selection-start-line="85" selection-start-column="11" selection-end-line="85" selection-end-column="11" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/PaymentWindow.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/PaymentWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/ReceiptDao.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-719">
-          <caret line="86" selection-start-line="86" selection-end-line="86" />
+        <state relative-caret-position="75">
+          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/MainWindowController.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/modules/PaymentModule.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="223">
-          <caret line="278" column="26" selection-start-line="278" selection-start-column="26" selection-end-line="278" selection-end-column="26" />
+        <state relative-caret-position="296">
+          <caret line="42" column="88" selection-start-line="42" selection-start-column="88" selection-end-line="42" selection-end-column="88" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/dao/ProductDefinitionDao.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="11" selection-start-line="11" selection-end-line="13" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/fxml/AdminWindow.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="38" selection-start-line="12" selection-start-column="38" selection-end-line="12" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/AdminWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="91" column="13" selection-start-line="91" selection-start-column="13" selection-end-line="91" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/cashregister/controllers/DisplayCustomerWindowController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="21" column="45" selection-start-line="21" selection-start-column="45" selection-end-line="21" selection-end-column="45" />
         </state>
       </provider>
     </entry>

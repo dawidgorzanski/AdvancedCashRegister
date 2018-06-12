@@ -40,7 +40,7 @@ public class PaymentModule implements IPaymentModule {
     }
 
     /**
-     * finalizing payment for transaction i.e removing all products and customer from her
+     * finalizing payment for transaction i.e removing all products and customer from it
      * @param productsListModule manages of ProductForSale list in transaction
      * @param productDefinitionModule manages of ProductDefinition objects
      */

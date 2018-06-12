@@ -16,11 +16,16 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/**
+ * Controller class for AdminWindow
+ */
 public class AdminWindowController {
 
     @FXML
@@ -49,6 +54,9 @@ public class AdminWindowController {
     private IUserModule userModule;
     IAuthenticationModule authenticationModule;
 
+    /**
+     * Initializes IProductDefinitionModule, ICustomerModule, IUserModule and IAuthenticationModule by ModulesManager
+     */
     public AdminWindowController()
     {
         this.productDefinitionModule = ModulesManager.getObjectByType(IProductDefinitionModule.class);
@@ -57,6 +65,9 @@ public class AdminWindowController {
         this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
     }
 
+    /**
+     * Sets CellValueFactory and the content of TableView in each of three tabs
+     */
     @FXML
     private void initialize() {
         tableColumnProductName.setCellValueFactory(data -> new ReadOnlyStringWrapper(data.getValue().getName()));
@@ -77,6 +88,25 @@ public class AdminWindowController {
         tableViewUsers.setItems(userModule.getAllUsers());
     }
 
+    /**
+     * Method for handling key events. Closes current stage when ESCAPE key is clicked
+     * @param key
+     * @throws IOException
+     */
+    @FXML
+    private void handleKeyAction(KeyEvent key) throws IOException {
+        KeyCode keyCode = key.getCode();
+        if (keyCode.equals(KeyCode.ESCAPE)) {
+            btnExit.fire();
+            return;
+        }
+    }
+
+    /**
+     * Function is activated when add button is clicked, function loads a new stage which path depends on the current selected tab
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleAddButtonAction(ActionEvent actionEvent) throws IOException{
 
@@ -97,6 +127,11 @@ public class AdminWindowController {
         }
     }
 
+    /**
+     * Function is activated when add button is clicked, function loads a new stage which path depends on the current selected tab
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleEditButtonAction(ActionEvent actionEvent) throws IOException{
 
@@ -130,6 +165,11 @@ public class AdminWindowController {
         }
     }
 
+    /**
+     * Function for loading new stage
+     * @param actionEvent
+     * @param scene
+     */
     private void loadStage(Scene scene, ActionEvent actionEvent)
     {
         Stage stage = new Stage();
@@ -140,6 +180,10 @@ public class AdminWindowController {
         stage.showAndWait();
     }
 
+    /**
+     * Function returning scene path which depends on the current selected tab
+     * @return String
+     */
     private String getPath() {
         String path = "";
         if(tabPane.getSelectionModel().getSelectedIndex() == 0)
@@ -152,6 +196,11 @@ public class AdminWindowController {
         return path;
     }
 
+    /**
+     * Function is activated when delete button is clicked, function deletes from database item selected in TableView
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleDeleteButtonAction(ActionEvent actionEvent) throws IOException {
         String path = this.getPath();
@@ -198,6 +247,10 @@ public class AdminWindowController {
 
     }
 
+    /**
+     * Function is activated when exit button is clicked, function closes current stage
+     * @param event
+     */
     @FXML
     private void handleExitButtonAction(ActionEvent event) {
         ((Node)(event.getSource())).getScene().getWindow().hide();
