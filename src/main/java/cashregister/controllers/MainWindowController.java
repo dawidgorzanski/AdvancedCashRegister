@@ -72,6 +72,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         this.authenticationModule = ModulesManager.getObjectByType(IAuthenticationModule.class);
     }
 
+    /**
+     * Sets CellValueFactory and the content of TableView in tabs, checkes if logged User is an admin
+     * @throws IOException
+     */
     @FXML
     private void initialize() throws IOException {
         tableColumnName.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
@@ -85,12 +89,25 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         showAdminButton(logggedUser.getIsAdmin());
     }
 
+    /**
+     * Sets User name
+     * @param username
+     */
     private void initCashierData(String username) {
         cashier_name.setText(username);
     }
 
+    /**
+     * Sets admin button visible
+     * @param value
+     */
     private void showAdminButton(boolean value) { admin.setVisible(value); }
 
+    /**
+     * Method for handling key events
+     * @param key
+     * @throws IOException
+     */
     @FXML
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
@@ -138,6 +155,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         }
     }
 
+    /**
+     * Method for handling Enter key event
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleEnterButtonAction(ActionEvent event) throws IOException {
         String value = textFieldDisplay.getText();
@@ -147,6 +169,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         textFieldDisplay.clear();
     }
 
+    /**
+     * Method for handling Delete key event, removes product from productListModule
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleDeleteButtonAction(ActionEvent event) {
         ProductForSale productToDelete =  tableViewProducts.getSelectionModel().selectedItemProperty().get();
@@ -154,18 +181,33 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         updateTotalPrice();
     }
 
+    /**
+     * Method for handling Backspace key event
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleBackspaceButtonAction(ActionEvent event) {
         String text = textFieldDisplay.getText();
         textFieldDisplay.setText(text.substring(0, text.length() - 1));
     }
 
+    /**
+     * Method for handling number key event, sets number in proper field
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleNumberButtonAction(ActionEvent event) {
         String text = ((Button) event.getSource()).getText();
         textFieldDisplay.appendText(text);
     }
 
+    /**
+     * Method for handling logout action, loges out User, opens login window
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleLogoutButtonAction(ActionEvent actionEvent) throws IOException
     {
@@ -178,11 +220,20 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         primaryStage.show();
     }
 
+    /**
+     * Method for handling clear button, removes text from field
+     * @param event
+     */
     @FXML
     private void handleClearButtonAction(ActionEvent event) {
         textFieldDisplay.clear();
     }
 
+    /**
+     * Method for finalizing transaction, opens payment window
+     * @param event
+     * @throws IOException
+     */
     @FXML
     private void handleFinalizeButtonAction(ActionEvent event) throws IOException {
         if(productsListModule.getShoppingList().isEmpty())
@@ -203,6 +254,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         }
     }
 
+    /**
+     * Opens window NewClient
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleAddClientButtonAction(ActionEvent actionEvent) throws IOException{
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/NewClientWindow.fxml")));
@@ -214,18 +270,31 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.show();
     }
 
+    /**
+     * Displays all Customers data
+     * @param actionEvent
+     */
     @FXML
     private void handleDisplayCustomerButtonAction(ActionEvent actionEvent){
         if (productsListModule.getCurrentCustomer() != null)
             displayCustomerData(productsListModule.getCurrentCustomer());
     }
 
+    /**
+     * Removes Customer from transaction and adds current Customer
+     * @param actionEvent
+     */
     @FXML
     private void handleRemoveCustomerFromTransaction(ActionEvent actionEvent) {
         productsListModule.deleteCustomerFromTransaction();
         updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
     }
 
+    /**
+     * Opens AdminWindow
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleAdminButtonAction(ActionEvent actionEvent) throws IOException
     {
@@ -238,6 +307,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.show();
     }
 
+    /**
+     * Opens EditQuantityWindow
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleQuantityButtonAction(ActionEvent actionEvent) throws IOException {
         ProductForSale productToEdit = tableViewProducts.getSelectionModel().selectedItemProperty().get();
@@ -266,6 +340,11 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         }
     }
 
+    /**
+     * Opens SearchWindow
+     * @param actionEvent
+     * @throws IOException
+     */
     @FXML
     private void handleSearchButtonAction(ActionEvent actionEvent) throws IOException{
         Scene scene = new Scene(FXMLLoader.load(getClass().getResource("/fxml/SearchWindow.fxml")));
@@ -277,6 +356,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         stage.showAndWait();
     }
 
+    /**
+     * Cancels transation, removes data from transation
+     * @param actionEvent
+     */
     @FXML
     private void handleCancelTransaction(ActionEvent actionEvent) {
         productsListModule.deleteCustomerFromTransaction();
@@ -285,6 +368,10 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         updateTotalPrice();
     }
 
+    /**
+     * Replaces barcode with new value
+     * @param value
+     */
     @Override
     public void barcodeValueArrived(String value) {
         handleBarcode(value.replace("\r\n", ""));
