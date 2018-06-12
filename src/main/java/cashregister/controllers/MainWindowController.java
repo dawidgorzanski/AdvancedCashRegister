@@ -182,8 +182,8 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         if(productsListModule.getShoppingList().isEmpty())
             return;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/fxml/PaymentWindow.fxml"));
-        Parent root = (Parent) fxmlLoader.load();
-        PaymentWindowController controller = (PaymentWindowController)fxmlLoader.getController();
+        Parent root = fxmlLoader.load();
+        PaymentWindowController controller = fxmlLoader.getController();
         controller.setMainWindowController(this);
         Scene scene = new Scene(root);
         Stage stage = new Stage();
@@ -276,6 +276,7 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         productsListModule.deleteCustomerFromTransaction();
         productsListModule.deleteAllProducts();
         updateCurrentCustomerForTransaction(productsListModule.getCurrentCustomer());
+        updateTotalPrice();
     }
 
     @Override

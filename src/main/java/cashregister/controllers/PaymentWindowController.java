@@ -44,9 +44,9 @@ public class PaymentWindowController extends DialogController implements Initial
     }
 
     @FXML
-    private Label cashLabel, changeLabel, plnLabel1, plnLabel2;
+    private Label cashLabel,plnLabel1;
     @FXML
-    private TextField cashField, changeField;
+    private TextField cashField;
     @FXML
     private Text textTotalPrice;
     @FXML
@@ -55,14 +55,10 @@ public class PaymentWindowController extends DialogController implements Initial
     @FXML
     private void handleCashButtonAction(ActionEvent event) {
         cashField.setVisible(true);
-        changeField.setVisible(true);
         cashField.clear();
-        changeField.clear();
         cashLabel.setText("Gotówka ");
         cashLabel.setVisible(true);
-        changeLabel.setVisible(true);
         plnLabel1.setVisible(true);
-        plnLabel2.setVisible(true);
         confirmButton.setVisible(true);
         cardHandling = false;
     }
@@ -72,11 +68,7 @@ public class PaymentWindowController extends DialogController implements Initial
         cashField.setVisible(false);
         cashLabel.setVisible(false);
         cashField.clear();
-        changeField.clear();
-        changeField.setVisible(false);
-        changeLabel.setVisible(false);
         plnLabel1.setVisible(false);
-        plnLabel2.setVisible(false);
         confirmButton.setVisible(true);
         cardHandling = true;
     }
@@ -90,11 +82,8 @@ public class PaymentWindowController extends DialogController implements Initial
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         cashField.setVisible(false);
-        changeField.setVisible(false);
         cashLabel.setVisible(false);
-        changeLabel.setVisible(false);
         plnLabel1.setVisible(false);
-        plnLabel2.setVisible(false);
         confirmButton.setVisible(false);
 
         this.price = productsListModule.getTotalPrice();
@@ -130,7 +119,6 @@ public class PaymentWindowController extends DialogController implements Initial
             }
             DecimalFormat df = new DecimalFormat("#.##");
             double change = Double.parseDouble(cashField.getText()) - this.price;
-            changeField.setText(String.valueOf(change));
             if(!(change <  1e-7 && change > -1e-7)) {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Reszta");
