@@ -393,21 +393,17 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                 }
                 else
                 {
-                    Alert alert = new Alert(Alert.AlertType.ERROR);
-                    alert.setTitle("Błąd");
-                    alert.setHeaderText("Błąd");
-                    alert.setContentText("Produkt nie znajduje się w bazie danych");
-                    alert.showAndWait();
+                    Platform.runLater(() -> {
+                        this.showWarning("Nie znaleziono produktu o podanym kodzie!");
+                    });
                 }
 
                 break;
             }
             case Unknown:
-                Alert alert = new Alert(Alert.AlertType.ERROR);
-                alert.setTitle("Błąd");
-                alert.setHeaderText("Błąd");
-                alert.setContentText("Nieprawidłowy kod");
-                alert.showAndWait();
+                Platform.runLater(() -> {
+                    this.showWarning("Niepoprawny kod!");
+                });
 
                 break;
             case User:
@@ -434,11 +430,21 @@ public class MainWindowController implements IBarcodeReaderDataListener {
         alert.showAndWait();
     }
 
+    private void showWarning(String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Błąd");
+        alert.setHeaderText("Błąd");
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
     /**
      * Function calculates and sets total price
      */
     public void updateTotalPrice() {
-        this.labelTotalPrice.setText("SUMA: " + String.valueOf(DoubleRounder.round(productsListModule.getTotalPrice(),2)) + " PLN");
+        Platform.runLater(() -> {
+            this.labelTotalPrice.setText("SUMA: " + String.valueOf(DoubleRounder.round(productsListModule.getTotalPrice(),2)) + " PLN");
+        });
     }
 
     /**

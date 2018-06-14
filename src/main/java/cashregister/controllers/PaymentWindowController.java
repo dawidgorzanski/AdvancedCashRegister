@@ -50,7 +50,7 @@ public class PaymentWindowController extends DialogController implements Initial
     }
 
     @FXML
-    private Label cashLabel,plnLabel1;
+    private Label cashLabel, plnLabel1;
     @FXML
     private TextField cashField;
     @FXML
@@ -60,6 +60,7 @@ public class PaymentWindowController extends DialogController implements Initial
 
     /**
      * Function is activated when Cash button is clicked, sets fields needed for cash payment visible
+     *
      * @param event
      */
     @FXML
@@ -75,10 +76,11 @@ public class PaymentWindowController extends DialogController implements Initial
 
     /**
      * Function is activated when Card button is clicked, sets fields needed for card payment visible
+     *
      * @param event
      */
     @FXML
-    private void handleCardPayment(ActionEvent event){
+    private void handleCardPayment(ActionEvent event) {
         cashField.setVisible(false);
         cashLabel.setVisible(false);
         cashField.clear();
@@ -89,17 +91,19 @@ public class PaymentWindowController extends DialogController implements Initial
 
     /**
      * Function is activated when cancel button is clicked, function closes current stage
+     *
      * @param event
      * @throws IOException
      */
     @FXML
     private void handleCancelButtonAction(ActionEvent event) {
         setDialogResult(DialogResult.Cancel);
-        ((Node)(event.getSource())).getScene().getWindow().hide();
+        ((Node) (event.getSource())).getScene().getWindow().hide();
     }
 
     /**
      * Function hides payment fields and sets total price
+     *
      * @param location
      * @param resources
      */
@@ -116,6 +120,7 @@ public class PaymentWindowController extends DialogController implements Initial
 
     /**
      * Method for handling key events. Closes current stage when ESCAPE or ENTER key is clicked
+     *
      * @param key
      * @throws IOException
      */
@@ -123,7 +128,7 @@ public class PaymentWindowController extends DialogController implements Initial
     private void handleKeyAction(KeyEvent key) throws IOException {
         KeyCode keyCode = key.getCode();
         if (keyCode.equals(KeyCode.ENTER)) {
-            if(confirmButton.isVisible())
+            if (confirmButton.isVisible())
                 confirmButton.fire();
             return;
         }
@@ -136,15 +141,15 @@ public class PaymentWindowController extends DialogController implements Initial
 
     /**
      * Function is activated when OK button is clicked, function handles payment: validates entered data, calculates change, creates receipt and sends email
+     *
      * @param event
      * @throws IOException
      */
     @FXML
-    private void handleConfirmButtonAction(ActionEvent event) throws IOException
-    {
-        if(!cardHandling) {
+    private void handleConfirmButtonAction(ActionEvent event) throws IOException {
+        if (!cardHandling) {
             Alert alert;
-            if(cashField.getText().equals("") || Double.parseDouble(cashField.getText()) < this.price) {
+            if (cashField.getText().equals("") || Double.parseDouble(cashField.getText()) < this.price) {
                 alert = new Alert(Alert.AlertType.WARNING);
                 alert.setTitle("Ostrzeżenie");
                 alert.setContentText("Za mała ilość gotówki lub wcale niewprowadzona");
@@ -153,15 +158,14 @@ public class PaymentWindowController extends DialogController implements Initial
             }
             DecimalFormat df = new DecimalFormat("#.##");
             double change = Double.parseDouble(cashField.getText()) - this.price;
-            if(!(change <  1e-7 && change > -1e-7)) {
+            if (!(change < 1e-7 && change > -1e-7)) {
                 alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Reszta");
                 alert.setHeaderText("Reszta");
                 alert.setContentText("Wydaj reszte: " + df.format(change) + " zł");
                 alert.showAndWait();
             }
-        }
-        else{
+        } else {
             Stage stage = (Stage) confirmButton.getScene().getWindow();
             stage.close();
         }
@@ -177,19 +181,20 @@ public class PaymentWindowController extends DialogController implements Initial
         Stage stage = (Stage) confirmButton.getScene().getWindow();
 
 
-
         stage.close();
         mainWindowController.updateTotalPrice();
 
 
         setDialogResult(DialogResult.OK);
     }
-    }
+
 
     /**
      * Function sets mainWindowController
+     *
      * @param mainWindowController
      */
     public void setMainWindowController(MainWindowController mainWindowController) {
-            this.mainWindowController = mainWindowController;
+        this.mainWindowController = mainWindowController;
     }
+}

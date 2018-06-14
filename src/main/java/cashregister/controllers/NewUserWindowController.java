@@ -46,7 +46,7 @@ public class NewUserWindowController {
 
     /**
      * Function for displaying name of a logged User. Checkes if logged User is an admin to show admin buttons
-     * @param product
+     * @param user
      */
     public void setUser(User user) {
 
