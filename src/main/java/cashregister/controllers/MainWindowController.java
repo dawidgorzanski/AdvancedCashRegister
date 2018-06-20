@@ -391,9 +391,12 @@ public class MainWindowController implements IBarcodeReaderDataListener {
                     {
                         Platform.runLater(() -> {
                             showAgeLimitWarning();
-                            updateTotalPrice();
                         });
                     }
+
+                    Platform.runLater(() -> {
+                        updateTotalPrice();
+                    });
                 }
                 else
                 {
