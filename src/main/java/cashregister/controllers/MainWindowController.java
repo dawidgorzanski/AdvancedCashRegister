@@ -385,11 +385,15 @@ public class MainWindowController implements IBarcodeReaderDataListener {
             {
                 ProductDefinition product= productsListModule.getByBarcode(value);
                 if(product != null) {
+                    productsListModule.addProduct(value);
                     boolean ageLimit = product.getAgeLimit();
                     if (ageLimit)
-                        showAgeLimitWarning();
-                    productsListModule.addProduct(value);
-                    updateTotalPrice();
+                    {
+                        Platform.runLater(() -> {
+                            showAgeLimitWarning();
+                            updateTotalPrice();
+                        });
+                    }
                 }
                 else
                 {
